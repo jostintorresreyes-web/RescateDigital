@@ -18,52 +18,52 @@ def populate():
         descripcion="Demuestra tus conocimientos generales sobre los orígenes, géneros e hitos que han marcado a Loja."
     )
     
-    p1_1 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Con qué apelativo es conocida popularmente la ciudad de Loja a nivel nacional?")
+    p1_1 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Cuáles son los apodos o denominaciones que recibe Loja en el Ecuador?")
     Opcion.objects.create(pregunta=p1_1, texto="Capital Económica del Ecuador", es_correcta=False)
     Opcion.objects.create(pregunta=p1_1, texto="Capital Musical y Cultural del Ecuador", es_correcta=True)
     Opcion.objects.create(pregunta=p1_1, texto="La Atenas del Ecuador", es_correcta=False)
 
-    p1_2 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Cuál es el género musical más emblemático, arraigado y predominante en el corazón lojano?")
+    p1_2 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Cuáles son algunos géneros musicales tradicionales del Ecuador?")
     Opcion.objects.create(pregunta=p1_2, texto="La cumbia", es_correcta=False)
     Opcion.objects.create(pregunta=p1_2, texto="El Pasillo", es_correcta=True)
     Opcion.objects.create(pregunta=p1_2, texto="La bomba del Chota", es_correcta=False)
 
-    p1_3 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Qué instrumento es considerado el alma de las tradicionales serenatas lojanas?")
+    p1_3 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Cuáles son instrumentos musicales comunes en la interpretación de música tradicional?")
     Opcion.objects.create(pregunta=p1_3, texto="La guitarra acústica", es_correcta=True)
     Opcion.objects.create(pregunta=p1_3, texto="La batería", es_correcta=False)
     Opcion.objects.create(pregunta=p1_3, texto="El saxofón", es_correcta=False)
 
-    p1_4 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Cuál es el tema predominante en las letras de los pasillos lojanos más antiguos?")
+    p1_4 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Qué temas suelen predominar en la música tradicional ecuatoriana?")
     Opcion.objects.create(pregunta=p1_4, texto="El amor, el desamor y la nostalgia poética", es_correcta=True)
     Opcion.objects.create(pregunta=p1_4, texto="Las victorias militares en guerras mundiales", es_correcta=False)
     Opcion.objects.create(pregunta=p1_4, texto="El humor sarcástico contra los políticos", es_correcta=False)
 
-    p1_5 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Qué importante evento moderno ha consolidado globalmente a Loja como un centro cultural de arte y música?")
+    p1_5 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Cuáles son eventos importantes relacionados con la cultura y el arte en el Ecuador?")
     Opcion.objects.create(pregunta=p1_5, texto="El Festival Internacional de Artes Vivas", es_correcta=True)
     Opcion.objects.create(pregunta=p1_5, texto="El Mundial de Fútbol", es_correcta=False)
     Opcion.objects.create(pregunta=p1_5, texto="La Fiesta de las Flores y las Frutas", es_correcta=False)
 
-    p1_6 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Cuál de las siguientes agrupaciones orquestales nació en la ciudad de Loja?")
+    p1_6 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Qué agrupaciones musicales reconocidas existen en el país?")
     Opcion.objects.create(pregunta=p1_6, texto="La Orquesta Sinfónica de Guayaquil", es_correcta=False)
     Opcion.objects.create(pregunta=p1_6, texto="La Orquesta Sinfónica de Loja (OSL)", es_correcta=True)
     Opcion.objects.create(pregunta=p1_6, texto="La Banda Blanca de la Marina", es_correcta=False)
 
-    p1_7 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿En qué contextos solía tocarse principalmente la música académica en el Loja del siglo XIX?")
+    p1_7 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿En qué contextos suele interpretarse la música tradicional ecuatoriana?")
     Opcion.objects.create(pregunta=p1_7, texto="En contextos religiosos, festividades locales y retretas", es_correcta=True)
     Opcion.objects.create(pregunta=p1_7, texto="Solo de manera clandestina", es_correcta=False)
     Opcion.objects.create(pregunta=p1_7, texto="Exclusivamente en partidos de índor fútbol", es_correcta=False)
 
-    p1_8 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Quién es la patrona religiosa a cuyo alrededor han girado cientos de composiciones y marchas en Loja?")
+    p1_8 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Qué advocaciones marianas son importantes en la religiosidad ecuatoriana?")
     Opcion.objects.create(pregunta=p1_8, texto="La Virgen de Guadalupe", es_correcta=False)
     Opcion.objects.create(pregunta=p1_8, texto="La Virgen de El Cisne", es_correcta=True)
     Opcion.objects.create(pregunta=p1_8, texto="La Virgen del Panecillo", es_correcta=False)
 
-    p1_9 = Pregunta.objects.create(quiz=q1, texto_pregunta="El formato musical grupal preferido por los músicos de cuerdas lojanos es:")
+    p1_9 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Cuáles son formatos comunes de agrupaciones musicales tradicionales?")
     Opcion.objects.create(pregunta=p1_9, texto="El dúo o trío", es_correcta=True)
     Opcion.objects.create(pregunta=p1_9, texto="La banda de heavy metal", es_correcta=False)
     Opcion.objects.create(pregunta=p1_9, texto="El cuarteto de djs", es_correcta=False)
 
-    p1_10 = Pregunta.objects.create(quiz=q1, texto_pregunta="Refrán o máxima sobre los habitantes de Loja respecto a sus dotes artísticas:")
+    p1_10 = Pregunta.objects.create(quiz=q1, texto_pregunta="¿Qué frases populares reflejan la identidad musical de Loja?")
     Opcion.objects.create(pregunta=p1_10, texto="'Si un lojano no toca la guitarra, no existe.'", es_correcta=False)
     Opcion.objects.create(pregunta=p1_10, texto="'El que no toca guitarra puede cantar una canción.' (Referencia al talento innato)", es_correcta=True)
     Opcion.objects.create(pregunta=p1_10, texto="'Nadie nace músico en Loja'", es_correcta=False)

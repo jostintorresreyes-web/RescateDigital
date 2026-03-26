@@ -4,65 +4,165 @@
 {% block title %}{% trans "Historia Musical de Loja - Rescate Digital" %}{% endblock %}
 
 {% block content %}
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-lg-10">
-            <h1 class="display-4 fw-bold mb-3 text-center" style="color: var(--primary-color);">{% trans "Historia Musical de la Ciudad de Loja" %}</h1>
-            <p class="lead text-center text-muted mb-5">{% trans "Conocida como la Capital Musical y Cultural del Ecuador." %}</p>
-            
-            <div class="card shadow-sm mb-5 border-0 bg-white" style="border-radius: 12px; overflow: hidden;">
-                <!-- Decorative top bar in gold -->
-                <div style="height: 6px; width: 100%; background-color: var(--accent-color);"></div>
+<!-- LINEA DEL TIEMPO INTERACTIVA -->
+<section class="timeline-section py-5 bg-light">
+    <div class="container text-center">
+        <h2 class="section-title text-dark mb-4" style="font-size: 2.2rem;">{% trans "Línea de tiempo de la música lojana" %}</h2>
+        <p class="text-muted lead mb-5 px-3 mx-auto" style="max-width: 800px;">
+            {% blocktrans %}Viaja a través de los siglos y descubre cómo Loja se convirtió en el epicentro sonoro del Ecuador. Explora nuestra historia mediante esta línea de tiempo interactiva.{% endblocktrans %}
+        </p>
+        
+        <!-- Swiper Container -->
+        <div class="swiper timelineSwiper pb-5 px-lg-5">
+            <div class="swiper-wrapper">
                 
-                <div class="card-body p-4 p-md-5">
-                    <h3 class="mb-4 d-flex align-items-center" style="color: var(--primary-color);">
-                        <i class="fas fa-landmark me-3" style="color: var(--accent-color);"></i> {% trans "Orígenes" %}
-                    </h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dark);">
-                        {% trans "La ciudad de Loja ha sido durante siglos un epicentro de creación artística en Ecuador. Su tradición musical está profundamente arraigada en el mestizaje entre los ritmos andinos originarios y la influencia europea introducida durante la colonia. Instrumentos como la guitarra, el rondador, y posteriormente el piano, se volvieron fundamentales en el desarrollo del paisaje sonoro local." %}
-                    </p>
-                    
-                    <h3 class="mt-5 mb-4 d-flex align-items-center" style="color: var(--primary-color);">
-                        <i class="fas fa-crown me-3" style="color: var(--accent-color);"></i> {% trans "La Época de Oro" %}
-                    </h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dark);">
-                        {% trans "A finales del siglo XIX y a lo largo del siglo XX, surgieron grandes figuras que consolidaron a Loja como el semillero de compositores e intérpretes por excelencia. Ritmos tradicionales como el pasillo, el sanjuanito, y el yaraví lojano, fueron elevados por maestros que alcanzaron reconocimiento nacional e internacional, dejando un legado imborrable en la identidad ecuatoriana." %}
-                    </p>
+                <!-- Slide 1 -->
+                <div class="swiper-slide h-auto">
+                    <div class="timeline-card p-4 bg-white shadow-sm rounded-4 text-start border-top border-4 border-warning h-100 transition-hover">
+                        <span class="badge bg-warning text-dark mb-3 px-3 py-2 fs-6 rounded-pill">{% trans "Siglos XVI–XVIII" %}</span>
+                        <h4 class="fw-bold mb-3" style="color: var(--primary-color);">{% trans "Orígenes coloniales" %}</h4>
+                        <ul class="text-muted ps-3 mb-0" style="font-size: 0.95rem;">
+                            <li class="mb-2">{% trans "Con la colonización española se introducen formas musicales europeas." %}</li>
+                            <li class="mb-2">{% trans "Llegan instrumentos como la guitarra, el arpa y el violín." %}</li>
+                            <li class="mb-2">{% trans "Se produce una fusión entre música indígena y europea, dando origen a expresiones mestizas." %}</li>
+                            <li>{% trans "La música se desarrolla principalmente en contextos religiosos y festividades." %}</li>
+                        </ul>
+                    </div>
+                </div>
 
-                    <h3 class="mt-5 mb-4 d-flex align-items-center" style="color: var(--primary-color);">
-                        <i class="fas fa-guitar me-3" style="color: var(--accent-color);"></i> {% trans "La Música Hoy" %}
-                    </h3>
-                    <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-dark);">
-                        {% trans "En la actualidad, instituciones como la Orquesta Sinfónica de Loja y el Conservatorio Salvador Bustamante Celi continúan formando a las nuevas generaciones, demostrando que la música en Loja no es solo historia, sino una pasión viva que evoluciona." %}
-                    </p>
+                <!-- Slide 2 -->
+                <div class="swiper-slide h-auto">
+                    <div class="timeline-card p-4 bg-white shadow-sm rounded-4 text-start border-top border-4 border-success h-100 transition-hover">
+                        <span class="badge bg-success mb-3 px-3 py-2 fs-6 rounded-pill">{% trans "Siglo XIX" %}</span>
+                        <h4 class="fw-bold mb-3" style="color: var(--primary-color);">{% trans "Formación de identidad musical" %}</h4>
+                        <ul class="text-muted ps-3 mb-0" style="font-size: 0.95rem;">
+                            <li class="mb-2">{% trans "Loja comienza a consolidarse como un centro cultural importante en el sur del Ecuador." %}</li>
+                            <li class="mb-2">{% trans "Se adoptan géneros como el pasillo, el vals y el pasacalle." %}</li>
+                            <li class="mb-2">{% trans "Surgen músicos locales que desarrollan estilos propios." %}</li>
+                            <li>{% trans "La música pasa a formar parte de la vida cotidiana y social." %}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="swiper-slide h-auto">
+                    <div class="timeline-card p-4 bg-white shadow-sm rounded-4 text-start border-top border-4 border-primary h-100 transition-hover">
+                        <span class="badge bg-primary mb-3 px-3 py-2 fs-6 rounded-pill">{% trans "Finales s. XIX – Inicios s. XX" %}</span>
+                        <h4 class="fw-bold mb-3" style="color: var(--primary-color);">{% trans "Auge del pasillo lojano" %}</h4>
+                        <ul class="text-muted ps-3 mb-0" style="font-size: 0.95rem;">
+                            <li class="mb-2">{% trans "El pasillo se convierte en el género predominante en la región." %}</li>
+                            <li class="mb-2">{% trans "Se define un estilo lojano caracterizado por su tono melancólico y poético." %}</li>
+                            <li class="mb-2">{% trans "Se popularizan las serenatas y el uso de la guitarra." %}</li>
+                            <li>{% trans "Destacan compositores como Salvador Bustamante Celi y Segundo Cueva Celi." %}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="swiper-slide h-auto">
+                    <div class="timeline-card p-4 bg-white shadow-sm rounded-4 text-start border-top border-4 border-info h-100 transition-hover">
+                        <span class="badge bg-info text-dark mb-3 px-3 py-2 fs-6 rounded-pill">{% trans "Décadas de 1920–1950" %}</span>
+                        <h4 class="fw-bold mb-3" style="color: var(--primary-color);">{% trans "Consolidación y reconocimiento" %}</h4>
+                        <ul class="text-muted ps-3 mb-0" style="font-size: 0.95rem;">
+                            <li class="mb-2">{% trans "Loja es reconocida como la 'Capital Musical del Ecuador'." %}</li>
+                            <li class="mb-2">{% trans "Se fortalece la educación musical y se crea el Conservatorio Salvador Bustamante Celi." %}</li>
+                            <li class="mb-2">{% trans "El pasillo lojano se difunde a nivel nacional." %}</li>
+                            <li>{% trans "Influyen también figuras como Carlos Rubira Infante y Nicasio Safadi." %}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Slide 5 -->
+                <div class="swiper-slide h-auto">
+                    <div class="timeline-card p-4 bg-white shadow-sm rounded-4 text-start border-top border-4 border-danger h-100 transition-hover">
+                        <span class="badge bg-danger mb-3 px-3 py-2 fs-6 rounded-pill">{% trans "Décadas de 1960–1980" %}</span>
+                        <h4 class="fw-bold mb-3" style="color: var(--primary-color);">{% trans "Expansión y modernización" %}</h4>
+                        <ul class="text-muted ps-3 mb-0" style="font-size: 0.95rem;">
+                            <li class="mb-2">{% trans "La radio y las grabaciones permiten una mayor difusión." %}</li>
+                            <li class="mb-2">{% trans "Se incorporan nuevos arreglos musicales y estilos." %}</li>
+                            <li class="mb-2">{% trans "El pasillo convive con otros géneros como el bolero." %}</li>
+                            <li>{% trans "Se forman tríos y agrupaciones musicales representativas." %}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Slide 6 -->
+                <div class="swiper-slide h-auto">
+                    <div class="timeline-card p-4 bg-white shadow-sm rounded-4 text-start border-top border-4 border-secondary h-100 transition-hover">
+                        <span class="badge bg-secondary mb-3 px-3 py-2 fs-6 rounded-pill">{% trans "Décadas de 1990–2000" %}</span>
+                        <h4 class="fw-bold mb-3" style="color: var(--primary-color);">{% trans "Preservación y nuevas generaciones" %}</h4>
+                        <ul class="text-muted ps-3 mb-0" style="font-size: 0.95rem;">
+                            <li class="mb-2">{% trans "Se intensifican los esfuerzos por conservar la música tradicional." %}</li>
+                            <li class="mb-2">{% trans "Se fortalece la formación académica musical." %}</li>
+                            <li class="mb-2">{% trans "Nuevas generaciones reinterpretan el pasillo lojano." %}</li>
+                            <li>{% trans "Se organizan festivales culturales para promover la identidad musical." %}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Slide 7 -->
+                <div class="swiper-slide h-auto">
+                    <div class="timeline-card p-4 bg-white shadow-sm rounded-4 text-start border-top border-4 border-dark h-100 transition-hover">
+                        <span class="badge bg-dark mb-3 px-3 py-2 fs-6 rounded-pill">{% trans "Siglo XXI (2000–actualidad)" %}</span>
+                        <h4 class="fw-bold mb-3" style="color: var(--primary-color);">{% trans "Innovación y proyección" %}</h4>
+                        <ul class="text-muted ps-3 mb-0" style="font-size: 0.95rem;">
+                            <li class="mb-2">{% trans "Fusión del pasillo con géneros modernos como jazz, pop y rock." %}</li>
+                            <li class="mb-2">{% trans "Uso de plataformas digitales para difusión internacional." %}</li>
+                            <li class="mb-2">{% trans "Revalorización del pasillo como patrimonio cultural." %}</li>
+                            <li>{% trans "Surgen artistas que combinan tradición e innovación." %}</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
-            <div class="row text-center mt-5 pt-3 border-top">
-                <div class="col-md-4 mb-4">
-                    <div class="p-4 bg-light rounded shadow-sm h-100 border-0 transition">
-                        <i class="fas fa-users fa-3x mb-3" style="color: var(--primary-color);"></i>
-                        <h4 class="fw-bold" style="color: var(--primary-color);">{% trans "Compositores" %}</h4>
-                        <p class="text-muted small">{% trans "Descubre las mentes detrás de los acordes." %}</p>
-                        <a href="{% url 'artistas_lista' %}" class="btn btn-outline-green btn-sm rounded-pill mt-2" style="border-color: var(--primary-color); color: var(--primary-color);">{% trans "Ver Artistas" %}</a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="p-4 bg-light rounded shadow-sm h-100 border-0 transition">
-                        <i class="fas fa-university fa-3x mb-3" style="color: var(--primary-color);"></i>
-                        <h4 class="fw-bold" style="color: var(--primary-color);">{% trans "Instituciones" %}</h4>
-                        <p class="text-muted small">{% trans "Hogares de aprendizaje musical." %}</p>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="p-4 bg-light rounded shadow-sm h-100 border-0 transition">
-                        <i class="fas fa-music fa-3x mb-3" style="color: var(--primary-color);"></i>
-                        <h4 class="fw-bold" style="color: var(--primary-color);">{% trans "Obras" %}</h4>
-                        <p class="text-muted small">{% trans "Escucha las piezas inmortales." %}</p>
-                    </div>
-                </div>
+            <!-- Pagination inside container -->
+            <div class="swiper-pagination mt-4 position-relative bottom-0"></div>
+            <!-- Navigation arrows -->
+            <div class="swiper-button-prev" style="color: var(--accent-color); left: 0;"></div>
+            <div class="swiper-button-next" style="color: var(--accent-color); right: 0;"></div>
+        </div>
+
+        <div class="mt-5 p-4 bg-white rounded shadow-sm text-start mx-auto border" style="max-width: 900px; border-left: 5px solid var(--accent-color) !important;">
+            <h4 class="fw-bold mb-4" style="color: var(--primary-color);"><i class="fas fa-guitar text-gold me-2"></i>{% trans "Características principales de la música lojana" %}</h4>
+            <div class="row text-muted fw-medium g-3">
+                <div class="col-md-6 d-flex align-items-center"><i class="fas fa-check-circle fs-5 text-success me-3"></i>{% trans "Predominio del pasillo lojano." %}</div>
+                <div class="col-md-6 d-flex align-items-center"><i class="fas fa-check-circle fs-5 text-success me-3"></i>{% trans "Uso de guitarra, requinto y voz." %}</div>
+                <div class="col-md-6 d-flex align-items-center"><i class="fas fa-check-circle fs-5 text-success me-3"></i>{% trans "Letras románticas, nostálgicas y poéticas." %}</div>
+                <div class="col-md-6 d-flex align-items-center"><i class="fas fa-check-circle fs-5 text-success me-3"></i>{% trans "Fuerte identidad cultural regional." %}</div>
             </div>
         </div>
     </div>
-</div>
+</section>
+{% endblock %}
+
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if(typeof Swiper !== 'undefined') {
+            var timelineSwiper = new Swiper('.timelineSwiper', {
+                slidesPerView: 1,
+                spaceBetween: 20,
+                autoHeight: false,
+                navigation: {
+                    nextEl: '.swiper-button-next',
+                    prevEl: '.swiper-button-prev',
+                },
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 30,
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30,
+                    },
+                }
+            });
+        }
+    });
+</script>
 {% endblock %}
