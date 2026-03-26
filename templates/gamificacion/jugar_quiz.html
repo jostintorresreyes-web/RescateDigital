@@ -19,7 +19,7 @@
             <div class="card shadow-sm border-0 rounded-4">
                 <div class="card-header bg-white border-bottom p-4 d-flex justify-content-between align-items-center">
                     <span class="badge text-dark rounded-pill" style="background-color: var(--accent-color); font-size: 0.85rem;"><i class="fas fa-question-circle me-1"></i> {{ quiz.preguntas.count }} {% trans "Preguntas" %}</span>
-                    <span class="text-muted small fw-bold"><i class="fas fa-medal text-warning"></i> {% trans "Posibles Puntos" %}: {{ quiz.puntos_totales }}</span>
+                    <span class="text-muted small fw-bold"><i class="fas fa-medal text-warning"></i> {% trans "Posibles Puntos" %}: {% widthratio quiz.preguntas.count 1 10 %}</span>
                 </div>
                 
                 <div class="card-body p-4 p-md-5 bg-light">
@@ -28,7 +28,7 @@
                         
                         {% for pregunta in quiz.preguntas.all %}
                         <div class="mb-5 bg-white p-4 rounded shadow-sm border-start border-4" style="border-color: var(--primary-color) !important;">
-                            <h4 class="fw-bold mb-4" style="color: var(--primary-color);">{{ formloop.counter }}. {{ pregunta.texto }}</h4>
+                            <h4 class="fw-bold mb-4" style="color: var(--primary-color);">{{ forloop.counter }}) {{ pregunta.texto_pregunta }}</h4>
                             
                             <div class="list-group list-group-flush gap-2">
                                 {% for opcion in pregunta.opciones.all %}
