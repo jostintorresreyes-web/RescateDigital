@@ -14,3 +14,6 @@ from django.core.wsgi import get_wsgi_application
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'rescate_musical.settings')
 
 application = get_wsgi_application()
+
+# Vercel necesita que el objeto WSGI se llame 'app'
+app = application

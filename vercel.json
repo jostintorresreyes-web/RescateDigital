@@ -1,0 +1,21 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "rescate_musical/wsgi.py",
+            "use": "@vercel/python",
+            "config": {
+                "maxLambdaSize": "15mb"
+            }
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "rescate_musical/wsgi.py"
+        }
+    ],
+    "env": {
+        "DJANGO_SETTINGS_MODULE": "rescate_musical.settings"
+    }
+}
