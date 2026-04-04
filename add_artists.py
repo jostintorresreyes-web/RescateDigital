@@ -7,39 +7,37 @@ django.setup()
 from artistas.models import Artista
 
 nombres = [
-    "Salvador Bustamante Cánovas",
+    "Salvador Bustamante Celi",
     "Segundo Cueva Celi",
-    "Manuel de J. Lozano",
+    "Manuel de Jesús Lozano",
     "Marcos Ochoa Muñoz",
-    "Emiliano Ortega",
-    "Víctor Moreno Proaño",
-    "Daniel Armijos Carrión",
+    "Emiliano Ortega Espinosa",
     "David Pacheco Ochoa",
-    "Julio Cañar",
-    "Francisco Rodas Bustamante"
+    "Carlos Bonilla Chávez",
+    "Segundo Luis Moreno",
+    "Benjamín Carrión"
 ]
 
 bios = {
-    "Salvador Bustamante Cánovas": "Destacado compositor lojano, conocido por su gran aporte a la música sacra y tradicional de la región.",
-    "Segundo Cueva Celi": "Músico y compositor, prolífico creador de pasillos y yaravíes que son himnos populares en el sur del Ecuador.",
-    "Manuel de J. Lozano": "Maestro de capilla y compositor, su obra trasciende en los géneros sacros y populares.",
-    "Marcos Ochoa Muñoz": "Músico lojano de destacada trayectoria en la enseñanza y composición de piezas tradicionales.",
-    "Emiliano Ortega": "Renombrado músico y educador ecuatoriano, parte fundamental de la identidad musical sureña.",
-    "Víctor Moreno Proaño": "Compositor y promotor cultural, enriqueció el repertorio musical lojano con innumerables obras.",
-    "Daniel Armijos Carrión": "Pianista y compositor cuyas obras evocan el paisaje romántico y bucólico de Loja.",
-    "David Pacheco Ochoa": "Talentoso compositor y arreglista ecuatoriano de gran trascendencia histórica.",
-    "Julio Cañar": "Referente de la música nacional que dejó un legado imborrable en el acervo popular lojano.",
-    "Francisco Rodas Bustamante": "Músico multifacético y visionario que contribuyó al crecimiento de las bandas y agrupaciones de la época."
+    "Salvador Bustamante Celi": "Eminente compositor, organista y cantante, y figura fundamental en la música lojana. Su obra abarca valses, pasodobles, yaravíes y música sacra.",
+    "Segundo Cueva Celi": "Conocido como el Príncipe del Pasillo. A pesar de perder la visión, su legado es un pilar esencial del pasillo ecuatoriano y lojano.",
+    "Manuel de Jesús Lozano": "Compositor lojano con un importante repertorio pianístico, cuyo legado es un aporte valioso al patrimonio musical ecuatoriano.",
+    "Marcos Ochoa Muñoz": "Referente de la música lojana y educador musical, con un catálogo compositivo inmenso incluyendo el emblemático pasacalle 'Flor Zamorana'.",
+    "Emiliano Ortega Espinosa": "Renombrado escritor, poeta y contribuyente fundamental a la identidad musical y literaria de Loja, autor de las letras de muchas composiciones inmortales.",
+    "David Pacheco Ochoa": "Talentoso compositor y docente lojano. Autor de la música y letras de múltiples pasillos, valses y sanjuanitos.",
+    "Carlos Bonilla Chávez": "Destacado guitarrista, compositor y contrabajista ecuatoriano, considerado el padre de la guitarra académica en el país.",
+    "Segundo Luis Moreno": "Destacado compositor, musicólogo y director de banda. Considerado uno de los pioneros de la musicología en el Ecuador por sus estudios antropológicos y su vasta obra clásica y popular.",
+    "Benjamín Carrión": "Insigne escritor, ensayista, diplomático y el mayor promotor cultural lojano y ecuatoriano. Fundador de la Casa de la Cultura Ecuatoriana que potenció decididamente a los artistas nacionales."
 }
 
 for nombre in nombres:
-    artista, created = Artista.objects.get_or_create(
+    artista, created = Artista.objects.update_or_create(
         nombre=nombre,
         defaults={'biografia': bios.get(nombre, "Biografía en construcción.")}
     )
     if created:
         print(f"Creado: {nombre}")
     else:
-        print(f"Ya existe: {nombre}")
+        print(f"Actualizado: {nombre}")
 
 print("Proceso de carga de artistas finalizado.")
