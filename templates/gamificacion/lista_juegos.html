@@ -1,72 +1,285 @@
 {% extends 'base.html' %}
 {% load i18n static %}
 
-{% block title %}{% trans "Juegos Musicales - Rescate Digital" %}{% endblock %}
+{% block title %}{% trans "Camino del Conocimiento Musical - Rescate Digital" %}{% endblock %}
+
+{% block extra_css %}
+<style>
+    .games-path-container {
+        position: relative;
+        padding: 100px 0;
+        /* Ultra Vibrant Gradient */
+        background: linear-gradient(180deg, 
+            #020408 0%, 
+            #0b0e14 15%, 
+            #1e3c72 30%, 
+            #2a5298 45%, 
+            #2196f3 60%, 
+            #87ceeb 75%, 
+            #e1f5fe 90%, 
+            #ffffff 100%
+        );
+        border-radius: 60px;
+        overflow: hidden;
+        min-height: 2800px; /* Even more for Quiz 13 and detail */
+        margin-top: 2rem;
+        border: 4px solid #1e3c72;
+        box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+    }
+    
+    /* SHOOTING STARS */
+    .shooting-star {
+        position: absolute;
+        width: 150px;
+        height: 2px;
+        background: linear-gradient(90deg, #fff, transparent);
+        z-index: 2;
+        animation: shoot 5s infinite linear;
+        opacity: 0;
+    }
+    @keyframes shoot {
+        0% { transform: translate(-200px, 0) rotate(20deg); opacity: 1; }
+        100% { transform: translate(110vw, 400px) rotate(20deg); opacity: 0; }
+    }
+
+    /* Vibrant Multi-colored Stars */
+    .vibrant-star {
+        position: absolute;
+        animation: twinkle-colored 3s infinite ease-in-out;
+        z-index: 2;
+    }
+    @keyframes twinkle-colored {
+        0%, 100% { transform: scale(1); opacity: 0.4; }
+        50% { transform: scale(1.5); opacity: 1; color: #ffeb3b; filter: drop-shadow(0 0 10px #ffeb3b); }
+    }
+
+    /* Aura for Planets */
+    .planet-aura {
+        position: absolute;
+        border-radius: 50%;
+        z-index: 1;
+        filter: blur(20px);
+        opacity: 0.3;
+        animation: aura-pulse 6s infinite ease-in-out;
+    }
+    @keyframes aura-pulse {
+        0%, 100% { transform: scale(1); opacity: 0.2; }
+        50% { transform: scale(1.3); opacity: 0.4; }
+    }
+
+    /* Sky Rainbow */
+    .rainbow-sky {
+        position: absolute;
+        top: 45%;
+        width: 100%;
+        height: 300px;
+        background: radial-gradient(circle at 50% 100%, transparent 60%, rgba(255,0,0,0.1) 61%, rgba(255,165,0,0.1) 62%, rgba(255,255,0,0.1) 63%, rgba(0,128,0,0.1) 64%, rgba(0,0,255,0.1) 65%, rgba(75,0,130,0.1) 66%, rgba(238,130,238,0.1) 67%, transparent 68%);
+        z-index: 2;
+        opacity: 0.4;
+    }
+
+    /* Figures Colors */
+    .planet-decor { position: absolute; z-index: 3; animation: float-planet 15s infinite ease-in-out; transition: all 0.5s; }
+    .planet-decor:hover { transform: scale(1.2) rotate(20deg); filter: drop-shadow(0 0 20px #fff); }
+
+    .plane-decor { position: absolute; z-index: 4; font-size: 2.5rem; animation: fly-plane 18s infinite linear; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2)); }
+    .cloud-decor { position: absolute; color: #ffffff; opacity: 0.9; z-index: 3; filter: blur(2px); animation: drift 40s infinite linear; }
+
+    /* Road (Caminito) */
+    .games-path-container::before { 
+        content: ""; 
+        position: absolute; 
+        top: 0; 
+        bottom: 0; 
+        left: 50%; 
+        width: 20px; 
+        background: repeating-linear-gradient(0deg, #795548 0, #795548 30px, #ffb300 30px, #ffb300 35px, #8d6e63 35px, #8d6e63 65px); 
+        transform: translateX(-50%); 
+        z-index: 1; 
+        opacity: 0.25; 
+        border-radius: 20px;
+    }
+
+    /* LAND DECOR (Mountains & Animals) */
+    .mountain-decor { 
+        position: absolute; 
+        bottom: 0; 
+        left: 0;
+        right: 0;
+        width: 100%; 
+        height: 300px; 
+        display: flex; 
+        align-items: flex-end; 
+        justify-content: space-around; 
+        z-index: 2; 
+        pointer-events: none; 
+    }
+    .mtn-peak { 
+        width: 0; 
+        height: 0; 
+        border-left: 180px solid transparent; 
+        border-right: 180px solid transparent; 
+        border-bottom: 250px solid #5d4037; 
+        position: relative; 
+    }
+    .mtn-peak::after { 
+        content: ""; 
+        position: absolute; 
+        top: 0; 
+        left: -180px; 
+        width: 0; 
+        height: 0; 
+        border-left: 180px solid transparent; 
+        border-right: 180px solid transparent; 
+        border-bottom: 60px solid #ffffff; 
+        opacity: 0.8; 
+    }
+
+    .nature-decor { 
+        position: absolute; 
+        bottom: 10px; 
+        left: 0;
+        right: 0;
+        width: 100%; 
+        height: 150px; 
+        z-index: 10; 
+        pointer-events: none; 
+    }
+    .tree { 
+        position: absolute; 
+        bottom: 0; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center; 
+        filter: drop-shadow(3px 5px 8px rgba(0,0,0,0.2)); 
+    }
+    .tree-trunk { width: 14px; height: 50px; background: #3e2723; border-radius: 2px; }
+    .tree-top { width: 70px; height: 90px; background: #1b5e20; border-radius: 50% 50% 20% 20%; }
+    
+    .animal-decor { position: absolute; bottom: 15px; z-index: 10; font-size: 2rem; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)); transition: transform 0.3s; }
+    .people-decor { position: absolute; bottom: 10px; z-index: 11; font-size: 1.8rem; filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.2)); transition: transform 0.3s; }
+    .flower { position: absolute; bottom: 0; font-size: 1.2rem; transition: transform 0.2s; }
+</style>
+{% endblock %}
 
 {% block content %}
 <div class="container py-5">
-    <div class="row align-items-center mb-5 bg-white p-4 rounded shadow-sm" style="border-left: 5px solid var(--accent-color);">
-        <div class="col-md-8">
-            <h1 class="display-6 fw-bold" style="color: var(--primary-color);">{% trans "Aprende Jugando" %}</h1>
-            <p class="lead text-muted mb-0" style="font-size: 1.1rem;">{% trans "Pon a prueba tus conocimientos sobre la música lojana y suma puntos para liderar el ranking." %}</p>
-        </div>
-        <div class="col-md-4 mx-auto mt-4 mt-md-0 d-grid">
-            <a href="{% url 'ranking' %}" class="btn btn-gold btn-lg fw-bold shadow-sm d-flex align-items-center justify-content-center">
-                <i class="fas fa-trophy text-white me-2" style="font-size: 1.3rem;"></i> 
-                <span>{% trans "Ver Ranking" %}</span>
-            </a>
-        </div>
+    <div class="mb-5 text-center">
+        <span class="badge rounded-pill bg-success px-3 py-2 mb-3 text-uppercase fw-bold letter-spacing-1">{% trans "Gamificación" %}</span>
+        <h1 class="display-4 fw-bold" style="color: var(--primary-color);">{% trans "Camino del Conocimiento Musical" %}</h1>
+        <p class="lead text-muted mx-auto" style="max-width: 700px;">
+            {% trans "Avanza por el sendero de la historia musical lojana. Cada quiz superado es un paso más hacia la maestría cultural." %}
+        </p>
     </div>
 
-    {% if messages %}
-    <div class="row mb-4">
-        <div class="col-12">
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }} alert-dismissible fade show border-0 shadow-sm" style="background-color: var(--primary-color); color: white;" role="alert">
-                    <i class="fas fa-info-circle me-2 text-gold"></i> {{ message }}
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
-            {% endfor %}
-        </div>
-    </div>
-    {% endif %}
+    <div class="games-path-container shadow-lg border">
+        <!-- SPACE LEVEL (Shooting Stars & Vibrant Stars) -->
+        <div class="shooting-star" style="top: 5%; left: -100px; animation-delay: 0s;"></div>
+        <div class="shooting-star" style="top: 15%; left: -100px; animation-delay: 2.5s;"></div>
+        <div class="shooting-star" style="top: 8%; right: -100px; animation-delay: 1.2s; transform: rotate(160deg);"></div>
 
-    <div class="row g-4">
-        {% for quiz in quizzes %}
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 border-0 rounded-3 shadow-sm transition artist-card overflow-hidden">
-                <div class="card-header bg-transparent border-0 pt-4 pb-0 text-center">
-                    <div class="rounded-circle d-inline-flex align-items-center justify-content-center text-white mb-3 shadow-sm" style="width: 70px; height: 70px; background-color: var(--primary-color);">
-                        <i class="fas fa-puzzle-piece fa-2x"></i>
+        <div class="vibrant-star" style="top: 3%; left: 10%; font-size: 0.5rem;"><i class="fas fa-star"></i></div>
+        <div class="vibrant-star" style="top: 12%; right: 15%; font-size: 0.8rem; animation-delay: 1s;"><i class="fas fa-star"></i></div>
+        <div class="vibrant-star" style="top: 25%; left: 35%; font-size: 0.6rem; animation-delay: 0.5s;"><i class="fas fa-star text-info"></i></div>
+        <div class="vibrant-star" style="top: 18%; right: 45%; font-size: 0.4rem; animation-delay: 2s;"><i class="fas fa-star text-white"></i></div>
+        <div class="vibrant-star" style="top: 7%; left: 80%; font-size: 0.7rem; animation-delay: 1.5s;"><i class="fas fa-star text-gold"></i></div>
+
+        <!-- Planet Auras & Figures -->
+        <div class="planet-aura" style="top: 1%; left: 5%; width: 100px; height: 100px; background: #ff5722;"></div>
+        <div class="planet-decor" style="top: 1%; left: 5%; font-size: 6rem; color: #ff5722;"><i class="fas fa-globe-americas"></i></div>
+        
+        <div class="planet-aura" style="top: 10%; left: 45%; width: 150px; height: 150px; background: #ffeb3b;"></div>
+        <div class="planet-decor" style="top: 10%; left: 45%; font-size: 8rem; color: #ffeb3b;"><i class="fas fa-sun"></i></div>
+
+        <!-- SKY LEVEL (Rainbow & Moving Clouds) -->
+        <div class="rainbow-sky"></div>
+        <div class="cloud-decor" style="top: 30%; left: 5%; font-size: 6rem;"><i class="fas fa-cloud"></i></div>
+        <div class="cloud-decor" style="top: 45%; right: 10%; font-size: 7rem; animation-delay: -5s;"><i class="fas fa-cloud"></i></div>
+        <div class="cloud-decor" style="top: 60%; left: 25%; font-size: 5rem; animation-delay: -10s;"><i class="fas fa-cloud"></i></div>
+        <div class="cloud-decor" style="top: 75%; right: 5%; font-size: 4rem; animation-delay: -15s;"><i class="fas fa-cloud"></i></div>
+
+        <!-- MOVING AIRPLANES -->
+        <div class="plane-decor" style="top: 35%; color: #ef5350; font-size: 3rem;"><i class="fas fa-plane"></i></div>
+        <div class="plane-decor" style="top: 55%; color: #42a5f5; font-size: 2.5rem; animation-delay: -8s;"><i class="fas fa-plane"></i></div>
+        <div class="plane-decor" style="top: 70%; color: #ffca28; font-size: 2rem; animation-delay: -15s;"><i class="fas fa-plane"></i></div>
+
+        <!-- MOVING BIRDS -->
+        <div class="bird-decor" style="top: 80%; color: #37474f; animation-delay: 0s;"><i class="fas fa-dove"></i></div>
+        <div class="bird-decor" style="top: 85%; color: #546e7a; animation-delay: -5s;"><i class="fas fa-dove"></i></div>
+        <div class="bird-decor" style="top: 90%; color: #455a64; animation-delay: -10s;"><i class="fas fa-dove"></i></div>
+
+        <div class="container py-4 position-relative" style="z-index: 10;">
+            {% for quiz in quizzes %}
+            <div class="row quiz-path-row {% if forloop.counter|divisibleby:2 %}justify-content-end{% else %}justify-content-start{% endif %}" style="margin-bottom: 160px;">
+                <div class="col-md-6 col-lg-5 quiz-step">
+                    <div class="quiz-node">
+                        <div class="card border-0 rounded-4 shadow-lg overflow-hidden position-relative">
+                            <div class="p-3" style="background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));">
+                                <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center mx-auto shadow-sm fw-bold fs-4" style="width: 50px; height: 50px;">
+                                    {{ forloop.counter }}
+                                </div>
+                            </div>
+                            <div class="card-body p-4 bg-white text-center">
+                                <h5 class="fw-bold mb-3" style="color: var(--primary-color);">{{ quiz.translated_titulo }}</h5>
+                                <p class="small text-muted mb-4">{{ quiz.translated_descripcion|truncatewords:20 }}</p>
+                                
+                                {% if quiz.id in completados_ids %}
+                                    <div class="alert alert-success py-2 mb-0 rounded-pill border-0">
+                                        <i class="fas fa-check-circle me-1"></i> {% trans "¡Superado!" %}
+                                    </div>
+                                {% else %}
+                                    <a href="{% url 'jugar_quiz' quiz.id %}" class="btn btn-dark-green rounded-pill w-100 fw-bold shadow-sm transition-hover">
+                                        {% trans "Iniciar Desafío" %} <i class="fas fa-play ms-2 fs-xs"></i>
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card-body text-center">
-                    <h5 class="fw-bold mb-3" style="color: var(--primary-color);">{{ quiz.titulo }}</h5>
-                    <p class="card-text text-muted mb-4">{{ quiz.descripcion }}</p>
-                    {% if quiz.id in completados_ids %}
-                        <button class="btn btn-secondary rounded-pill w-100 shadow-sm fw-bold" disabled>
-                            <i class="fas fa-check-circle me-1"></i> {% trans "Respondido" %}
-                        </button>
-                    {% else %}
-                        <a href="{% url 'jugar_quiz' quiz.id %}" class="btn btn-dark-green rounded-pill w-100 shadow-sm fw-bold">{% trans "Comenzar Reto" %}</a>
-                    {% endif %}
-                </div>
-                <div class="card-footer border-0 text-center py-3" style="background-color: #f8f9fa;">
-                    <span class="badge text-dark rounded-pill fw-normal" style="background-color: #e5e7eb;">
-                        {{ quiz.preguntas.count }} {% trans "preguntas" %}
-                    </span>
-                </div>
             </div>
-        </div>
-        {% empty %}
-        <div class="col-12 py-5 text-center">
-            <div class="rounded-circle d-inline-flex mx-auto align-items-center justify-content-center bg-light text-muted mb-4" style="width: 100px; height: 100px;">
-                <i class="fas fa-gamepad fa-3x"></i>
+            {% empty %}
+            <div class="text-center py-5">
+                <div class="bg-light rounded-circle d-inline-flex p-4 mb-4">
+                    <i class="fas fa-music fa-3x text-muted"></i>
+                </div>
+                <h3 class="fw-bold" style="color: var(--primary-color);">{% trans "No hay quizzes disponibles aún." %}</h3>
+                <p class="text-muted">{% trans "Pronto prepararemos nuevos desafíos musicales para ti." %}</p>
             </div>
-            <h3 class="fw-bold" style="color: var(--primary-color);">{% trans "No hay quizzes disponibles aún." %}</h3>
-            <p class="text-muted">{% trans "Pronto prepararemos nuevos desafíos musicales para ti." %}</p>
+            {% endfor %}
         </div>
-        {% endfor %}
+
+        <!-- LAND LEVEL (Mountains & Animals) - MOVED TO BOTTOM -->
+        <div class="mountain-decor" style="width: 100%; left: 0; right: 0; bottom: 0;">
+            <div class="mtn-peak"></div>
+            <div class="mtn-peak" style="transform: scale(1.5); opacity: 0.9; margin: 0 -30px;"></div>
+            <div class="mtn-peak" style="transform: scale(1.2); opacity: 1;"></div>
+            <div class="mtn-peak" style="transform: scale(1.4); opacity: 0.8; margin: 0 -40px;"></div>
+        </div>
+
+        <div class="nature-decor" style="width: 100%; left: 0; right: 0; bottom: 10px;">
+            <!-- Animals -->
+            <i class="fas fa-dog animal-decor" style="left: 5%; color: #795548;"></i>
+            <i class="fas fa-cat animal-decor" style="left: 15%; color: #fb8c00;"></i>
+            <i class="fas fa-horse animal-decor" style="left: 30%; color: #5d4037;"></i>
+            <i class="fas fa-cow animal-decor" style="right: 25%; color: #424242;"></i>
+            <i class="fas fa-frog animal-decor" style="left: 55%; color: #4caf50;"></i>
+            
+            <i class="fas fa-walking people-decor" style="left: 45%; color: #2196f3;"></i>
+            <i class="fas fa-user-friends people-decor" style="right: 5%; color: #e91e63;"></i>
+            <i class="fas fa-child people-decor" style="left: 20%; color: #ffc107;"></i>
+
+            <div class="tree" style="left: 2%;"><div class="tree-top" style="background:#004d40;"></div><div class="tree-trunk"></div></div>
+            <div class="tree" style="right: 18%;"><div class="tree-top" style="background:#2e7d32;"></div><div class="tree-trunk"></div></div>
+            <i class="fas fa-seedling flower" style="left: 10%; color: #4caf50;"></i>
+            <i class="fas fa-heart flower" style="right: 35%; color: #f44336;"></i>
+        </div>
+    </div>
+    </div>
+    
+    <div class="mt-5 text-center">
+        <a href="{% url 'ranking' %}" class="btn btn-gold btn-lg rounded-pill px-5 shadow-sm fw-bold">
+            <i class="fas fa-trophy me-2"></i> {% trans "Ver Ranking Global" %}
+        </a>
     </div>
 </div>
 {% endblock %}

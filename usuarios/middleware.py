@@ -10,13 +10,12 @@ class LoginRequiredMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if not request.user.is_authenticated:
-            # Allow access to admin, login, setup or static files
-            path = request.path_info
-            if not (path.startswith('/usuarios/login/') or 
-                    path.startswith('/usuarios/registro/') or 
-                    path.startswith('/admin/') or 
-                    path.startswith('/static/') or 
-                    path.startswith('/media/')):
+        path = request.path_info
+        
+        # Paths that ALWAYS require login
+        if path.startswith('/juegos/quiz/'):
+            if not request.user.is_authenticated:
                 return redirect('login')
+        
+        # Default: Allow everything else
         return self.get_response(request)

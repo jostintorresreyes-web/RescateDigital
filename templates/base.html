@@ -18,13 +18,32 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     {% block extra_css %}{% endblock %}
+    <style>
+        body {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        body.loaded {
+            opacity: 1;
+        }
+        .notification-badge {
+            position: absolute;
+            top: -2px;
+            right: -2px;
+            padding: 2px 5px;
+            border-radius: 50%;
+            background: #e74c3c;
+            color: white;
+            font-size: 0.6rem;
+        }
+    </style>
 </head>
-<body>
+<body onload="document.body.classList.add('loaded')">
     <nav class="navbar navbar-expand-lg sticky-top px-3">
         <div class="container-fluid mx-md-4">
             <a class="navbar-brand d-flex align-items-center" href="{% url 'inicio' %}">
                 <i class="fas fa-music me-2 text-success"></i> 
-                RESCATE DIGITAL
+                {% trans "RESCATE DIGITAL" %}
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -58,20 +77,68 @@
                 
                 <!-- Authentication status -->
                 {% if user.is_authenticated %}
-                    <form method="post" action="{% url 'logout' %}" style="display:inline;">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-link text-dark mt-1" title="{% trans 'Cerrar Sesión' %}">
-                            <i class="fas fa-sign-out-alt"></i>
+                    <!-- Notifications Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-light rounded-circle shadow-sm border p-2 text-warning position-relative" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge">2</span>
                         </button>
-                    </form>
-                    <a href="{% url 'ranking' %}" class="btn btn-light rounded-circle shadow-sm border p-2 text-warning">
-                        <i class="fas fa-bell"></i>
-                    </a>
-                    <a href="#" class="btn btn-light rounded-circle shadow-sm border p-2" title="{{ user.username }}">
-                        <i class="fas fa-user-circle"></i>
-                    </a>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="width: 280px; border-radius: 12px;">
+                            <li class="px-3 py-2 border-bottom">
+                                <h6 class="mb-0 fw-bold">{% trans "Notificaciones" %}</h6>
+                            </li>
+                            <li>
+                                <a class="dropdown-item px-3 py-2 d-flex align-items-start gap-2" href="#">
+                                    <div class="bg-success bg-opacity-10 p-2 rounded-circle">
+                                        <i class="fas fa-sync text-success small"></i>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0 small fw-bold">{% trans "Plataforma Actualizada" %}</p>
+                                        <p class="mb-0 x-small text-muted">{% trans "Hemos agregado nuevas biografías de artistas." %}</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item px-3 py-2 d-flex align-items-start gap-2" href="{% url 'juegos_lista' %}">
+                                    <div class="bg-primary bg-opacity-10 p-2 rounded-circle">
+                                        <i class="fas fa-gamepad text-primary small"></i>
+                                    </div>
+                                    <div>
+                                        <p class="mb-0 small fw-bold">{% trans "Nuevo Quiz Disponible" %}</p>
+                                        <p class="mb-0 x-small text-muted">{% trans "Pon a prueba tu oído musical." %}</p>
+                                    </div>
+                                </a>
+                            </li>
+                            <li class="border-top mt-1">
+                                <a class="dropdown-item text-center small text-success fw-bold" href="#">{% trans "Ver todas" %}</a>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Profile Dropdown -->
+                    <div class="dropdown">
+                        <button class="btn btn-light rounded-circle shadow-sm border p-2" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end shadow border-0" style="border-radius: 12px;">
+                            <li class="px-3 py-2 text-center border-bottom mb-2">
+                                <div class="fw-bold text-dark">{{ user.username }}</div>
+                                <div class="small text-muted">{{ user.email }}</div>
+                            </li>
+                            <li><a class="dropdown-item" href="{% url 'ranking' %}"><i class="fas fa-medal me-2 text-warning"></i>{% trans "Mi Ranking" %}</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2 text-muted"></i>{% trans "Configuración" %}</a></li>
+                            <li class="border-top mt-2">
+                                <form method="post" action="{% url 'logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        <i class="fas fa-sign-out-alt me-2"></i>{% trans "Cerrar Sesión" %}
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bold">{% trans "Login" %}</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bold">{% trans "Ingresar" %}</a>
                 {% endif %}
             </div>
         </div>
@@ -85,7 +152,7 @@
         <div class="container">
             <div class="row mb-5">
                 <div class="col-md-5 mb-4">
-                    <h5 class="text-white fw-bold mb-3"><i class="fas fa-music text-warning"></i> RESCATE DIGITAL</h5>
+                    <h5 class="text-white fw-bold mb-3"><i class="fas fa-music text-warning"></i> {% trans "RESCATE DIGITAL" %}</h5>
                     <p class="pe-md-5">{% trans "Un proyecto destinado a la recuperación, digitalización y puesta en valor del patrimonio musical de la ciudad de Loja, Ecuador." %}</p>
                     <div class="d-flex gap-3 mt-4">
                         <a href="#" class="text-muted"><i class="fas fa-share-alt"></i></a>
@@ -117,6 +184,26 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.body.classList.add('loaded');
+            
+            // Add fade-out transition on link clicks
+            const links = document.querySelectorAll('a:not([target="_blank"]):not([href^="#"])');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    if (link.hostname === window.location.hostname) {
+                        e.preventDefault();
+                        const target = this.href;
+                        document.body.classList.remove('loaded');
+                        setTimeout(() => {
+                            window.location.href = target;
+                        }, 500);
+                    }
+                });
+            });
+        });
+    </script>
     {% block extra_js %}{% endblock %}
 </body>
 </html>

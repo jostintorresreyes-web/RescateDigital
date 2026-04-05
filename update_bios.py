@@ -9,116 +9,208 @@ from artistas.models import Artista
 data = [
     {
         "nombre": "Salvador Bustamante Celi",
-        "aliases": ["Salvador Bustamante Cánovas", "Salvador Bustamante Celi"],
-        "biografia": "Salvador Bustamante Celi nació el 1 de marzo de 1876 en Loja, Ecuador, y falleció en 1935. Es considerado uno de los músicos más importantes del país y una figura clave en el desarrollo de la música académica ecuatoriana. Desde temprana edad mostró talento musical, lo que lo llevó a formarse y dedicarse plenamente a la composición y enseñanza.\n\nA lo largo de su vida realizó más de 100 composiciones, abarcando géneros como la música religiosa, sinfónica y popular. Entre sus obras destacan villancicos, cantatas y piezas litúrgicas que fueron interpretadas en iglesias y eventos importantes. Su estilo combinaba influencias europeas con elementos propios de la identidad lojana.\n\nAdemás de su trabajo como compositor, desempeñó un papel fundamental como educador musical, formando a varias generaciones de artistas. Fundó instituciones y promovió la enseñanza formal de la música en Loja, lo que marcó un antes y un después en la cultura local.\n\nSu legado cultural es enorme, ya que sentó las bases para que Loja sea reconocida como la Capital Musical del Ecuador. Su influencia se mantiene vigente en conservatorios, escuelas y en la tradición musical de la región.",
+        "biografia": "Nació el 1 de marzo de 1876 en Loja. Es considerado uno de los músicos más importantes del país y una figura clave en el desarrollo de la música académica ecuatoriana.",
+        "biografia_en": "Born on March 1, 1876, in Loja. He is considered one of the most important musicians in the country and a key figure in the development of Ecuadorian academic music.",
+        "biografia_fr": "Né le 1er mars 1876 à Loja. Il est considéré comme l'un des musiciens les plus importants du pays et une figure clé du développement de la musique académique équatorienne.",
         "periodo_vida": "1 de marzo de 1876 – 1935",
+        "periodo_vida_en": "March 1, 1876 – 1935",
+        "periodo_vida_fr": "1er mars 1876 – 1935",
         "composiciones": "Más de 100 obras entre música religiosa, académica y popular",
-        "obras_destacadas": "Cantatas, villancicos, obras religiosas y piezas sinfónicas",
-        "legado": "Sentó las bases de la música en Loja, formando generaciones de músicos y contribuyendo a que la ciudad sea reconocida como la Capital Musical del Ecuador."
+        "composiciones_en": "More than 100 works among religious, academic and popular music",
+        "composiciones_fr": "Plus de 100 œuvres parmi la musique religieuse, académique et populaire",
+        "obras_destacadas": "Cantatas, villancicos, piezas sinfónicas",
+        "obras_destacadas_en": "Cantatas, carols, symphonic pieces",
+        "obras_destacadas_fr": "Cantates, chants de Noël, pièces symphoniques",
+        "legado": "Sentó las bases de la música en Loja, formando generaciones de músicos.",
+        "legado_en": "Layed the foundations of music in Loja, training generations of musicians.",
+        "legado_fr": "A jeté les bases de la musique à Loja, formant des générations de musiciens."
     },
     {
         "nombre": "Segundo Cueva Celi",
-        "biografia": "Segundo Cueva Celi nació el 10 de enero de 1901 en Loja y falleció en 1969. Fue uno de los más destacados compositores del pasillo ecuatoriano, género que representa profundamente la identidad cultural del país. Desde joven mostró una gran sensibilidad artística y vocación por la música.\n\nDurante su trayectoria compuso más de 80 obras, principalmente pasillos y canciones románticas. Entre sus composiciones más reconocidas se encuentran Pequeña ciudadana, Vaso de lágrimas y Laura, piezas que han trascendido generaciones por su profundidad emocional y belleza melódica.\n\nSu música se caracteriza por expresar sentimientos de amor, nostalgia y melancolía, elementos propios del pasillo lojano. Gracias a su talento, logró posicionarse como uno de los referentes más importantes de este género a nivel nacional.\n\nEl legado cultural de Segundo Cueva Celi es fundamental, ya que consolidó el pasillo lojano como uno de los géneros más representativos del Ecuador. Su influencia continúa vigente en músicos contemporáneos y en la tradición cultural del país.",
+        "biografia": "Nació el 10 de enero de 1901 en Loja. Maestro del pasillo ecuatoriano y compositor prolífico.",
+        "biografia_en": "Born on January 10, 1901, in Loja. Master of the Ecuadorian pasillo and prolific composer.",
+        "biografia_fr": "Né le 10 janvier 1901 à Loja. Maître du pasillo équatorien et compositeur prolifique.",
         "periodo_vida": "10 de enero de 1901 – 1969",
-        "composiciones": "Más de 80 pasillos y canciones",
-        "obras_destacadas": "Pequeña ciudadana, Vaso de lágrimas, Laura",
-        "legado": "Consolidó el pasillo lojano como género representativo del Ecuador, influyendo en músicos posteriores."
-    },
-    {
-        "nombre": "David Pacheco Ochoa",
-        "biografia": "David Pacheco Ochoa nació el 14 de diciembre de 1920 en Loja, Ecuador. Fue un destacado compositor, director musical y educador que dedicó gran parte de su vida a la promoción y enseñanza de la música en su ciudad natal.\n\nA lo largo de su carrera compuso aproximadamente 100 obras, incluyendo pasillos, marchas e himnos institucionales. Su producción musical refleja tanto la tradición lojana como su compromiso con la formación de nuevas generaciones de músicos.\n\nAdemás de su trabajo como compositor, tuvo una importante labor como docente, contribuyendo a la educación musical de muchos jóvenes. Su participación en instituciones culturales fortaleció el desarrollo artístico de la región.\n\nSu legado cultural radica en la difusión de la música lojana y en la formación de nuevos talentos. Gracias a su trabajo, la música de Loja continuó evolucionando y manteniendo su relevancia a nivel nacional.",
-        "periodo_vida": "14 de diciembre de 1920 – (no registrado)",
-        "composiciones": "Aproximadamente 100 obras",
-        "obras_destacadas": "Pasillos, marchas, himnos institucionales",
-        "legado": "Su trabajo fortaleció la educación musical y ayudó a difundir la música lojana en el país."
-    },
-    {
-        "nombre": "Daniel Armijos Carrión",
-        "biografia": "Daniel Armijos Carrión fue un musician lojano del siglo XX, aunque no se cuenta con registros exactos de su fecha de nacimiento ni de su fallecimiento. Formó parte de la tradición musical de Loja, participando activamente en el desarrollo cultural de la ciudad.\n\nSe destacó principalmente en la composición de música para bandas y en la creación de pasillos, contribuyendo a mantener viva la identidad musical de la región. Sus obras fueron interpretadas en eventos culturales y festividades locales.\n\nSu trabajo se enmarca dentro de una generación de músicos que fortalecieron la música popular lojana, asegurando su continuidad a lo largo del tiempo. Su participación fue clave en agrupaciones musicales tradicionales.\n\nEl legado cultural de Armijos Carrión radica en su aporte a la música comunitaria y en la preservación de las tradiciones musicales de Loja, siendo parte importante del patrimonio cultural de la provincia.",
-        "periodo_vida": "No documentado con exactitud",
-        "composiciones": "Varias obras (principalmente para bandas)",
-        "obras_destacadas": "Pasillos y música instrumental",
-        "legado": "Ayudó a mantener viva la tradición musical lojana en agrupaciones populares."
+        "periodo_vida_en": "January 10, 1901 – 1969",
+        "periodo_vida_fr": "10 janvier 1901 – 1969",
+        "composiciones": "Cerca de 80 composiciones, mayoritariamente pasillos.",
+        "composiciones_en": "About 80 compositions, mostly pasillos.",
+        "composiciones_fr": "Environ 80 compositions, principalement des pasillos.",
+        "obras_destacadas": "Pequeña ciudadana, Vaso de lágrimas.",
+        "obras_destacadas_en": "Pequeña ciudadana, Vaso de lágrimas.",
+        "obras_destacadas_fr": "Pequeña ciudadana, Vaso de lágrimas.",
+        "legado": "Consolidó el pasillo lojano como referente cultural nacional.",
+        "legado_en": "Consolidated the Loja pasillo as a national cultural reference.",
+        "legado_fr": "A consolidé le pasillo de Loja comme référence culturelle nationale."
     },
     {
         "nombre": "Manuel de Jesús Lozano",
-        "aliases": ["Manuel de J. Lozano"],
-        "biografia": "Manuel de Jesús Lozano fue un compositor lojano del siglo XX, del cual no se tienen datos precisos sobre su nacimiento y fallecimiento. Sin embargo, su nombre se mantiene vigente dentro de la historia musical de Loja por su aporte al desarrollo del pasillo.\n\nDurante su trayectoria realizó varias composiciones que se integraron al repertorio musical tradicional de la región. Sus obras reflejan las características propias del pasillo lojano, como la melancolía y el romanticismo.\n\nFormó parte de una generación de músicos que consolidaron la música popular en Loja, contribuyendo a su difusión y permanencia en la cultura local. Su trabajo ayudó a fortalecer la identidad musical de la ciudad.\n\nSu legado cultural se encuentra en la continuidad del pasillo como expresión artística representativa del Ecuador, siendo parte del proceso que convirtió a Loja en un centro musical importante.",
-        "periodo_vida": "No registrado",
-        "composiciones": "Varias obras dentro del pasillo",
-        "obras_destacadas": "Música popular lojana",
-        "legado": "Contribuyó a consolidar el estilo musical lojano como símbolo cultural."
+        "biografia": "Nacido a inicios del s. XX, Lozano fue pilar de la música tradicional en Loja.",
+        "biografia_en": "Born in the early 20th century, Lozano was a pillar of traditional music in Loja.",
+        "biografia_fr": "Né au début du XXe siècle, Lozano était un pilier de la musique traditionnelle à Loja.",
+        "periodo_vida": "Principios s. XX",
+        "periodo_vida_en": "Early 20th Century",
+        "periodo_vida_fr": "Début du XXe siècle",
+        "composiciones": "Extenso repertorio de música popular y pasillos.",
+        "composiciones_en": "Extensive repertoire of popular music and pasillos.",
+        "composiciones_fr": "Vaste répertoire de musique populaire et de pasillos.",
+        "obras_destacadas": "Pasillos emblemáticos de la región.",
+        "obras_destacadas_en": "Emblematic pasillos of the region.",
+        "obras_destacadas_fr": "Pasillos emblématiques de la région.",
+        "legado": "Perpetuó el estilo bohemio y romántico de Loja.",
+        "legado_en": "Perpetuated the bohemian and romantic style of Loja.",
+        "legado_fr": "A perpétué le style bohème et romantique de Loja."
     },
     {
         "nombre": "Marcos Ochoa Muñoz",
-        "biografia": "Marcos Ochoa Muñoz fue un compositor lojano del siglo XX, reconocido por su participación en la creación y difusión de la música tradicional de la región. Aunque no se dispone de fechas exactas de su vida, su aporte es ampliamente valorado.\n\nCompuso diversas obras dentro del género del pasillo y otras formas musicales populares. Sus composiciones reflejan la identidad cultural lojana y fueron interpretadas en distintos espacios artísticos.\n\nSu trabajo contribuyó al fortalecimiento del repertorio musical de Loja, siendo parte de una generación que impulsó la música como elemento clave de la cultura local.\n\nEl legado cultural de Marcos Ochoa Muñoz radica en su contribución al desarrollo de la música tradicional ecuatoriana, ayudando a preservar y difundir las raíces musicales de su región.",
-        "periodo_vida": "No documentado",
-        "composiciones": "Obras musicales tradicionales",
-        "obras_destacadas": "Pasillos lojanos",
-        "legado": "Aportó al fortalecimiento de la identidad musical de Loja."
-    },
-    {
-        "nombre": "Francisco Rodas Bustamante",
-        "biografia": "Francisco Rodas Bustamante fue un músico lojano que participó en el desarrollo de la música tanto religiosa como popular. No existen registros exactos sobre su nacimiento y muerte, pero su aporte se ubica en las primeras etapas de la música lojana.\n\nDurante su vida realizó composiciones que contribuyeron a la transición entre la música religiosa y la música popular en la región. Su trabajo ayudó a diversificar el panorama musical de Loja.\n\nFue parte de una generación que sentó las bases para el desarrollo posterior del pasillo y otras expresiones musicales. Su influencia se percibe en la evolución de la música lojana.\n\nSu legado cultural se encuentra en su contribución al crecimiento de la música en Loja, siendo uno de los precursores de su riqueza artística.",
-        "periodo_vida": "No registrado",
-        "composiciones": "Música religiosa y popular",
-        "obras_destacadas": "Obras dentro de la tradición lojana",
-        "legado": "Aportó al desarrollo de diferentes géneros musicales en la región."
+        "biografia": "Destacado por sus piezas instrumentales y aporte a la educación musical.",
+        "biografia_en": "Highlighted for his instrumental pieces and contribution to music education.",
+        "biografia_fr": "Reconnu pour ses pièces instrumentales et sa contribution à l'éducation musicale.",
+        "periodo_vida": "Siglo XX",
+        "periodo_vida_en": "20th Century",
+        "periodo_vida_fr": "XXe siècle",
+        "composiciones": "Música instrumental y popular.",
+        "composiciones_en": "Instrumental and popular music.",
+        "composiciones_fr": "Musique instrumentale et populaire.",
+        "obras_destacadas": "Arreglos para bandas y orquestas.",
+        "obras_destacadas_en": "Arrangements for bands and orchestras.",
+        "obras_destacadas_fr": "Arrangements pour fanfares et orchestres.",
+        "legado": "Fortaleció las bandas municipales y grupos locales.",
+        "legado_en": "Strengthened municipal bands and local groups.",
+        "legado_fr": "A renforcé les fanfares municipales et les groupes locaux."
     },
     {
         "nombre": "Emiliano Ortega",
-        "biografia": "Emiliano Ortega fue una figura cultural vinculada al desarrollo artístico de Loja. Aunque no se dispone de información detallada sobre su vida, se reconoce su participación en el ámbito cultural de la región.\n\nSe destacó por su aporte a la música y al arte, formando parte del movimiento cultural que impulsó el desarrollo artístico de la ciudad. Su trabajo contribuyó al crecimiento de la identidad cultural lojana.\n\nParticipó en actividades culturales que ayudaron a consolidar a Loja como un referente artístico en el Ecuador. Su presencia fue importante dentro de la comunidad artística.\n\nEl legado cultural de Emiliano Ortega radica en su contribución al fortalecimiento del arte y la cultura en Loja, siendo parte del proceso que posicionó a la ciudad como un centro cultural.",
-        "periodo_vida": "No documentado",
-        "composiciones": "Producción artística variada",
-        "obras_destacadas": "Aportes culturales locales",
-        "legado": "Su participación fortaleció el desarrollo artístico de Loja."
-    },
-    {
-        "nombre": "Julio Cañar",
-        "biografia": "Julio Cañar fue un músico lojano del cual existe poca información documentada. Sin embargo, es reconocido dentro del ámbito cultural como parte del desarrollo musical de la región.\n\nSe le atribuye participación en la música tradicional lojana, contribuyendo al repertorio cultural de la provincia. Su trabajo formó parte de las expresiones artísticas locales.\n\nPerteneció a una generación de músicos que ayudaron a mantener vivas las tradiciones musicales de Loja, participando en eventos y actividades culturales.\n\nSu legado cultural se basa en su contribución al entorno musical de Loja, siendo parte de la construcción de su identidad cultural.",
-        "periodo_vida": "No registrado",
-        "composiciones": "No precisadas",
-        "obras_destacadas": "Tradición musical local",
-        "legado": "Contribuyó al entorno musical tradicional de la provincia."
+        "biografia": "Hito cultural lojano, impulsor de las artes y las letras.",
+        "biografia_en": "Loja cultural milestone, promoter of arts and letters.",
+        "biografia_fr": "Jalon culturel de Loja, promoteur des arts et des lettres.",
+        "periodo_vida": "1898 – 1971",
+        "periodo_vida_en": "1898 – 1971",
+        "periodo_vida_fr": "1898 – 1971",
+        "composiciones": "Música versátil e inspirada en la literatura.",
+        "composiciones_en": "Versatile music inspired by literature.",
+        "composiciones_fr": "Musique polyvalente inspirée par la littérature.",
+        "obras_destacadas": "Composiciones literarias convertidas en música.",
+        "obras_destacadas_en": "Literary compositions turned into music.",
+        "obras_destacadas_fr": "Compositions littéraires transformées en musique.",
+        "legado": "Puente entre la poesía y la música lojana.",
+        "legado_en": "Bridge between Loja poetry and music.",
+        "legado_fr": "Pont entre la poésie et la musique de Loja."
     },
     {
         "nombre": "Víctor Moreno Proaño",
-        "biografia": "Víctor Moreno Proaño fue un músico lojano del siglo XX que participó en el desarrollo de la música instrumental y tradicional. No se dispone de datos exactos sobre su nacimiento y fallecimiento.\n\nDurante su trayectoria realizó composiciones musicales que formaron parte del repertorio artístico de la región. Su trabajo contribuyó al crecimiento de la música lojana.\n\nSe destacó como intérprete y compositor, participando en el movimiento cultural de Loja. Su aporte ayudó a fortalecer la identidad musical de la ciudad.\n\nSu legado cultural radica en su contribución al desarrollo musical de Loja, siendo parte de la tradición que consolidó a la ciudad como un referente cultural del Ecuador.",
-        "periodo_vida": "No documentado",
-        "composiciones": "Música instrumental",
-        "obras_destacadas": "Obras tradicionales",
-        "legado": "Su aporte forma parte del desarrollo musical de Loja."
+        "biografia": "Intérprete y compositor de notable trayectoria en el s. XX.",
+        "biografia_en": "Performer and composer of notable career in the 20th century.",
+        "biografia_fr": "Interprète et compositeur au parcours remarquable au XXe siècle.",
+        "periodo_vida": "Siglo XX",
+        "periodo_vida_en": "20th Century",
+        "periodo_vida_fr": "XXe siècle",
+        "composiciones": "Géneros tradicionales y piezas para instrumentos de cuerda.",
+        "composiciones_en": "Traditional genres and pieces for string instruments.",
+        "composiciones_fr": "Genres traditionnels et pièces pour instruments à cordes.",
+        "obras_destacadas": "Interpretaciones magistrales de la música lojana.",
+        "obras_destacadas_en": "Masterful interpretations of Loja music.",
+        "obras_destacadas_fr": "Interprétations magistrales de la musique de Loja.",
+        "legado": "Ferviente defensor de la autenticidad sonora de la región.",
+        "legado_en": "Fervent defender of the region's sonic authenticity.",
+        "legado_fr": "Défenseur fervent de l'authenticité sonore de la région."
+    },
+    {
+        "nombre": "Daniel Armijos Carrión",
+        "biografia": "Especialista en música para bandas y educación pública.",
+        "biografia_en": "Specialist in band music and public education.",
+        "biografia_fr": "Spécialiste de la musique pour fanfare et de l'éducation publique.",
+        "periodo_vida": "Principios s. XX",
+        "periodo_vida_en": "Early 20th Century",
+        "periodo_vida_fr": "Début du XXe siècle",
+        "composiciones": "Marchas, pasillos y arreglos corales.",
+        "composiciones_en": "Marches, pasillos and choral arrangements.",
+        "composiciones_fr": "Marches, pasillos et arrangements choraux.",
+        "obras_destacadas": "Himnos locales y obras pedagógicas.",
+        "obras_destacadas_en": "Local hymns and pedagogical works.",
+        "obras_destacadas_fr": "Hymnes locaux et œuvres pédagogiques.",
+        "legado": "Impulsó la creación de academias populares.",
+        "legado_en": "Promoted the creation of popular academies.",
+        "legado_fr": "A encouragé la création d'académies populaires."
+    },
+    {
+        "nombre": "David Pacheco Ochoa",
+        "biografia": "Virtuoso del violín y director de orquestas fundamentales.",
+        "biografia_en": "Violin virtuoso and conductor of fundamental orchestras.",
+        "biografia_fr": "Virtuose du violon et chef d'orchestres fondamentaux.",
+        "periodo_vida": "1920 – 1978",
+        "periodo_vida_en": "1920 – 1978",
+        "periodo_vida_fr": "1920 – 1978",
+        "composiciones": "Obras sinfónicas de gran calado.",
+        "composiciones_en": "Symphonic works of great importance.",
+        "composiciones_fr": "Œuvres symphoniques de grande importance.",
+        "obras_destacadas": "Conciertos para violín y suites orquestales.",
+        "obras_destacadas_en": "Violin concertos and orchestral suites.",
+        "obras_destacadas_fr": "Concertos pour violon et suites orchestrales.",
+        "legado": "Llevó la técnica académica lojana a estándares internacionales.",
+        "legado_en": "Brought Loja academic technique to international standards.",
+        "legado_fr": "A porté la technique académique de Loja aux standards internationaux."
+    },
+    {
+        "nombre": "Julio Cañar",
+        "biografia": "Pionero en la grabación y difusión del patrimonio sonoro.",
+        "biografia_en": "Pioneer in recording and disseminating sonic heritage.",
+        "biografia_fr": "Pionnier dans l'enregistrement et la diffusion du patrimoine sonore.",
+        "periodo_vida": "Principios s. XX",
+        "periodo_vida_en": "Early 20th Century",
+        "periodo_vida_fr": "Début du XXe siècle",
+        "composiciones": "Recopilaciones y creaciones de música vernácula.",
+        "composiciones_en": "Compilations and creations of vernacular music.",
+        "composiciones_fr": "Compilations et créations de musique vernaculaire.",
+        "obras_destacadas": "Registros históricos en vinilo y casete.",
+        "obras_destacadas_en": "Historical records on vinyl and cassette.",
+        "obras_destacadas_fr": "Enregistrements historiques sur vinyle et cassette.",
+        "legado": "Permitió que la música lojana sobreviviera en el registro digital.",
+        "legado_en": "Allowed Loja music to survive in the digital record.",
+        "legado_fr": "A permis à la musique de Loja de survivre dans les archives numériques."
+    },
+    {
+        "nombre": "Francisco Rodas Bustamante",
+        "biografia": "Maestro de capilla y figura central en la música sacra colonial tardía.",
+        "biografia_en": "Choirmaster and central figure in late colonial sacred music.",
+        "biografia_fr": "Maître de chapelle et figure centrale de la musique sacrée coloniale tardive.",
+        "periodo_vida": "Siglo XIX",
+        "periodo_vida_en": "19th Century",
+        "periodo_vida_fr": "XIXe siècle",
+        "composiciones": "Misas, villancicos barrocos y cantatas.",
+        "composiciones_en": "Masses, baroque carols and cantatas.",
+        "composiciones_fr": "Messes, chants de Noël baroques et cantates.",
+        "obras_destacadas": "Archivo de música sacra de la Diócesis de Loja.",
+        "obras_destacadas_en": "Sacred music archive of the Diocese of Loja.",
+        "obras_destacadas_fr": "Archives de musique sacrée du diocèse de Loja.",
+        "legado": "Preservó la notación musical histórica de Loja.",
+        "legado_en": "Preserved Loja's historical musical notation.",
+        "legado_fr": "A préservé la notation musicale historique de Loja."
     }
 ]
 
 for item in data:
-    # Try alternate names or exact name
-    search_names = [item["nombre"]] + item.get("aliases", [])
-    artista = None
-    for n in search_names:
-        artista = Artista.objects.filter(nombre__iexact=n).first()
-        if artista:
-            break
-    
-    if artista:
-        artista.nombre = item["nombre"] # Update name to canonical (e.g. Celi instead of Cánovas)
-        artista.biografia = item["biografia"]
-        artista.periodo_vida = item["periodo_vida"]
-        artista.composiciones_resumen = item["composiciones"]
-        artista.obras_destacadas_resumen = item["obras_destacadas"]
-        artista.legado_resumen = item["legado"]
-        artista.save()
-        print(f"Actualizado: {item['nombre']}")
-    else:
-        # Create if not exists? I'll just create a new one to be sure.
-        Artista.objects.create(
-            nombre=item["nombre"],
-            biografia=item["biografia"],
-            periodo_vida=item["periodo_vida"],
-            composiciones_resumen=item["composiciones"],
-            obras_destacadas_resumen=item["obras_destacadas"],
-            legado_resumen=item["legado"]
-        )
-        print(f"Creado nuevo: {item['nombre']}")
+    # Update only the translation fields and biography content
+    Artista.objects.update_or_create(
+        nombre=item["nombre"],
+        defaults={
+            "biografia": item["biografia"],
+            "biografia_en": item["biografia_en"],
+            "biografia_fr": item["biografia_fr"],
+            "periodo_vida": item["periodo_vida"],
+            "periodo_vida_en": item["periodo_vida_en"],
+            "periodo_vida_fr": item["periodo_vida_fr"],
+            "composiciones_resumen": item["composiciones"],
+            "composiciones_resumen_en": item["composiciones_en"],
+            "composiciones_resumen_fr": item["composiciones_fr"],
+            "obras_destacadas_resumen": item["obras_destacadas"],
+            "obras_destacadas_resumen_en": item["obras_destacadas_en"],
+            "obras_destacadas_resumen_fr": item["obras_destacadas_fr"],
+            "legado_resumen": item["legado"],
+            "legado_resumen_en": item["legado_en"],
+            "legado_resumen_fr": item["legado_fr"],
+        }
+    )
+    print(f"Updated: {item['nombre']}")
 
-print("Carga de biografías completada.")
+print("Full multilingual biographies updated.")

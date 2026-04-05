@@ -12,103 +12,8 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-msgid ""
-"El pasillo ecuatoriano tiene fuertes raíces en los valses europeos, "
-"adaptados brillantemente al sentimiento andino característico de Loja."
-msgstr ""
-"The Ecuadorian pasillo has strong roots in European waltzes, brilliantly "
-"adapted to the Andean sentiment characteristic of Loja."
-
-msgid ""
-"Viaja a través de los siglos y descubre cómo Loja se convirtió en el "
-"epicentro sonoro del Ecuador. Desde las influencias coloniales hasta las "
-"composiciones vanguardistas del siglo XXI."
-msgstr ""
-"Travel through the centuries and discover how Loja became the sonic "
-"epicenter of Ecuador. From colonial influences to avant-garde compositions "
-"of the 21st century."
-
-msgid "El ranking está completamente vacío."
-msgstr "[en] El ranking está completamente vacío."
-
-msgid "Musical"
-msgstr "Musical"
-
-msgid "Explorar la Cronología"
-msgstr "Explore the Chronology"
-
-msgid "Correo Electrónico"
-msgstr "[en] Correo Electrónico"
-
 msgid "Ingresar"
-msgstr "[en] Ingresar"
-
-msgid "Aún no hay obras registradas para este artista."
-msgstr "[en] Aún no hay obras registradas para este artista."
-
-msgid "Obras"
-msgstr "[en] Obras"
-
-msgid "Bienvenido"
-msgstr "[en] Bienvenido"
-
-msgid "Jugar ahora"
-msgstr "Play now"
-
-msgid "Navegación"
-msgstr "Navigation"
-
-msgid "¿No tienes una cuenta?"
-msgstr "[en] ¿No tienes una cuenta?"
-
-msgid "Hogares de aprendizaje musical."
-msgstr "[en] Hogares de aprendizaje musical."
-
-msgid ""
-"Pon a prueba tus conocimientos sobre la música lojana y suma puntos para "
-"liderar el ranking."
-msgstr ""
-"[en] Pon a prueba tus conocimientos sobre la música lojana y suma puntos "
-"para liderar el ranking."
-
-msgid "Volver a la selección de juegos"
-msgstr "[en] Volver a la selección de juegos"
-
-msgid "Contacto"
-msgstr "Contact"
-
-msgid "Directorio de Artistas - Rescate Digital"
-msgstr "[en] Directorio de Artistas - Rescate Digital"
-
-msgid "Institucional"
-msgstr "Institutional"
-
-msgid "Únete"
-msgstr "Join"
-
-msgid "Comenzar Reto"
-msgstr "[en] Comenzar Reto"
-
-msgid "Crea una cuenta para jugar y aprender sobre la música lojana."
-msgstr "[en] Crea una cuenta para jugar y aprender sobre la música lojana."
-
-msgid "Contraseña"
-msgstr "[en] Contraseña"
-
-msgid "Escucha las piezas inmortales."
-msgstr "[en] Escucha las piezas inmortales."
-
-msgid "Preguntas"
-msgstr "[en] Preguntas"
-
-msgid "Patrimonio Cultural de Loja"
-msgstr "Cultural Heritage of Loja"
-
-msgid "No hay quizzes disponibles aún."
-msgstr "[en] No hay quizzes disponibles aún."
-
-msgid "Registro - Rescate Digital"
-msgstr "[en] Registro - Rescate Digital"
+msgstr "Login"
 
 msgid ""
 "Un proyecto destinado a la recuperación, digitalización y puesta en valor "
@@ -117,378 +22,571 @@ msgstr ""
 "A project aimed at the recovery, digitization, and enhancement of the "
 "musical heritage of the city of Loja, Ecuador."
 
-msgid "No se encontraron artistas registrados."
-msgstr "[en] No se encontraron artistas registrados."
+msgid "Línea de tiempo de la música lojana"
+msgstr "Loja Music Timeline"
 
-msgid "Investigador"
-msgstr "[en] Investigador"
+msgid "Legado Cultural"
+msgstr "Cultural Heritage"
 
-msgid "Ingresa a tu cuenta para continuar explorando"
-msgstr "[en] Ingresa a tu cuenta para continuar explorando"
-
-msgid "Historia"
-msgstr "History"
-
-msgid "Cronología"
-msgstr "[en] Cronología"
-
-msgid "Investigadores"
-msgstr "Researchers"
+msgid "Regístrate gratis"
+msgstr "Sign up for free"
 
 msgid ""
-"¿Cuánto sabes sobre los géneros, compositores e instrumentos típicos de "
-"Loja?"
+"Esperamos que este sitio sea una fuente de aprendizaje, inspiración y orgullo para\n"
+"                    todos quienes lo visiten."
 msgstr ""
-"How much do you know about the genres, composers, and typical instruments of"
-" Loja?"
+"Esperamos que este sitio sea una fuente de aprendizaje, inspiración y orgullo para\n"
+"                    todos quienes lo visiten."
 
-msgid "Historia Musical de Loja - Rescate Digital"
-msgstr "[en] Historia Musical de Loja - Rescate Digital"
+msgid "Historia Musical"
+msgstr "Musical History"
 
-msgid "Línea del Tiempo Musical"
-msgstr "Musical Timeline"
+msgid "Se intensifican los esfuerzos por conservar la música tradicional."
+msgstr "Efforts to preserve traditional music intensify."
 
-msgid "Alianzas"
-msgstr "Alliances"
+msgid "Uso de guitarra, requinto y voz."
+msgstr "Use of guitar, requinto, and voice."
+
+msgid "Nombre completo o Apodo"
+msgstr "Full Name or Nickname"
+
+msgid "Inicia sesión aquí"
+msgstr "Login here"
 
 msgid ""
-"Rescate Digital de la Historia Musical Lojana. Todos los derechos "
-"reservados."
-msgstr "Digital Rescue of Loja's Musical History. All rights reserved."
-
-msgid ""
-"En un mundo cada vez más digital, preservar la historia musical a través de "
-"herramientas tecnológicas no solo es una oportunidad, sino una "
-"responsabilidad para garantizar que este legado perdure en el tiempo."
+"Loja comienza a consolidarse como un centro cultural importante en el sur "
+"del Ecuador."
 msgstr ""
-"In an increasingly digital world, preserving musical history through "
-"technological tools is not only an opportunity but a responsibility to "
-"ensure that this legacy endures over time."
-
-msgid "Conocida como la Capital Musical y Cultural del Ecuador."
-msgstr "[en] Conocida como la Capital Musical y Cultural del Ecuador."
+"Loja begins to consolidate as an important cultural center in southern "
+"Ecuador."
 
 msgid "Somos Jostin Torres y Jair Chávez"
-msgstr "We are Jostin Torres and Jair Chávez"
+msgstr "Somos Jostin Torres y Jair Chávez"
 
-msgid ""
-"A finales del siglo XIX y a lo largo del siglo XX, surgieron grandes figuras"
-" que consolidaron a Loja como el semillero de compositores e intérpretes por"
-" excelencia. Ritmos tradicionales como el pasillo, el sanjuanito, y el "
-"yaraví lojano, fueron elevados por maestros que alcanzaron reconocimiento "
-"nacional e internacional, dejando un legado imborrable en la identidad "
-"ecuatoriana."
-msgstr ""
-"[en] A finales del siglo XIX y a lo largo del siglo XX, surgieron grandes "
-"figuras que consolidaron a Loja como el semillero de compositores e "
-"intérpretes por excelencia. Ritmos tradicionales como el pasillo, el "
-"sanjuanito, y el yaraví lojano, fueron elevados por maestros que alcanzaron "
-"reconocimiento nacional e internacional, dejando un legado imborrable en la "
-"identidad ecuatoriana."
+msgid "Orígenes coloniales"
+msgstr "Colonial Origins"
+
+msgid "Preguntas"
+msgstr "Questions"
+
+msgid "Confirmar Contraseña"
+msgstr "Confirm Password"
+
+msgid "Composiciones"
+msgstr "Compositions"
+
+msgid "Juegos"
+msgstr "Games"
+
+msgid "El pasillo convive con otros géneros como el bolero."
+msgstr "The pasillo coexists with other genres like bolero."
+
+msgid "Quiz Musical"
+msgstr "Musical Quiz"
+
+msgid "Siglo XIX"
+msgstr "19th Century"
 
 msgid ""
 "En la época de oro de la música lojana, se registraron más de 400 partituras"
 " manuscritas invaluables para nuestro patrimonio."
 msgstr ""
-"In the golden age of Loja's music, more than 400 handwritten scores "
-"invaluable to our heritage were recorded."
+"En la época de oro de la música lojana, se registraron más de 400 partituras"
+" manuscritas invaluables para nuestro patrimonio."
 
-msgid "La Época de Oro"
-msgstr "[en] La Época de Oro"
+msgid "Consolidación y reconocimiento"
+msgstr "Consolidation and Recognition"
+
+msgid "Nuevas generaciones reinterpretan el pasillo lojano."
+msgstr "New generations reinterpret the Loja pasillo."
+
+msgid "Fuerte identidad cultural regional."
+msgstr "Strong regional cultural identity."
 
 msgid ""
-"A lo largo del tiempo, gran parte de la riqueza musical lojana incluyendo "
-"compositores, intérpretes, obras y tradiciones ha permanecido dispersa, poco"
-" documentada o en riesgo de perderse debido al paso del tiempo y la falta de"
-" digitalización. Por ello, este proyecto busca recopilar y organizar esta "
-"información en un espacio accesible, moderno y dinámico."
+"La plataforma digital permitirá que nuevas generaciones conozcan y se conecten con sus\n"
+"                raíces culturales, al mismo tiempo que facilita el acceso a investigadores, estudiantes y público en\n"
+"                general interesado en la música lojana. Además, contribuirá a fortalecer la identidad cultural y\n"
+"                promover el reconocimiento de los artistas locales."
 msgstr ""
-"Over time, much of Loja's musical wealth, including composers, performers, "
-"works, and traditions, has remained dispersed, poorly documented, or at risk"
-" of being lost due to the passage of time and lack of digitization. "
-"Therefore, this project seeks to collect and organize this information in an"
-" accessible, modern, and dynamic space."
+"La plataforma digital permitirá que nuevas generaciones conozcan y se conecten con sus\n"
+"                raíces culturales, al mismo tiempo que facilita el acceso a investigadores, estudiantes y público en\n"
+"                general interesado en la música lojana. Además, contribuirá a fortalecer la identidad cultural y\n"
+"                promover el reconocimiento de los artistas locales."
 
-msgid "Ver ranking"
-msgstr "View ranking"
+msgid "Crea una cuenta para jugar y aprender sobre la música lojana."
+msgstr "Create an account to play and learn about Loja's music."
+
+msgid "Comenzar Reto"
+msgstr "Start Challenge"
+
+msgid "Crea una contraseña segura"
+msgstr "Create a secure password"
+
+msgid ""
+"En un mundo cada vez más digital, preservar la historia musical a través de herramientas\n"
+"                tecnológicas no solo es una oportunidad, sino una responsabilidad para garantizar que este legado\n"
+"                perdure en el tiempo."
+msgstr ""
+"En un mundo cada vez más digital, preservar la historia musical a través de herramientas\n"
+"                tecnológicas no solo es una oportunidad, sino una responsabilidad para garantizar que este legado\n"
+"                perdure en el tiempo."
+
+msgid ""
+"Este proyecto nace de nuestro interés por valorar nuestras raíces culturales y\n"
+"                    aportar, desde la educación y la tecnología, a la conservación del legado musical de nuestra región.\n"
+"                    A través de esta página, buscamos que más personas conozcan la riqueza artística de Loja y se\n"
+"                    conecten con su identidad cultural."
+msgstr ""
+"Este proyecto nace de nuestro interés por valorar nuestras raíces culturales y\n"
+"                    aportar, desde la educación y la tecnología, a la conservación del legado musical de nuestra región.\n"
+"                    A través de esta página, buscamos que más personas conozcan la riqueza artística de Loja y se\n"
+"                    conecten con su identidad cultural."
 
 msgid "Cerrar Sesión"
 msgstr "Logout"
 
-msgid "Rescate Digital de la"
-msgstr "Digital Rescue of the"
+msgid "Jugar ahora"
+msgstr "Play now"
+
+msgid "RESCATE DIGITAL"
+msgstr "DIGITAL RESCUE"
+
+msgid "No hay quizzes disponibles aún."
+msgstr "There are no quizzes available yet."
+
+msgid "Musical"
+msgstr "Musical"
 
 msgid "Inicio"
 msgstr "Home"
 
-msgid "Explorar Archivo"
-msgstr "Explore Archive"
-
-msgid ""
-"estudiantes de la Unidad Educativa Fiscomisional La Dolorosa. Nos complace "
-"darles la bienvenida a este espacio digital creado con el propósito de "
-"rescatar, preservar y difundir la historia musical lojana."
-msgstr ""
-"students of the La Dolorosa Fiscomisional Educational Unit. We are pleased "
-"to welcome you to this digital space created with the purpose of rescuing, "
-"preserving, and disseminating Loja's musical history."
-
-msgid "Biografía"
-msgstr "[en] Biografía"
-
-msgid "Directorio de Artistas Lojanos"
-msgstr "[en] Directorio de Artistas Lojanos"
-
-msgid "La Música Hoy"
-msgstr "[en] La Música Hoy"
-
-msgid ""
-"La creación de una página web dedicada al Rescate Digital de la Historia "
-"Musical Lojana surge de la necesidad de preservar, difundir y revalorizar el"
-" patrimonio cultural de Loja, reconocido como uno de los principales "
-"referentes musicales del Ecuador."
-msgstr ""
-"The creation of a website dedicated to the Digital Rescue of Loja's Musical "
-"History arises from the need to preserve, disseminate, and revalue the "
-"cultural heritage of Loja, recognized as one of the main musical references "
-"in Ecuador."
-
-msgid "Conocer el Proyecto"
-msgstr "Know the Project"
-
-msgid "Compositores"
-msgstr "[en] Compositores"
-
-msgid "Confirmar Contraseña"
-msgstr "[en] Confirmar Contraseña"
-
-msgid "Juegos"
-msgstr "Games"
-
-msgid "Sistema de Puntos"
-msgstr "Point System"
-
-msgid "Volver a los juegos"
-msgstr "[en] Volver a los juegos"
-
-msgid "Login"
-msgstr "Login"
-
-msgid "Desarrolladores Web:"
-msgstr "Web Developers:"
-
-msgid "Historia Musical de la Ciudad de Loja"
-msgstr "[en] Historia Musical de la Ciudad de Loja"
-
-msgid ""
-"Conoce a los músicos y compositores que han marcado la historia cultural de "
-"Loja."
-msgstr ""
-"[en] Conoce a los músicos y compositores que han marcado la historia "
-"cultural de Loja."
-
-msgid "Rescate Digital"
-msgstr "[en] Rescate Digital"
-
-msgid "Sobre el proyecto"
-msgstr "About the Project"
-
-msgid "Rango"
-msgstr "[en] Rango"
-
-msgid "Artistas"
-msgstr "Artists"
-
-msgid "Archivo Vivo"
-msgstr "Living Archive"
-
-msgid "Enviar Respuestas"
-msgstr "[en] Enviar Respuestas"
-
-msgid "Ver Ranking"
-msgstr "[en] Ver Ranking"
-
-msgid "Pronto prepararemos nuevos desafíos musicales para ti."
-msgstr "[en] Pronto prepararemos nuevos desafíos musicales para ti."
-
-msgid ""
-"La plataforma digital permitirá que nuevas generaciones conozcan y se "
-"conecten con sus raíces culturales, al mismo tiempo que facilita el acceso a"
-" investigadores, estudiantes y público en general interesado en la música "
-"lojana. Además, contribuirá a fortalecer la identidad cultural y promover el"
-" reconocimiento de los artistas locales."
-msgstr ""
-"The digital platform will allow new generations to know and connect with "
-"their cultural roots, while facilitating access to researchers, students, "
-"and the general public interested in Loja's music. In addition, it will help"
-" strengthen cultural identity and promote the recognition of local artists."
-
-msgid "Capital Musical"
-msgstr "Musical Capital"
-
-msgid ""
-"Preservando el legado sonoro y la herencia cultural de la capital musical "
-"del Ecuador a través de la tecnología digital."
-msgstr ""
-"Preserving the sonic legacy and cultural heritage of the musical capital of "
-"Ecuador through digital technology."
-
-msgid "Orígenes"
-msgstr "[en] Orígenes"
-
-msgid "Aprende Jugando"
-msgstr "Learn by Playing"
-
-msgid "Regístrate gratis"
-msgstr "[en] Regístrate gratis"
-
-msgid ""
-"Completa desafíos, desbloquea insignias y conviértete en un Experto Musical."
-msgstr "Complete challenges, unlock badges, and become a Musical Expert."
-
-msgid "Registrar Cuenta"
-msgstr "[en] Registrar Cuenta"
-
-msgid "Únete a la plataforma"
-msgstr "[en] Únete a la plataforma"
-
-msgid ""
-"Este proyecto nace de nuestro interés por valorar nuestras raíces culturales"
-" y aportar, desde la educación y la tecnología, a la conservación del legado"
-" musical de nuestra región. A través de esta página, buscamos que más "
-"personas conozcan la riqueza artística de Loja y se conecten con su "
-"identidad cultural."
-msgstr ""
-"This project was born out of our interest in valuing our cultural roots and "
-"contributing, from education and technology, to the conservation of our "
-"region's musical legacy. Through this page, we hope more people will know "
-"the artistic wealth of Loja and connect with its cultural identity."
-
-msgid "Historia musical"
-msgstr "Musical History"
-
-msgid "Obras Destacadas"
-msgstr "[en] Obras Destacadas"
-
-msgid "preguntas"
-msgstr "[en] preguntas"
-
-msgid ""
-"Loja es reconocida a nivel sudamericano por exportar grandes talentos "
-"históricos en el ámbito de la música sacra y académica."
-msgstr ""
-"Loja is recognized at the South American level for exporting great "
-"historical talents in the field of sacred and academic music."
-
-msgid "Lojana"
-msgstr "Lojana"
-
-msgid "Archivo Digital"
-msgstr "Digital Archive"
-
-msgid "Iniciar Sesión - Rescate Digital"
-msgstr "[en] Iniciar Sesión - Rescate Digital"
-
-msgid "Ranking de Usuarios - Rescate Digital"
-msgstr "[en] Ranking de Usuarios - Rescate Digital"
-
-msgid ""
-"La ciudad de Loja ha sido durante siglos un epicentro de creación artística "
-"en Ecuador. Su tradición musical está profundamente arraigada en el "
-"mestizaje entre los ritmos andinos originarios y la influencia europea "
-"introducida durante la colonia. Instrumentos como la guitarra, el rondador, "
-"y posteriormente el piano, se volvieron fundamentales en el desarrollo del "
-"paisaje sonoro local."
-msgstr ""
-"[en] La ciudad de Loja ha sido durante siglos un epicentro de creación "
-"artística en Ecuador. Su tradición musical está profundamente arraigada en "
-"el mestizaje entre los ritmos andinos originarios y la influencia europea "
-"introducida durante la colonia. Instrumentos como la guitarra, el rondador, "
-"y posteriormente el piano, se volvieron fundamentales en el desarrollo del "
-"paisaje sonoro local."
-
-msgid "Instituciones"
-msgstr "[en] Instituciones"
-
-msgid "Posibles Puntos"
-msgstr "[en] Posibles Puntos"
-
-msgid ""
-"Explora nuestra plataforma interactiva y pon a prueba tus conocimientos "
-"sobre la música lojana."
-msgstr ""
-"Explore our interactive platform and test your knowledge of Loja's music."
-
-msgid "Ver Artistas"
-msgstr "[en] Ver Artistas"
-
-msgid "¿Ya tienes una cuenta?"
-msgstr "[en] ¿Ya tienes una cuenta?"
-
-msgid "Curiosidad"
-msgstr "Curiosity"
-
-msgid "Puntuación"
-msgstr "[en] Puntuación"
-
-msgid "Historia Musical"
-msgstr "Musical History"
-
-msgid "Acerca de la Plataforma"
-msgstr "About the Platform"
-
-msgid "Inicia sesión aquí"
-msgstr "[en] Inicia sesión aquí"
+msgid "Correo Electrónico"
+msgstr "Email Address"
 
 msgid ""
 "La plataforma planea permitir aportes de la comunidad para contar historias "
 "inéditas sobre nuestros artistas."
 msgstr ""
-"The platform plans to allow community contributions to tell unpublished "
-"stories about our artists."
+"La plataforma planea permitir aportes de la comunidad para contar historias "
+"inéditas sobre nuestros artistas."
+
+msgid "Curiosidad"
+msgstr "Curiosity"
+
+msgid "Ingresa a tu cuenta para continuar explorando"
+msgstr "Log in to your account to continue exploring"
+
+msgid "Historia Musical de Loja - Rescate Digital"
+msgstr "Musical History of Loja - Digital Rescue"
+
+msgid "Ej: Juan Pérez"
+msgstr "Ex: John Doe"
+
+msgid "Predominio del pasillo lojano."
+msgstr "Predominance of the Loja pasillo."
+
+msgid "Sin eventos cronológicos registrados."
+msgstr "Sin eventos cronológicos registrados."
+
+msgid "Décadas de 1960–1980"
+msgstr "1960s–1980s"
+
+msgid "Repite tu contraseña"
+msgstr "Repeat your password"
 
 msgid ""
 "Descubre a los mejores investigadores de nuestro patrimonio musical. ¿Podrás"
 " tú alcanzar la cima?"
 msgstr ""
-"[en] Descubre a los mejores investigadores de nuestro patrimonio musical. "
-"¿Podrás tú alcanzar la cima?"
+"Descubre a los mejores investigadores de nuestro patrimonio musical. ¿Podrás"
+" tú alcanzar la cima?"
 
-msgid "Sobre el Proyecto"
-msgstr "About the Project"
-
-msgid ""
-"En la actualidad, instituciones como la Orquesta Sinfónica de Loja y el "
-"Conservatorio Salvador Bustamante Celi continúan formando a las nuevas "
-"generaciones, demostrando que la música en Loja no es solo historia, sino "
-"una pasión viva que evoluciona."
-msgstr ""
-"[en] En la actualidad, instituciones como la Orquesta Sinfónica de Loja y el"
-" Conservatorio Salvador Bustamante Celi continúan formando a las nuevas "
-"generaciones, demostrando que la música en Loja no es solo historia, sino "
-"una pasión viva que evoluciona."
-
-msgid "Juegos Musicales - Rescate Digital"
-msgstr "[en] Juegos Musicales - Rescate Digital"
-
-msgid "Nombre completo o Apodo"
-msgstr "[en] Nombre completo o Apodo"
-
-msgid "Sin eventos cronológicos registrados."
-msgstr "[en] Sin eventos cronológicos registrados."
+msgid "Contraseña"
+msgstr "Password"
 
 msgid ""
-"Esperamos que este sitio sea una fuente de aprendizaje, inspiración y "
-"orgullo para todos quienes lo visiten."
+"Se fortalece la educación musical y se crea el Conservatorio Salvador "
+"Bustamante Celi."
 msgstr ""
-"We hope this site will be a source of learning, inspiration, and pride for "
-"all who visit it."
+"Musical education is strengthened, and the Salvador Bustamante Celi "
+"Conservatory is created."
 
-msgid "Quiz Musical"
-msgstr "Musical Quiz"
+msgid ""
+"Se produce una fusión entre música indígena y europea, dando origen a "
+"expresiones mestizas."
+msgstr ""
+"A fusion between indigenous and European music occurred, originating mestizo"
+" expressions."
 
-msgid "Descubre las mentes detrás de los acordes."
-msgstr "[en] Descubre las mentes detrás de los acordes."
+msgid "¿No tienes una cuenta?"
+msgstr "Don't have an account?"
+
+msgid "Explorar Archivo"
+msgstr "Explore Archive"
+
+msgid ""
+"Preservando el legado sonoro y la herencia cultural de la capital musical "
+"del Ecuador a través de la tecnología digital."
+msgstr ""
+"Preservando el legado sonoro y la herencia cultural de la capital musical "
+"del Ecuador a través de la tecnología digital."
+
+msgid "Llegan instrumentos como la guitarra, el arpa y el violín."
+msgstr "Instruments like the guitar, harp, and violin arrive."
+
+msgid "Registrar Cuenta"
+msgstr "Register Account"
+
+msgid "Iniciar Sesión - Rescate Digital"
+msgstr "Login - Digital Rescue"
+
+msgid "El ranking está completamente vacío."
+msgstr "El ranking está completamente vacío."
+
+msgid "Ver Ranking"
+msgstr "View Ranking"
+
+msgid ""
+"El pasillo ecuatoriano tiene fuertes raíces en\n"
+"                            los valses europeos, adaptados brillantemente al sentimiento andino característico de\n"
+"                            Loja."
+msgstr ""
+"El pasillo ecuatoriano tiene fuertes raíces en\n"
+"                            los valses europeos, adaptados brillantemente al sentimiento andino característico de\n"
+"                            Loja."
+
+msgid ""
+"Completa desafíos, desbloquea insignias y conviértete en un Experto Musical."
+msgstr ""
+"Completa desafíos, desbloquea insignias y conviértete en un Experto Musical."
+
+msgid ""
+"Loja es reconocida a nivel sudamericano por exportar grandes talentos "
+"históricos en el ámbito de la música sacra y académica."
+msgstr ""
+"Loja es reconocida a nivel sudamericano por exportar grandes talentos "
+"históricos en el ámbito de la música sacra y académica."
+
+msgid "Ver ranking"
+msgstr "View ranking"
+
+msgid "Archivo Vivo"
+msgstr "Living Archive"
+
+msgid "Se fortalece la formación académica musical."
+msgstr "Academic musical training is strengthened."
+
+msgid "Ver todos los Juegos"
+msgstr "Ver todos los Juegos"
+
+msgid ""
+"Rescate Digital de la Historia Musical Lojana. Todos los derechos "
+"reservados."
+msgstr ""
+"Sauvetage numérique de l'histoire musicale de Loja. Tous droits réservés."
+
+msgid "La música pasa a formar parte de la vida cotidiana y social."
+msgstr "Music became part of daily and social life."
+
+msgid "Décadas de 1920–1950"
+msgstr "1920s–1950s"
+
+msgid "Acerca de la Plataforma"
+msgstr "About the Platform"
+
+msgid "Siglo XXI (2000–actualidad)"
+msgstr "21st Century (2000–Present)"
+
+msgid "Conocer el Proyecto"
+msgstr "Know the Project"
+
+msgid "Cronología"
+msgstr "Cronología"
+
+msgid "¿Olvidaste tu contraseña?"
+msgstr "Forgot your password?"
+
+msgid "Biografía"
+msgstr "Biography"
+
+msgid "Influyen también figuras como Carlos Rubira Infante y Nicasio Safadi."
+msgstr "Figures like Carlos Rubira Infante and Nicasio Safadi also influence."
+
+msgid "Únete a la plataforma"
+msgstr "Join the platform"
+
+msgid "Se incorporan nuevos arreglos musicales y estilos."
+msgstr "New musical arrangements and styles are incorporated."
+
+msgid "Historia"
+msgstr "Historia"
+
+msgid "No se encontraron artistas registrados."
+msgstr "No registered artists found."
+
+msgid "Empezar Quiz"
+msgstr "Start Quiz"
+
+msgid "Navegación"
+msgstr "Navigation"
+
+msgid "Capital Musical"
+msgstr "Musical Capital"
+
+msgid "Surgen artistas que combinan tradición e innovación."
+msgstr "Artists emerge combining tradition and innovation."
+
+msgid "Fusión del pasillo con géneros modernos como jazz, pop y rock."
+msgstr "Fusion of pasillo with modern genres like jazz, pop, and rock."
+
+msgid "Enviar Respuestas"
+msgstr "Submit Answers"
+
+msgid "Músico y Compositor"
+msgstr "Musician and Composer"
+
+msgid ""
+"La música se desarrolla principalmente en contextos religiosos y "
+"festividades."
+msgstr "Music developed mainly in religious contexts and festivities."
+
+msgid "preguntas"
+msgstr "preguntas"
+
+msgid "Volver a la selección de juegos"
+msgstr "Back to game selection"
+
+msgid "Posibles Puntos"
+msgstr "Possible Points"
+
+msgid "Se adoptan géneros como el pasillo, el vals y el pasacalle."
+msgstr "Genres like pasillo, waltz, and pasacalle were adopted."
+
+msgid "Se organizan festivales culturales para promover la identidad musical."
+msgstr "Cultural festivals are organized to promote musical identity."
+
+msgid "Contacto"
+msgstr "Contact"
+
+msgid "El pasillo lojano se difunde a nivel nacional."
+msgstr "The Loja pasillo spreads nationally."
+
+msgid "Únete"
+msgstr "Join"
+
+msgid "Formación de identidad musical"
+msgstr "Formation of Musical Identity"
+
+msgid "Historia musical"
+msgstr "Musical History"
+
+msgid "Aprende Jugando"
+msgstr "Learn by Playing"
+
+msgid "El pasillo se convierte en el género predominante en la región."
+msgstr "The pasillo becomes the predominant genre in the region."
+
+msgid "Lojana"
+msgstr "Lojana"
+
+msgid "Investigadores"
+msgstr "Researchers"
+
+msgid "Directorio de Artistas - Rescate Digital"
+msgstr "Directorio de Artistas - Rescate Digital"
+
+msgid ""
+"Se define un estilo lojano caracterizado por su tono melancólico y poético."
+msgstr ""
+"A Loja style is defined, characterized by its melancholic and poetic tone."
+
+msgid "Con la colonización española se introducen formas musicales europeas."
+msgstr "With Spanish colonization, European musical forms were introduced."
+
+msgid "La radio y las grabaciones permiten una mayor difusión."
+msgstr "Radio and recordings allow for greater dissemination."
 
 msgid "Salón de la Fama"
-msgstr "[en] Salón de la Fama"
+msgstr "Salón de la Fama"
+
+msgid "Se forman tríos y agrupaciones musicales representativas."
+msgstr "Representative trios and musical groups are formed."
+
+msgid "Investigador"
+msgstr "Investigador"
+
+msgid "Bienvenido"
+msgstr "Welcome"
+
+msgid "Pronto prepararemos nuevos desafíos musicales para ti."
+msgstr "We will soon prepare new musical challenges for you."
+
+msgid ""
+"Explora nuestra plataforma interactiva y pon a prueba tus conocimientos sobre la música\n"
+"            lojana."
+msgstr ""
+"Explora nuestra plataforma interactiva y pon a prueba tus conocimientos sobre la música\n"
+"            lojana."
+
+msgid "Juegos Musicales - Rescate Digital"
+msgstr "Juegos Musicales - Rescate Digital"
+
+msgid ""
+"La creación de una página web dedicada al Rescate Digital de la Historia Musical Lojana\n"
+"                surge de la necesidad de preservar, difundir y revalorizar el patrimonio cultural de Loja, reconocido\n"
+"                como uno de los principales referentes musicales del Ecuador."
+msgstr ""
+"La creación de una página web dedicada al Rescate Digital de la Historia Musical Lojana\n"
+"                surge de la necesidad de preservar, difundir y revalorizar el patrimonio cultural de Loja, reconocido\n"
+"                como uno de los principales referentes musicales del Ecuador."
+
+msgid "Rango"
+msgstr "Rango"
+
+msgid "Décadas de 1990–2000"
+msgstr "1990s–2000s"
+
+msgid "Auge del pasillo lojano"
+msgstr "Rise of the Loja Pasillo"
+
+msgid "Artistas"
+msgstr "Artists"
+
+msgid "Institucional"
+msgstr "Institutional"
+
+msgid "Rescate Digital"
+msgstr "Rescate Digital"
+
+msgid "Expansión y modernización"
+msgstr "Expansion and Modernization"
+
+msgid "Ranking de Usuarios - Rescate Digital"
+msgstr "Ranking de Usuarios - Rescate Digital"
+
+msgid "Volver a los juegos"
+msgstr "Volver a los juegos"
+
+msgid "Revalorización del pasillo como patrimonio cultural."
+msgstr "Revaluation of the pasillo as cultural heritage."
+
+msgid ""
+"estudiantes de la\n"
+"                    Unidad Educativa Fiscomisional La Dolorosa. Nos complace darles la bienvenida a este espacio digital\n"
+"                    creado con el propósito de rescatar, preservar y difundir la historia musical lojana."
+msgstr ""
+"estudiantes de la\n"
+"                    Unidad Educativa Fiscomisional La Dolorosa. Nos complace darles la bienvenida a este espacio digital\n"
+"                    creado con el propósito de rescatar, preservar y difundir la historia musical lojana."
+
+msgid "Registro - Rescate Digital"
+msgstr "Registration - Digital Rescue"
+
+msgid "Siglos XVI–XVIII"
+msgstr "16th–18th Centuries"
+
+msgid "Sistema de Puntos"
+msgstr "Point System"
+
+msgid "Patrimonio Cultural de Loja"
+msgstr "Patrimonio Cultural de Loja"
+
+msgid "Preservación y nuevas generaciones"
+msgstr "Preservation and New Generations"
+
+msgid "Archivo Digital"
+msgstr "Digital Archive"
+
+msgid "Respondido"
+msgstr "Answered"
+
+msgid "Puntuación"
+msgstr "Puntuación"
+
+msgid ""
+"A lo largo del tiempo, gran parte de la riqueza musical lojana incluyendo compositores,\n"
+"                intérpretes, obras y tradiciones ha permanecido dispersa, poco documentada o en riesgo de perderse\n"
+"                debido al paso del tiempo y la falta de digitalización. Por ello, este proyecto busca recopilar y\n"
+"                organizar esta información en un espacio accesible, moderno y dinámico."
+msgstr ""
+"A lo largo del tiempo, gran parte de la riqueza musical lojana incluyendo compositores,\n"
+"                intérpretes, obras y tradiciones ha permanecido dispersa, poco documentada o en riesgo de perderse\n"
+"                debido al paso del tiempo y la falta de digitalización. Por ello, este proyecto busca recopilar y\n"
+"                organizar esta información en un espacio accesible, moderno y dinámico."
+
+msgid ""
+"¿Cuánto sabes sobre los géneros, compositores e instrumentos típicos de "
+"Loja?"
+msgstr ""
+"¿Cuánto sabes sobre los géneros, compositores e instrumentos típicos de "
+"Loja?"
+
+msgid ""
+"Viaja a través de los siglos y descubre cómo Loja se convirtió en el "
+"epicentro sonoro del Ecuador. Explora nuestra historia mediante esta línea "
+"de tiempo interactiva."
+msgstr ""
+"Travel through the centuries and discover how Loja became the sonic "
+"epicenter of Ecuador. Explore our history through this interactive timeline."
+
+msgid "Desarrolladores Web:"
+msgstr "Desarrolladores Web:"
+
+msgid "Alianzas"
+msgstr "Alliances"
+
+msgid "Directorio de Artistas Lojanos"
+msgstr "Loja Artists Directory"
+
+msgid "Rescate Digital de la"
+msgstr "Rescate Digital de la"
+
+msgid "Características principales de la música lojana"
+msgstr "Main Characteristics of Loja Music"
+
+msgid ""
+"Destacan compositores como Salvador Bustamante Celi y Segundo Cueva Celi."
+msgstr ""
+"Composers like Salvador Bustamante Celi and Segundo Cueva Celi stand out."
+
+msgid "tu@correo.com"
+msgstr "you@email.com"
+
+msgid "Uso de plataformas digitales para difusión internacional."
+msgstr "Use of digital platforms for international dissemination."
+
+msgid "Loja es reconocida como la 'Capital Musical del Ecuador'."
+msgstr "Loja is recognized as the 'Musical Capital of Ecuador'."
+
+msgid "¿Ya tienes una cuenta?"
+msgstr "Already have an account?"
+
+msgid ""
+"Conoce a los músicos y compositores que han marcado la historia cultural de "
+"Loja."
+msgstr ""
+"Meet the musicians and composers who have marked the cultural history of "
+"Loja."
+
+msgid ""
+"Pon a prueba tus conocimientos sobre la música lojana y suma puntos para "
+"liderar el ranking."
+msgstr ""
+"Pon a prueba tus conocimientos sobre la música lojana y suma puntos para "
+"liderar el ranking."
+
+msgid "Finales s. XIX – Inicios s. XX"
+msgstr "Late 19th - Early 20th Centuries"
+
+msgid "Letras románticas, nostálgicas y poéticas."
+msgstr "Romantic, nostalgic, and poetic lyrics."
+
+msgid "Se popularizan las serenatas y el uso de la guitarra."
+msgstr "Serenades and the use of the guitar become popular."
+
+msgid "Innovación y proyección"
+msgstr "Innovation and Projection"
+
+msgid "Surgen músicos locales que desarrollan estilos propios."
+msgstr "Local musicians emerge developing their own styles."

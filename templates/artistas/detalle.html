@@ -9,43 +9,75 @@
       <ol class="breadcrumb mb-5">
         <li class="breadcrumb-item"><a href="{% url 'inicio' %}" class="text-decoration-none text-muted">{% trans "Inicio" %}</a></li>
         <li class="breadcrumb-item"><a href="{% url 'artistas_lista' %}" class="text-decoration-none fw-bold" style="color: var(--primary-color);">{% trans "Artistas" %}</a></li>
-        <li class="breadcrumb-item active" aria-current="page">{{ artista.nombre }}</li>
+        <li class="breadcrumb-item active" aria-current="page">{{ artista.translated_nombre }}</li>
       </ol>
     </nav>
 
     <div class="row gx-5 mb-5">
-        <!-- Imagen del artista -->
-        <div class="col-lg-5 mb-4">
-            <div class="position-relative" style="padding: 15px; background-color: #f0f0f0; border-radius: 12px;">
-                {% if artista.imagen_perfil %}
-                    <img src="{{ artista.imagen_perfil.url }}" class="img-fluid rounded shadow-sm w-100" alt="{{ artista.nombre }}" style="object-fit: contain; filter: sepia(30%);">
-                {% else %}
-                    <div class="d-flex align-items-center justify-content-center rounded shadow-sm" style="height: 500px; background-color: #8c6e53; color: white;">
-                        <i class="fas fa-user-tie fa-10x opacity-50"></i>
+        <!-- Imagen del artista con Carrusel -->
+        <div class="col-lg-5 mb-4 position-relative">
+            <!-- Floating Notes Decoration -->
+            <div class="position-absolute top-0 start-0 w-100 h-100 pointer-events-none" style="z-index: 10;">
+                <i class="fas fa-music text-gold opacity-25 position-absolute" style="top: 10%; left: 5%; font-size: 1.5rem;"></i>
+                <i class="fas fa-quaver text-dark opacity-25 position-absolute" style="bottom: 15%; right: 10%; font-size: 2rem;"></i>
+            </div>
+
+            <div class="swiper artistGallerySwiper rounded shadow-sm overflow-hidden" style="background-color: #f0f0f0;">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide text-center p-3">
+                        {% if artista.imagen_perfil %}
+                            <img src="{{ artista.imagen_perfil.url }}" class="img-fluid rounded shadow-sm w-100" alt="{{ artista.translated_nombre }}" style="object-fit: contain; max-height: 500px; filter: sepia(30%);">
+                        {% else %}
+                            <div class="d-flex align-items-center justify-content-center rounded shadow-sm" style="height: 500px; background-color: #8c6e53; color: white;">
+                                <i class="fas fa-user-tie fa-10x opacity-50"></i>
+                            </div>
+                        {% endif %}
                     </div>
-                {% endif %}
+                    <!-- Mock additional slides for 'Gallery' feel -->
+                    <div class="swiper-slide text-center p-3">
+                        <div class="d-flex align-items-center justify-content-center rounded shadow-sm" style="height: 500px; background-color: var(--primary-color); color: white;">
+                            <i class="fas fa-music fa-10x opacity-20"></i>
+                            <div class="position-absolute bottom-0 p-4 w-100 bg-dark bg-opacity-50 text-white">
+                                <p class="small mb-0">{% trans "Legado Musical de Loja" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide text-center p-3">
+                        <div class="d-flex align-items-center justify-content-center rounded shadow-sm" style="height: 500px; background-color: var(--accent-color); color: white;">
+                            <i class="fas fa-guitar fa-10x opacity-20"></i>
+                            <div class="position-absolute bottom-0 p-4 w-100 bg-dark bg-opacity-50 text-white">
+                                <p class="small mb-0">{% trans "Instrumentos de la Época" %}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev" style="color: white; transform: scale(0.6);"></div>
+                <div class="swiper-button-next" style="color: white; transform: scale(0.6);"></div>
+            </div>
+            
+            <div class="mt-3 text-center">
+                <small class="text-muted fst-italic">{% trans "Desliza para ver más imágenes del contexto histórico." %}</small>
             </div>
         </div>
         
         <!-- Detalles del artista -->
         <div class="col-lg-7">
             <span class="badge mb-3" style="background-color: var(--accent-color); color: white; padding: 6px 12px; font-size: 0.75rem; letter-spacing: 1px;">COMPOSITOR DESTACADO</span>
-            <h1 class="display-4 fw-bold mb-3" style="color: var(--primary-color); letter-spacing: -1px;">{{ artista.nombre }}</h1>
+            <h1 class="display-4 fw-bold mb-3" style="color: var(--primary-color); letter-spacing: -1px;">{{ artista.translated_nombre }}</h1>
             
             <div class="d-flex align-items-center mb-4 text-dark fw-bold" style="font-size: 1.1rem;">
-                <i class="far fa-calendar-alt text-success me-2"></i> {{ artista.periodo_vida|default:"?" }} &nbsp;&bull;&nbsp; 
+                <i class="far fa-calendar-alt text-success me-2"></i> {{ artista.translated_periodo_vida|default:"?" }} &nbsp;&bull;&nbsp; 
                 <i class="fas fa-map-marker-alt text-success ms-3 me-2"></i> Loja, Ecuador
             </div>
             
             <h4 class="fw-bold mb-3" style="color: var(--secondary-color); border-left: 4px solid var(--accent-color); padding-left: 12px;">{% trans "Biografía" %}</h4>
-            <div class="lead text-muted mb-4" style="font-size: 1.1rem; line-height: 1.8; text-align: justify;">
-                {{ artista.biografia|linebreaks }}
-            </div>
+                {{ artista.translated_biografia|linebreaks }}
 
-            {% if artista.composiciones_resumen %}
+            {% if artista.translated_composiciones_resumen %}
             <div class="mb-4">
                 <h5 class="fw-bold text-dark"><i class="fas fa-music text-gold me-2"></i>{% trans "Composiciones" %}</h5>
-                <p class="text-muted">{{ artista.composiciones_resumen }}</p>
+                <p class="text-muted">{{ artista.translated_composiciones_resumen }}</p>
             </div>
             {% endif %}
 
@@ -65,7 +97,7 @@
                     <h5 class="fw-bold mb-0">{% trans "Legado Cultural" %}</h5>
                 </div>
                 <p class="mb-0" style="opacity: 0.9; line-height: 1.7;">
-                    {{ artista.legado_resumen|default:"Su influencia persiste en la educación musical ecuatoriana, honrando su dedicación a la formación de nuevas generaciones." }}
+                    {{ artista.translated_legado_resumen|default:"Su influencia persiste en la educación musical ecuatoriana, honrando su dedicación a la formación de nuevas generaciones." }}
                 </p>
             </div>
         </div>
@@ -77,7 +109,7 @@
                     <div class="rounded-circle bg-gold text-white d-flex align-items-center justify-content-center mx-auto mb-3 shadow-sm" style="width: 50px; height: 50px; background-color: var(--accent-color);">
                         <i class="fas fa-question"></i>
                     </div>
-                    <h5 class="fw-bold text-dark mb-3">¿Cuánto sabes de {{ artista.nombre|truncatewords:2 }}?</h5>
+                    <h5 class="fw-bold text-dark mb-3">{% blocktrans with nombre=artista.translated_nombre|truncatewords:2 %}¿Cuánto sabes de {{ nombre }}?{% endblocktrans %}</h5>
                     <p class="small text-muted mb-4">Pon a prueba tus conocimientos sobre la vida y obra del maestro lojano en este breve desafío interactivo.</p>
                     {% if quiz %}
                     <a href="{% url 'jugar_quiz' quiz.id %}" class="btn btn-dark-green w-100">{% trans "Empezar Quiz" %} &nbsp;<i class="fas fa-paper-plane"></i></a>
@@ -96,7 +128,8 @@
                     <div class="position-relative ps-4 mb-4">
                         <div class="position-absolute bg-white border border-2 rounded-circle" style="width: 16px; height: 16px; left: 0; top: 4px; border-color: var(--accent-color) !important;"></div>
                         <h6 class="fw-bold text-dark mb-1">{{ hito.anio }}</h6>
-                        <p class="small text-muted mb-0">{{ hito.evento }}</p>
+                        <p class="small text-muted mb-0">{{ hito.translated_evento }}</p>
+
                     </div>
                     {% endfor %}
                 </div>
@@ -106,4 +139,20 @@
         </div>
     </div>
 </div>
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        if (typeof Swiper !== 'undefined') {
+            new Swiper('.artistGallerySwiper', {
+                slidesPerView: 1,
+                spaceBetween: 10,
+                pagination: { el: '.swiper-pagination', clickable: true },
+                navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+            });
+        }
+    });
+</script>
+{% endblock %}
+
 {% endblock %}

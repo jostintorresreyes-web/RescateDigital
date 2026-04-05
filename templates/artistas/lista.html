@@ -3,7 +3,47 @@
 
 {% block title %}{% trans "Directorio de Artistas - Rescate Digital" %}{% endblock %}
 
+{% block extra_css %}
+<style>
+    .musical-notes-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: -1;
+    }
+    .note {
+        position: absolute;
+        font-size: 2rem;
+        opacity: 0.2;
+        animation: float 10s infinite linear;
+    }
+    .note-gold { color: #d4af37; }
+    .note-black { color: #000000; }
+    
+    @keyframes float {
+        0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.2; }
+        90% { opacity: 0.2; }
+        100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
+<div class="position-relative overflow-hidden">
+    <div class="musical-notes-container">
+        <!-- Random notes generated via JS or hardcoded -->
+        <i class="fas fa-music note note-gold" style="left: 10%; animation-delay: 0s; font-size: 1.5rem;"></i>
+        <i class="fas fa-quaver note note-black" style="left: 20%; animation-delay: 2s; font-size: 2.5rem;"></i>
+        <i class="fas fa-music note note-gold" style="left: 45%; animation-delay: 5s; font-size: 2rem;"></i>
+        <i class="fas fa-music note note-black" style="left: 70%; animation-delay: 1s; font-size: 1.8rem;"></i>
+        <i class="fas fa-music note note-gold" style="left: 85%; animation-delay: 7s; font-size: 2.2rem;"></i>
+        <i class="fas fa-music note note-black" style="left: 5%; animation-delay: 4s; font-size: 1.5rem;"></i>
+    </div>
 <div class="container py-5">
     <div class="mb-5 text-center">
         <h1 class="display-4 fw-bold" style="color: var(--primary-color);">{% trans "Directorio de Artistas Lojanos" %}</h1>
@@ -18,7 +58,7 @@
                     <div class="card artist-card h-100 text-start border-0 shadow-sm">
                         <div class="artist-img-wrapper" style="height: 380px;">
                             {% if artista.imagen_perfil %}
-                                <img src="{{ artista.imagen_perfil.url }}" class="artist-img" alt="{{ artista.nombre }}">
+                                <img src="{{ artista.imagen_perfil.url }}" class="artist-img" alt="{{ artista.translated_nombre }}">
                             {% else %}
                                 <div class="artist-img d-flex align-items-center justify-content-center bg-dark text-white opacity-75">
                                     <i class="fas fa-user-tie fa-6x"></i>
@@ -26,10 +66,10 @@
                             {% endif %}
                         </div>
                         <div class="artist-info d-flex flex-column flex-grow-1 p-4 bg-white">
-                            <h4 class="artist-name mb-1 fw-bold text-dark">{{ artista.nombre }}</h4>
-                            <span class="artist-role text-success fw-bold text-uppercase small mb-3 letter-spacing-1">Músico y Compositor</span>
+                            <h4 class="artist-name mb-1 fw-bold text-dark">{{ artista.translated_nombre }}</h4>
+                            <span class="artist-role text-success fw-bold text-uppercase small mb-3 letter-spacing-1">{% trans "Músico y Compositor" %}</span>
                             <div class="mt-auto border-top pt-3">
-                                <p class="artist-quote mb-0 text-muted fst-italic">"{{ artista.biografia|truncatewords:15 }}"</p>
+                                <p class="artist-quote mb-0 text-muted fst-italic">"{{ artista.translated_biografia|truncatewords:30 }}"</p>
                             </div>
                         </div>
                     </div>
