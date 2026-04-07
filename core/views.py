@@ -6,5 +6,8 @@ def inicio(request):
     artistas = Artista.objects.all().order_by('nombre')
     return render(request, 'core/inicio.html', {'artistas': artistas})
 
+def proyecto(request):
+    return render(request, 'core/proyecto.html')
+
 def historia(request):
     return render(request, 'core/historia.html')

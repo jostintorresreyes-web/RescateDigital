@@ -60,69 +60,17 @@
             {% blocktrans %}Preservando el legado sonoro y la herencia cultural de la capital musical del Ecuador a través de la tecnología digital.{% endblocktrans %}
         </p>
         <div>
-            <a href="{% url 'artistas_lista' %}" class="btn btn-gold me-3">{% trans "Explorar Archivo" %}</a>
-            <a href="{% url 'historia' %}" class="btn btn-outline-green">{% trans "Conocer el Proyecto" %}</a>
+            <a href="{% url 'proyecto' %}" class="btn btn-gold px-4 py-2 fs-5 fw-bold shadow-lg text-uppercase letter-spacing-1">
+                <i class="fas fa-rocket me-2"></i> {% trans "Conocer el Proyecto" %}
+            </a>
         </div>
     </div>
 </header>
 
-<!-- LA SECCIÓN ACERCA DE LA PLATAFORMA HA SIDO MOVIDA A LA PÁGINA 'SOBRE EL PROYECTO' -->
-
-<!-- ACERCA DEL PROYECTO & CURIOSIDADES -->
-<section id="sobre-el-proyecto" class="container py-5 my-5 reveal" data-animation="animate__fadeInUp">
+<!-- CURIOSIDADES -->
+<section id="curiosidades" class="container py-5 my-5 reveal" data-animation="animate__fadeInUp">
     <div class="row align-items-center mb-5">
-        <div class="col-lg-12 mb-5">
-            <h2 class="section-title text-dark text-center" style="font-size: 2.2rem;">{% trans "Acerca de la Plataforma" %}</h2>
-            <div class="text-muted mb-4 mx-auto text-center reveal" style="font-size: 1.05rem; max-width: 1000px;" data-animation="animate__fadeIn">
-                <p>
-                    {% blocktrans %}La creación de una página web dedicada al Rescate Digital de la Historia Musical Lojana
-                    surge de la necesidad de preservar, difundir y revalorizar el patrimonio cultural de Loja, reconocido
-                    como uno de los principales referentes musicales del Ecuador.{% endblocktrans %}
-                </p>
-                <p>
-                    {% blocktrans %}A lo largo del tiempo, gran parte de la riqueza musical lojana incluyendo compositores,
-                    intérpretes, obras y tradiciones ha permanecido dispersa, poco documentada o en riesgo de perderse
-                    debido al paso del tiempo y la falta de digitalización. Por ello, este proyecto busca recopilar y
-                    organizar esta información en un espacio accesible, moderno y dinámico.{% endblocktrans %}
-                </p>
-                <p>
-                    {% blocktrans %}La plataforma digital permitirá que nuevas generaciones conozcan y se conecten con sus
-                    raíces culturales, al mismo tiempo que facilita el acceso a investigadores, estudiantes y público en
-                    general interesado en la música lojana. Además, contribuirá a fortalecer la identidad cultural y
-                    promover el reconocimiento de los artistas locales.{% endblocktrans %}
-                </p>
-                <p>
-                    {% blocktrans %}En un mundo cada vez más digital, preservar la historia musical a través de herramientas
-                    tecnológicas no solo es una oportunidad, sino una responsabilidad para garantizar que este legado
-                    perdure en el tiempo.{% endblocktrans %}
-                </p>
-            </div>
-        </div>
-
-        <!-- Desarrolladores Web Centrado -->
-        <div class="col-lg-12 mb-5 reveal" data-animation="animate__fadeInUp">
-            <div class="text-center p-4 rounded shadow-sm mx-auto" style="background-color: #f9fafb; border-top: 5px solid var(--primary-color); max-width: 900px;">
-                <h3 class="fw-bold mb-3" style="color: var(--primary-color); text-transform: uppercase; font-size: 1.5rem; letter-spacing: 1px;">
-                    {% trans "Desarrolladores Web" %}</h3>
-                <p class="text-muted mb-3" style="font-size: 1.1rem;">
-                    <strong>{% trans "Somos Jostin Torres, Jair Chávez y Juan Arboleda" %}</strong>, {% blocktrans %}estudiantes de la
-                    Unidad Educativa Fiscomisional La Dolorosa. Nos complace darles la bienvenida a este espacio digital
-                    creado con el propósito de rescatar, preservar y difundir la historia musical lojana.{% endblocktrans %}
-                </p>
-                <p class="text-muted mb-3" style="font-size: 1rem;">
-                    {% blocktrans %}Este proyecto nace de nuestro interés por valorar nuestras raíces culturales y
-                    aportar, desde la educación y la tecnología, a la conservación del legado musical de nuestra región.
-                    A través de esta página, buscamos que más personas conozcan la riqueza artística de Loja y se
-                    conecten con su identidad cultural.{% endblocktrans %}
-                </p>
-                <p class="text-muted mb-0" style="font-size: 1rem;">
-                    {% blocktrans %}Esperamos que este sitio sea una fuente de aprendizaje, inspiración y orgullo para
-                    todos quienes lo visiten.{% endblocktrans %}
-                </p>
-            </div>
-        </div>
-
-        <!-- Columnas Izquierda y Derecha -->
+        <!-- Columnas Izquierda y Derecha (Curiosidades) -->
         <div class="col-lg-6">
             <div class="row g-4">
                 <div class="col-md-12">

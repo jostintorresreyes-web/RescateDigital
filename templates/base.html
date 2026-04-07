@@ -68,23 +68,25 @@
     </style>
 </head>
 <body onload="document.body.classList.add('loaded')">
-    <nav class="navbar navbar-expand-lg sticky-top px-3">
-        <div class="container-fluid mx-md-4">
+    <nav class="navbar navbar-expand-lg sticky-top px-3 position-relative overflow-hidden">
+        
+        <div class="container-fluid mx-md-4 position-relative z-2">
             <a class="navbar-brand d-flex align-items-center" href="{% url 'inicio' %}">
-                <i class="fas fa-music me-2 text-success"></i> 
-                {% trans "RESCATE DIGITAL" %}
+                <div class="brand-icon-wrapper" style="width: 40px; text-align: center;"><i class="fas fa-music text-success"></i></div> 
+                <span class="nav-text ms-2">{% trans "RESCATE DIGITAL" %}</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link px-3" href="{% url 'inicio' %}">{% trans "Inicio" %}</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="{% url 'historia' %}">{% trans "Historia musical" %}</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="{% url 'artistas_lista' %}">{% trans "Artistas" %}</a></li>
-                    <li class="nav-item"><a class="nav-link px-3" href="{% url 'juegos_lista' %}">{% trans "Juegos" %}</a></li>
+            <div class="collapse navbar-collapse" id="navbarNav" style="width: 100%;">
+                <ul class="navbar-nav w-100">
+                    <li class="nav-item"><a class="nav-link px-3 d-flex align-items-center" href="{% url 'inicio' %}"><div style="width: 30px; text-align: center;"><i class="fas fa-home"></i></div> <span class="nav-text ms-2">{% trans "Inicio" %}</span></a></li>
+                    <li class="nav-item"><a class="nav-link px-3 d-flex align-items-center" href="{% url 'proyecto' %}"><div style="width: 30px; text-align: center;"><i class="fas fa-info-circle"></i></div> <span class="nav-text ms-2">{% trans "Proyecto" %}</span></a></li>
+                    <li class="nav-item"><a class="nav-link px-3 d-flex align-items-center" href="{% url 'historia' %}"><div style="width: 30px; text-align: center;"><i class="fas fa-book"></i></div> <span class="nav-text ms-2">{% trans "Historia musical" %}</span></a></li>
+                    <li class="nav-item"><a class="nav-link px-3 d-flex align-items-center" href="{% url 'artistas_lista' %}"><div style="width: 30px; text-align: center;"><i class="fas fa-users"></i></div> <span class="nav-text ms-2">{% trans "Artistas" %}</span></a></li>
+                    <li class="nav-item"><a class="nav-link px-3 d-flex align-items-center" href="{% url 'juegos_lista' %}"><div style="width: 30px; text-align: center;"><i class="fas fa-gamepad"></i></div> <span class="nav-text ms-2">{% trans "Juegos" %}</span></a></li>
                 </ul>
             </div>
             
@@ -154,28 +156,29 @@
                                 <div class="fw-bold text-dark">{{ user.username }}</div>
                                 <div class="small text-muted">{{ user.email }}</div>
                             </li>
-                            <li><a class="dropdown-item" href="{% url 'ranking' %}"><i class="fas fa-medal me-2 text-warning"></i>{% trans "Mi Ranking" %}</a></li>
-                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2 text-muted"></i>{% trans "Configuración" %}</a></li>
+                            <li><a class="dropdown-item" href="{% url 'ranking' %}"><i class="fas fa-medal me-2 text-warning"></i><span>{% trans "Mi Ranking" %}</span></a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2 text-muted"></i><span>{% trans "Configuración" %}</span></a></li>
                             <li class="border-top mt-2">
                                 <form method="post" action="{% url 'logout' %}">
                                     {% csrf_token %}
                                     <button type="submit" class="dropdown-item text-danger">
-                                        <i class="fas fa-sign-out-alt me-2"></i>{% trans "Cerrar Sesión" %}
+                                        <i class="fas fa-sign-out-alt me-2"></i><span>{% trans "Cerrar Sesión" %}</span>
                                     </button>
                                 </form>
                             </li>
                         </ul>
                     </div>
                 {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bold">{% trans "Ingresar" %}</a>
+                    <a href="{% url 'login' %}" class="btn btn-outline-dark btn-sm rounded-pill px-3 fw-bold login-btn-sidebar"><i class="fas fa-sign-in-alt d-lg-none me-2"></i><span>{% trans "Ingresar" %}</span></a>
                 {% endif %}
             </div>
         </div>
     </nav>
 
-    <main class="flex-grow-1">
-        {% block content %}{% endblock %}
-    </main>
+    <div class="main-wrapper flex-grow-1 d-flex flex-column w-100" style="overflow-x: hidden;">
+        <main class="flex-grow-1">
+            {% block content %}{% endblock %}
+        </main>
 
     <footer class="site-footer mt-auto">
         <div class="container">
@@ -208,6 +211,7 @@
             </div>
         </div>
     </footer>
+    </div> <!-- /main-wrapper -->
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

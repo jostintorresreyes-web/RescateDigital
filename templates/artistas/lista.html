@@ -30,59 +30,100 @@
         90% { opacity: 0.2; }
         100% { transform: translateY(-10vh) rotate(360deg); opacity: 0; }
     }
-</style>
+    
+    .theater-bg {
+        background-image: url('{% static "images/theater_bg.png" %}');
+        background-size: cover;
+
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+            z-index: 1;
+        }
+        .theater-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.9) 100%);
+            z-index: -1;
+        }
+
+        /* Hover blur effect for artists */
+        .artistSwiper {
+            padding: 40px 10px;
+        }
+        
+        .swiper-wrapper:hover .swiper-slide {
+            filter: blur(5px) grayscale(50%);
+            opacity: 0.5;
+            transition: all 0.4s ease;
+        }
+        
+        .swiper-wrapper .swiper-slide {
+            transition: all 0.4s ease;
+        }
+        
+        .swiper-wrapper .swiper-slide:hover {
+            filter: blur(0) grayscale(0);
+            opacity: 1;
+            transform: scale(1.1) translateY(-10px);
+            z-index: 10;
+        }
+
+        .artist-title-text {
+            color: #d4af37 !important; /* Gold */
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+        }
+        .artist-lead-text {
+            color: #f1f5f9 !important;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
-<div class="position-relative overflow-hidden">
-    <div class="musical-notes-container">
-        <!-- Random notes generated via JS or hardcoded -->
-        <i class="fas fa-music note note-gold" style="left: 10%; animation-delay: 0s; font-size: 1.5rem;"></i>
-        <i class="fas fa-quaver note note-black" style="left: 20%; animation-delay: 2s; font-size: 2.5rem;"></i>
-        <i class="fas fa-music note note-gold" style="left: 45%; animation-delay: 5s; font-size: 2rem;"></i>
-        <i class="fas fa-music note note-black" style="left: 70%; animation-delay: 1s; font-size: 1.8rem;"></i>
-        <i class="fas fa-music note note-gold" style="left: 85%; animation-delay: 7s; font-size: 2.2rem;"></i>
-        <i class="fas fa-music note note-black" style="left: 5%; animation-delay: 4s; font-size: 1.5rem;"></i>
-    </div>
-<div class="container py-5">
-    <div class="mb-5 text-center">
-        <h1 class="display-4 fw-bold" style="color: var(--primary-color);">{% trans "Directorio de Artistas Lojanos" %}</h1>
-        <p class="lead text-muted mx-auto" style="max-width: 700px;">{% trans "Conoce a los músicos y compositores que han marcado la historia cultural de Loja." %}</p>
-    </div>
+<div class="theater-bg min-vh-100 pb-5">
+    <div class="theater-overlay"></div>
+    <div class="container py-5 reveal" data-animation="animate__fadeInDown">
+        <div class="mb-5 text-center mt-4">
+            <h1 class="display-4 fw-bold artist-title-text">{% trans "Salón de Artistas Lojanos" %}</h1>
+            <p class="lead mx-auto artist-lead-text" style="max-width: 700px;">{% trans "Conoce a los músicos y compositores que han marcado la historia cultural de Loja bajo las luces del escenario." %}</p>
+        </div>
 
-    <div class="swiper artistSwiper pb-5 mt-2 px-2">
-        <div class="swiper-wrapper">
-            {% for artista in artistas %}
-            <div class="swiper-slide h-auto">
-                <a href="{% url 'artista_detalle' artista.id %}" class="text-decoration-none d-block h-100">
-                    <div class="card artist-card h-100 text-start border-0 shadow-sm">
-                        <div class="artist-img-wrapper" style="height: 380px;">
-                            {% if artista.imagen_perfil %}
-                                <img src="{{ artista.imagen_perfil.url }}" class="artist-img" alt="{{ artista.translated_nombre }}">
-                            {% else %}
-                                <div class="artist-img d-flex align-items-center justify-content-center bg-dark text-white opacity-75">
-                                    <i class="fas fa-user-tie fa-6x"></i>
+        <div class="swiper artistSwiper pb-5 mt-2 px-2 reveal" data-animation="animate__zoomIn">
+            <div class="swiper-wrapper py-4">
+                {% for artista in artistas %}
+                <div class="swiper-slide h-auto">
+                    <a href="{% url 'artista_detalle' artista.id %}" class="text-decoration-none d-block h-100">
+                        <div class="card artist-card h-100 text-start border-0 shadow-lg">
+                            <div class="artist-img-wrapper position-relative" style="height: 380px;">
+                                {% if artista.imagen_perfil %}
+                                    <img src="{{ artista.imagen_perfil.url }}" class="artist-img w-100 h-100" style="object-fit: cover;" alt="{{ artista.translated_nombre }}">
+                                {% else %}
+                                    <div class="artist-img w-100 h-100 d-flex align-items-center justify-content-center text-white" style="background-color: #2c3e50;">
+                                        <i class="fas fa-user-tie fa-6x"></i>
+                                    </div>
+                                {% endif %}
+                                <div class="position-absolute bottom-0 w-100" style="height: 50%; background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);"></div>
+                            </div>
+                            <div class="artist-info d-flex flex-column flex-grow-1 p-4 bg-white position-relative" style="margin-top: -30px; border-radius: 20px 20px 0 0;">
+                                <h4 class="artist-name mb-1 fw-bold text-dark">{{ artista.translated_nombre }}</h4>
+                                <span class="artist-role text-success fw-bold text-uppercase small mb-3 letter-spacing-1">{% trans "Músico y Compositor" %}</span>
+                                <div class="mt-auto border-top pt-3">
+                                    <p class="artist-quote mb-0 text-muted fst-italic">"{{ artista.translated_biografia|truncatewords:30 }}"</p>
                                 </div>
-                            {% endif %}
-                        </div>
-                        <div class="artist-info d-flex flex-column flex-grow-1 p-4 bg-white">
-                            <h4 class="artist-name mb-1 fw-bold text-dark">{{ artista.translated_nombre }}</h4>
-                            <span class="artist-role text-success fw-bold text-uppercase small mb-3 letter-spacing-1">{% trans "Músico y Compositor" %}</span>
-                            <div class="mt-auto border-top pt-3">
-                                <p class="artist-quote mb-0 text-muted fst-italic">"{{ artista.translated_biografia|truncatewords:30 }}"</p>
                             </div>
                         </div>
-                    </div>
-                </a>
+                    </a>
+                </div>
+                {% empty %}
+                <div class="swiper-slide text-center text-white w-100 py-5">
+                    <i class="fas fa-users-slash fa-4x mb-3" style="color: var(--accent-color);"></i>
+                    <h4>{% trans "No se encontraron artistas registrados." %}</h4>
+                </div>
+                {% endfor %}
             </div>
-            {% empty %}
-            <div class="swiper-slide text-center text-muted w-100 py-5">
-                <i class="fas fa-users-slash fa-4x mb-3" style="color: var(--accent-color);"></i>
-                <h4>{% trans "No se encontraron artistas registrados." %}</h4>
-            </div>
-            {% endfor %}
+            <div class="swiper-pagination mt-4"></div>
         </div>
-        <div class="swiper-pagination mt-4"></div>
     </div>
 </div>
 {% endblock %}

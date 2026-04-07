@@ -8,23 +8,15 @@
     .games-path-container {
         position: relative;
         padding: 100px 0;
-        /* Ultra Vibrant Gradient */
-        background: linear-gradient(180deg, 
-            #020408 0%, 
-            #0b0e14 15%, 
-            #1e3c72 30%, 
-            #2a5298 45%, 
-            #2196f3 60%, 
-            #87ceeb 75%, 
-            #e1f5fe 90%, 
-            #ffffff 100%
-        );
+        /* Deep Nebula Space Gradient */
+        background: radial-gradient(circle at 50% 0%, #1e3c72 0%, #0a1128 30%, #050814 60%, #000000 100%);
+        background-attachment: fixed;
         border-radius: 60px;
         overflow: hidden;
-        min-height: 2800px; /* Even more for Quiz 13 and detail */
+        min-height: 2800px;
         margin-top: 2rem;
         border: 4px solid #1e3c72;
-        box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        box-shadow: 0 0 80px rgba(30, 60, 114, 0.8), inset 0 0 100px rgba(0,0,0,0.8);
     }
     
     /* SHOOTING STARS */
@@ -67,37 +59,25 @@
         50% { transform: scale(1.3); opacity: 0.4; }
     }
 
-    /* Sky Rainbow */
-    .rainbow-sky {
-        position: absolute;
-        top: 45%;
-        width: 100%;
-        height: 300px;
-        background: radial-gradient(circle at 50% 100%, transparent 60%, rgba(255,0,0,0.1) 61%, rgba(255,165,0,0.1) 62%, rgba(255,255,0,0.1) 63%, rgba(0,128,0,0.1) 64%, rgba(0,0,255,0.1) 65%, rgba(75,0,130,0.1) 66%, rgba(238,130,238,0.1) 67%, transparent 68%);
-        z-index: 2;
-        opacity: 0.4;
+    /* Astronauts & Space Music Notes */
+    .astronaut-decor { position: absolute; z-index: 4; font-size: 5rem; color: #e2e8f0; animation: float-space 20s infinite ease-in-out; filter: drop-shadow(0 0 20px rgba(255,255,255,0.5)); }
+    .music-note-decor { position: absolute; z-index: 3; font-size: 3rem; animation: float-music 15s infinite linear; opacity: 0.6; }
+    
+    .note-magenta { color: #ff00ff; filter: drop-shadow(0 0 15px #ff00ff); }
+    .note-cyan { color: #00ffff; filter: drop-shadow(0 0 15px #00ffff); }
+    .note-gold { color: #ffd700; filter: drop-shadow(0 0 15px #ffd700); }
+
+    @keyframes float-space {
+        0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+        33% { transform: translateY(-40px) rotate(15deg) scale(1.1); }
+        66% { transform: translateY(20px) rotate(-10deg) scale(0.95); }
     }
 
-    /* Figures Colors */
-    .planet-decor { position: absolute; z-index: 3; animation: float-planet 15s infinite ease-in-out; transition: all 0.5s; cursor: pointer; }
-    .planet-decor:hover { transform: scale(1.3) rotate(15deg); filter: drop-shadow(0 0 25px rgba(255,255,255,0.8)); }
-
-    @keyframes float-planet {
-        0%, 100% { transform: translateY(0) rotate(0deg); }
-        50% { transform: translateY(-30px) rotate(10deg); }
-    }
-
-    .plane-decor { position: absolute; z-index: 4; font-size: 2.5rem; animation: fly-plane 18s infinite linear; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2)); }
-    @keyframes fly-plane {
-        0% { transform: translateX(-100px) translateY(0) rotate(5deg); }
-        50% { transform: translateX(50vw) translateY(-20px) rotate(-5deg); }
-        100% { transform: translateX(110vw) translateY(0) rotate(5deg); }
-    }
-
-    .cloud-decor { position: absolute; color: #ffffff; opacity: 0.9; z-index: 3; filter: blur(2px); animation: drift 40s infinite linear; }
-    @keyframes drift {
-        from { transform: translateX(-200px); }
-        to { transform: translateX(110vw); }
+    @keyframes float-music {
+        0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
+        10% { opacity: 0.8; }
+        90% { opacity: 0.8; }
+        100% { transform: translateY(-500px) rotate(360deg) translateX(100px); opacity: 0; }
     }
 
     /* Locked & Interaction Styles */
@@ -122,89 +102,91 @@
     
     .cursor-not-allowed { cursor: not-allowed; }
 
-    /* Road (Caminito) */
+    /* Road (Space Path) */
     .games-path-container::before { 
         content: ""; 
         position: absolute; 
         top: 0; 
         bottom: 0; 
         left: 50%; 
-        width: 24px; 
-        background: repeating-linear-gradient(0deg, #5d4037 0, #5d4037 40px, #ffd54f 40px, #ffd54f 50px, #4e342e 50px, #4e342e 90px); 
+        width: 15px; 
+        background: linear-gradient(180deg, rgba(227, 170, 89, 0) 0%, rgba(227, 170, 89, 0.8) 10%, rgba(0, 255, 255, 0.8) 50%, rgba(255, 0, 255, 0.8) 90%, rgba(255, 0, 255, 0) 100%);
         transform: translateX(-50%); 
         z-index: 1; 
-        opacity: 0.4; 
+        opacity: 0.6; 
         border-radius: 20px;
-        box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+        box-shadow: 0 0 30px rgba(0, 255, 255, 0.6);
+        animation: path-glow 4s infinite alternate;
     }
 
-    /* LAND DECOR (Mountains & Animals) */
-    .mountain-decor { 
-        position: absolute; 
-        bottom: 0; 
-        left: 0;
-        right: 0;
-        width: 100%; 
-        height: 300px; 
-        display: flex; 
-        align-items: flex-end; 
-        justify-content: space-around; 
-        z-index: 2; 
-        pointer-events: none; 
-    }
-    .mtn-peak { 
-        width: 0; 
-        height: 0; 
-        border-left: 180px solid transparent; 
-        border-right: 180px solid transparent; 
-        border-bottom: 250px solid #5d4037; 
-        position: relative; 
-    }
-    .mtn-peak::after { 
-        content: ""; 
-        position: absolute; 
-        top: 0; 
-        left: -180px; 
-        width: 0; 
-        height: 0; 
-        border-left: 180px solid transparent; 
-        border-right: 180px solid transparent; 
-        border-bottom: 60px solid #ffffff; 
-        opacity: 0.8; 
+    @keyframes path-glow {
+        from { opacity: 0.4; filter: blur(1px); }
+        to { opacity: 0.8; filter: blur(3px); }
     }
 
-    .nature-decor { 
-        position: absolute; 
-        bottom: 10px; 
-        left: 0;
-        right: 0;
-        width: 100%; 
-        height: 150px; 
-        z-index: 10; 
-        pointer-events: none; 
+    /* NEBULA CLOUDS */
+    .nebula-cloud {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        opacity: 0.3;
+        z-index: 0;
+        animation: nebula-pulse 10s infinite alternate;
     }
-    .tree { 
-        position: absolute; 
-        bottom: 0; 
-        display: flex; 
-        flex-direction: column; 
-        align-items: center; 
-        filter: drop-shadow(3px 5px 8px rgba(0,0,0,0.2)); 
+    @keyframes nebula-pulse {
+        from { transform: scale(1) rotate(0deg); opacity: 0.2; }
+        to { transform: scale(1.5) rotate(20deg); opacity: 0.5; }
     }
-    .tree-trunk { width: 14px; height: 50px; background: #3e2723; border-radius: 2px; }
-    .tree-top { width: 70px; height: 90px; background: #1b5e20; border-radius: 50% 50% 20% 20%; }
+    .gaming-title-text {
+        font-family: 'Press Start 2P', system-ui, -apple-system, sans-serif;
+        background: linear-gradient(to right, #f83600 0%, #f9d423 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-shadow: 0 0 10px rgba(248, 54, 0, 0.5);
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: 900;
+    }
     
-    .animal-decor { position: absolute; bottom: 15px; z-index: 10; font-size: 2rem; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3)); transition: transform 0.3s; }
-    .people-decor { position: absolute; bottom: 10px; z-index: 11; font-size: 1.8rem; filter: drop-shadow(1px 1px 3px rgba(0,0,0,0.2)); transition: transform 0.3s; }
-    .flower { position: absolute; bottom: 0; font-size: 1.2rem; transition: transform 0.2s; }
+    .bg-music-notes {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        overflow: hidden;
+        z-index: -1;
+        pointer-events: none;
+        background-color: #f8f9fa; /* keep it light as asked but filled with notes */
+    }
+    
+    .bg-music-notes .note {
+        position: absolute;
+        font-size: 3rem;
+        opacity: 0.15;
+        color: var(--primary-color);
+        animation: float-up-bg 15s linear infinite;
+        bottom: -10%;
+    }
+    
+    @keyframes float-up-bg {
+        0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.15; }
+        90% { opacity: 0.15; }
+        100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    }
 </style>
 {% endblock %}
 
 {% block content %}
+<div class="bg-music-notes">
+    <i class="fas fa-music note" style="left: 10%; animation-duration: 18s;"></i>
+    <i class="fas fa-quaver note" style="left: 30%; animation-duration: 22s; animation-delay: 5s;"></i>
+    <i class="fas fa-guitar note" style="left: 50%; animation-duration: 25s; animation-delay: 2s; font-size: 4rem;"></i>
+    <i class="fas fa-music note" style="left: 70%; animation-duration: 19s; animation-delay: 8s;"></i>
+    <i class="fas fa-quaver note" style="left: 85%; animation-duration: 24s; animation-delay: 1s;"></i>
+</div>
 <div class="container py-5">
     <div class="mb-5 text-center">
-        <span class="badge rounded-pill bg-success px-3 py-2 mb-3 text-uppercase fw-bold letter-spacing-1">{% trans "Gamificación" %}</span>
-        <h1 class="display-4 fw-bold" style="color: var(--primary-color);">{% trans "Camino del Conocimiento Musical" %}</h1>
+        <span class="badge rounded-pill bg-success px-3 py-2 mb-4 text-uppercase fw-bold letter-spacing-1 shadow-sm">{% trans "Gamificación" %}</span>
+        <h1 class="display-4 gaming-title-text mb-3">{% trans "Camino del Conocimiento Musical" %}</h1>
         <p class="lead text-muted mx-auto" style="max-width: 700px;">
             {% trans "Avanza por el sendero de la historia musical lojana. Cada quiz superado es un paso más hacia la maestría cultural." %}
         </p>
@@ -222,29 +204,31 @@
         <div class="vibrant-star" style="top: 18%; right: 45%; font-size: 0.4rem; animation-delay: 2s;"><i class="fas fa-star text-white"></i></div>
         <div class="vibrant-star" style="top: 7%; left: 80%; font-size: 0.7rem; animation-delay: 1.5s;"><i class="fas fa-star text-gold"></i></div>
 
-        <!-- Planet Auras & Figures -->
-        <div class="planet-aura" style="top: 1%; left: 5%; width: 100px; height: 100px; background: #ff5722;"></div>
-        <div class="planet-decor" style="top: 1%; left: 5%; font-size: 6rem; color: #ff5722;"><i class="fas fa-globe-americas"></i></div>
-        
-        <div class="planet-aura" style="top: 10%; left: 45%; width: 150px; height: 150px; background: #ffeb3b;"></div>
-        <div class="planet-decor" style="top: 10%; left: 45%; font-size: 8rem; color: #ffeb3b;"><i class="fas fa-sun"></i></div>
+        <!-- Planet Auras & Figures (REMOVED) -->
 
-        <!-- SKY LEVEL (Rainbow & Moving Clouds) -->
-        <div class="rainbow-sky"></div>
-        <div class="cloud-decor" style="top: 30%; left: 5%; font-size: 6rem;"><i class="fas fa-cloud"></i></div>
-        <div class="cloud-decor" style="top: 45%; right: 10%; font-size: 7rem; animation-delay: -5s;"><i class="fas fa-cloud"></i></div>
-        <div class="cloud-decor" style="top: 60%; left: 25%; font-size: 5rem; animation-delay: -10s;"><i class="fas fa-cloud"></i></div>
-        <div class="cloud-decor" style="top: 75%; right: 5%; font-size: 4rem; animation-delay: -15s;"><i class="fas fa-cloud"></i></div>
+        <!-- BACKGROUND NEBULAS -->
+        <div class="nebula-cloud" style="top: 10%; left: 10%; width: 500px; height: 500px; background: #8a2be2;"></div>
+        <div class="nebula-cloud" style="top: 40%; right: 10%; width: 600px; height: 600px; background: #00ffff; animation-delay: -5s;"></div>
+        <div class="nebula-cloud" style="top: 70%; left: 20%; width: 400px; height: 400px; background: #ff1493; animation-delay: -3s;"></div>
 
-        <!-- MOVING AIRPLANES -->
-        <div class="plane-decor" style="top: 35%; color: #ef5350; font-size: 3rem;"><i class="fas fa-plane"></i></div>
-        <div class="plane-decor" style="top: 55%; color: #42a5f5; font-size: 2.5rem; animation-delay: -8s;"><i class="fas fa-plane"></i></div>
-        <div class="plane-decor" style="top: 70%; color: #ffca28; font-size: 2rem; animation-delay: -15s;"><i class="fas fa-plane"></i></div>
+        <!-- ASTRONAUTS & ROCKETS -->
+        <div class="astronaut-decor" style="top: 15%; right: 15%;">
+            <i class="fas fa-user-astronaut"></i>
+        </div>
+        <div class="astronaut-decor" style="top: 45%; left: 10%; font-size: 6rem; animation-delay: -7s;">
+            <i class="fas fa-user-astronaut" style="transform: scaleX(-1);"></i>
+        </div>
+        <div class="astronaut-decor" style="top: 80%; right: 20%; font-size: 4rem; animation-delay: -12s;">
+            <i class="fas fa-space-shuttle" style="transform: rotate(-45deg);"></i>
+        </div>
 
-        <!-- MOVING BIRDS -->
-        <div class="bird-decor" style="top: 80%; color: #37474f; animation-delay: 0s;"><i class="fas fa-dove"></i></div>
-        <div class="bird-decor" style="top: 85%; color: #546e7a; animation-delay: -5s;"><i class="fas fa-dove"></i></div>
-        <div class="bird-decor" style="top: 90%; color: #455a64; animation-delay: -10s;"><i class="fas fa-dove"></i></div>
+        <!-- FLOATING MUSIC NOTES IN SPACE -->
+        <div class="music-note-decor note-cyan" style="top: 20%; left: 30%; animation-delay: 0s;"><i class="fas fa-music"></i></div>
+        <div class="music-note-decor note-magenta" style="top: 35%; right: 40%; animation-delay: 3s; font-size: 4rem;"><i class="fas fa-quaver"></i></div>
+        <div class="music-note-decor note-gold" style="top: 55%; left: 20%; animation-delay: 7s; font-size: 2.5rem;"><i class="fas fa-music"></i></div>
+        <div class="music-note-decor note-cyan" style="top: 65%; right: 25%; animation-delay: 2s; font-size: 5rem;"><i class="fas fa-guitar"></i></div>
+        <div class="music-note-decor note-magenta" style="top: 85%; left: 35%; animation-delay: 5s;"><i class="fas fa-quaver"></i></div>
+        <div class="music-note-decor note-gold" style="top: 95%; right: 15%; animation-delay: 9s; font-size: 3rem;"><i class="fas fa-music"></i></div>
 
         <div class="container py-4 position-relative" style="z-index: 10;">
             {% for item in quizzes_data %}
@@ -298,33 +282,14 @@
             {% endfor %}
         </div>
 
-        <!-- LAND LEVEL (Mountains & Animals) - MOVED TO BOTTOM -->
-        <div class="mountain-decor" style="width: 100%; left: 0; right: 0; bottom: 0;">
-            <div class="mtn-peak"></div>
-            <div class="mtn-peak" style="transform: scale(1.5); opacity: 0.9; margin: 0 -30px;"></div>
-            <div class="mtn-peak" style="transform: scale(1.2); opacity: 1;"></div>
-            <div class="mtn-peak" style="transform: scale(1.4); opacity: 0.8; margin: 0 -40px;"></div>
+        <!-- DEEP SPACE CONCLUSION -->
+        <div class="astronaut-decor" style="bottom: 5%; left: 45%; font-size: 8rem; animation: float-planet 15s infinite ease-in-out;">
+            <i class="fas fa-satellite"></i>
         </div>
+        <div class="music-note-decor note-gold" style="bottom: 8%; right: 25%; font-size: 4rem;"><i class="fas fa-music"></i></div>
 
-        <div class="nature-decor" style="width: 100%; left: 0; right: 0; bottom: 10px;">
-            <!-- Animals -->
-            <i class="fas fa-dog animal-decor" style="left: 5%; color: #795548;"></i>
-            <i class="fas fa-cat animal-decor" style="left: 15%; color: #fb8c00;"></i>
-            <i class="fas fa-horse animal-decor" style="left: 30%; color: #5d4037;"></i>
-            <i class="fas fa-cow animal-decor" style="right: 25%; color: #424242;"></i>
-            <i class="fas fa-frog animal-decor" style="left: 55%; color: #4caf50;"></i>
-            
-            <i class="fas fa-walking people-decor" style="left: 45%; color: #2196f3;"></i>
-            <i class="fas fa-user-friends people-decor" style="right: 5%; color: #e91e63;"></i>
-            <i class="fas fa-child people-decor" style="left: 20%; color: #ffc107;"></i>
+    </div>
 
-            <div class="tree" style="left: 2%;"><div class="tree-top" style="background:#004d40;"></div><div class="tree-trunk"></div></div>
-            <div class="tree" style="right: 18%;"><div class="tree-top" style="background:#2e7d32;"></div><div class="tree-trunk"></div></div>
-            <i class="fas fa-seedling flower" style="left: 10%; color: #4caf50;"></i>
-            <i class="fas fa-heart flower" style="right: 35%; color: #f44336;"></i>
-        </div>
-    </div>
-    </div>
     
     <div class="mt-5 text-center">
         <a href="{% url 'ranking' %}" class="btn btn-gold btn-lg rounded-pill px-5 shadow-sm fw-bold">
