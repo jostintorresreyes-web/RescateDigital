@@ -3,22 +3,70 @@
 
 {% block title %}{% trans "Historia Musical de Loja - Rescate Digital" %}{% endblock %}
 
+{% block extra_css %}
+<style>
+    .musical-notes-container {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        overflow: hidden;
+        z-index: 1;
+    }
+    .note {
+        position: absolute;
+        font-size: 2.5rem;
+        opacity: 0;
+        animation: float-up 12s infinite linear;
+        color: rgba(46, 125, 50, 0.2); /* Soft green for history page */
+    }
+    @keyframes float-up {
+        0% { transform: translateY(110vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.3; }
+        90% { opacity: 0.3; }
+        100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
+    }
+    
+    #street-timeline {
+        background-image: url('{% static "images/loja_street.png" %}');
+        background-repeat: repeat-x;
+        background-size: auto 100%; /* Keep aspect ratio and fit height */
+        background-position: 0% 100%;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
-<!-- LINEA DEL TIEMPO INTERACTIVA -->
-<section class="timeline-section py-5 bg-light">
-    <div class="container text-center">
-        <h2 class="section-title text-dark mb-4" style="font-size: 2.2rem;">{% trans "Línea de tiempo de la música lojana" %}</h2>
-        <p class="text-muted lead mb-5 px-3 mx-auto" style="max-width: 800px;">
-            {% blocktrans %}Viaja a través de los siglos y descubre cómo Loja se convirtió en el epicentro sonoro del Ecuador. Explora nuestra historia mediante esta línea de tiempo interactiva.{% endblocktrans %}
+<div class="position-relative overflow-hidden">
+    <div class="musical-notes-container">
+        <i class="fas fa-music note" style="left: 5%; animation-delay: 0s;"></i>
+        <i class="fas fa-quaver note" style="left: 25%; animation-delay: 4s; font-size: 1.8rem;"></i>
+        <i class="fas fa-music note" style="left: 45%; animation-delay: 2s;"></i>
+        <i class="fas fa-guitar note" style="left: 65%; animation-delay: 7s; font-size: 2rem;"></i>
+        <i class="fas fa-music note" style="left: 85%; animation-delay: 9s;"></i>
+        <i class="fas fa-music note" style="left: 15%; animation-delay: 5s;"></i>
+    </div>
+    
+    <!-- LINEA DEL TIEMPO INTERACTIVA / CALLE DE LOJA -->
+    <section id="street-timeline" class="timeline-section py-5 position-relative reveal" style="z-index: 2; transition: background-position 0.8s ease-out; min-height: 800px; display: flex; flex-direction: column; justify-content: center;" data-animation="animate__fadeIn">
+    <!-- Dark overlay for readability -->
+    <div style="position: absolute; top:0; left:0; width:100%; height:100%; background: linear-gradient(180deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.6) 40%, rgba(0,0,0,0.8) 100%); z-index: -1;"></div>
+    
+    <div class="container text-center position-relative">
+        <h2 class="section-title mb-4 reveal" style="font-size: 2.2rem; text-shadow: 0 2px 2px rgba(255,255,255,0.8);" data-animation="animate__fadeInDown">{% trans "Línea de tiempo de la música lojana" %}</h2>
+        <p class="lead mb-5 px-3 mx-auto reveal fw-bold" style="max-width: 800px; color: #333; text-shadow: 0 1px 1px rgba(255,255,255,0.8);" data-animation="animate__fadeIn">
+            {% blocktrans %}Viaja a través de los siglos y descubre cómo Loja se convirtió en el epicentro sonoro del Ecuador. Avanza por nuestra mágica calle musical.{% endblocktrans %}
         </p>
 
         <!-- Swiper Container -->
-        <div class="swiper timelineSwiper pb-5 px-lg-5">
+        <div class="swiper timelineSwiper pb-5 px-lg-5 reveal" data-animation="animate__zoomIn">
             <div class="swiper-wrapper">
 
                 <!-- Slide 1 -->
                 <div class="swiper-slide h-auto">
-                    <div class="timeline-card p-4 bg-white shadow-sm rounded-4 text-start border-top border-4 border-warning h-100 transition-hover">
+                    <div class="timeline-card p-4 bg-white shadow-lg rounded-4 text-start border-top border-4 border-warning h-100 transition-hover" style="opacity: 0.95;">
                         <span class="badge bg-warning text-dark mb-3 px-3 py-2 fs-6 rounded-pill">{% trans "Siglos XVI–XVIII" %}</span>
                         <h4 class="fw-bold mb-3" style="color: var(--primary-color);">{% trans "Orígenes coloniales" %}</h4>
                         <ul class="text-muted ps-3 mb-0" style="font-size: 0.95rem;">
@@ -123,47 +171,47 @@
         </div>
 
         <!-- Características principales EXPANDED -->
-        <div class="mt-5 pt-4">
+        <div class="mt-5 pt-4 reveal" data-animation="animate__fadeInUp">
             <h3 class="fw-bold mb-5 text-center" style="color: var(--primary-color);">
                 <i class="fas fa-certificate text-gold me-2"></i>{% trans "Esencia de la Música Lojana" %}
             </h3>
             <div class="row g-4">
-                <div class="col-md-4">
+                <div class="col-md-4 reveal" data-animation="animate__fadeInUp">
                     <div class="card h-100 border-0 shadow-sm p-4 text-center transition-hover bg-white rounded-4">
                         <i class="fas fa-guitar fa-3x mb-3 text-success"></i>
                         <h5 class="fw-bold">{% trans "Instrumentación Tradicional" %}</h5>
                         <p class="small text-muted mb-0">{% trans "El predominio de la guitarra, el requinto y el piano como base de las melodías." %}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 reveal" data-animation="animate__fadeInUp" style="transition-delay: 0.1s;">
                     <div class="card h-100 border-0 shadow-sm p-4 text-center transition-hover bg-white rounded-4">
                         <i class="fas fa-feather-alt fa-3x mb-3 text-success"></i>
                         <h5 class="fw-bold">{% trans "Lírica Poética" %}</h5>
                         <p class="small text-muted mb-0">{% trans "Letras profundas, melancólicas y románticas que narran la vida y el alma de la región." %}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 reveal" data-animation="animate__fadeInUp" style="transition-delay: 0.2s;">
                     <div class="card h-100 border-0 shadow-sm p-4 text-center transition-hover bg-white rounded-4">
                         <i class="fas fa-university fa-3x mb-3 text-success"></i>
                         <h5 class="fw-bold">{% trans "Formación Académica" %}</h5>
                         <p class="small text-muted mb-0">{% trans "Tradición centenaria de conservatorios y escuelas que forman músicos desde la infancia." %}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 reveal" data-animation="animate__fadeInUp" style="transition-delay: 0.3s;">
                     <div class="card h-100 border-0 shadow-sm p-4 text-center transition-hover bg-white rounded-4">
                         <i class="fas fa-cross fa-3x mb-3 text-success"></i>
                         <h5 class="fw-bold">{% trans "Legado Sacro" %}</h5>
                         <p class="small text-muted mb-0">{% trans "Una riquísima producción de música religiosa que resuena en sus históricas iglesias." %}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 reveal" data-animation="animate__fadeInUp" style="transition-delay: 0.4s;">
                     <div class="card h-100 border-0 shadow-sm p-4 text-center transition-hover bg-white rounded-4">
                         <i class="fas fa-users fa-3x mb-3 text-success"></i>
                         <h5 class="fw-bold">{% trans "Identidad Mestiza" %}</h5>
                         <p class="small text-muted mb-0">{% trans "Fusión perfecta de ritmos autóctonos andinos con armonías clásicas europeas." %}</p>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-4 reveal" data-animation="animate__fadeInUp" style="transition-delay: 0.5s;">
                     <div class="card h-100 border-0 shadow-sm p-4 text-center transition-hover bg-white rounded-4">
                         <i class="fas fa-broadcast-tower fa-3x mb-3 text-success"></i>
                         <h5 class="fw-bold">{% trans "Proyección Global" %}</h5>
@@ -184,6 +232,11 @@
                 slidesPerView: 1,
                 spaceBetween: 20,
                 autoHeight: false,
+                loop: true,
+                autoplay: {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                },
                 navigation: {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev',
@@ -201,9 +254,21 @@
                         slidesPerView: 3,
                         spaceBetween: 30,
                     },
+                },
+                on: {
+                    slideChange: function () {
+                        // Parallax effect: advancing through the street
+                        const section = document.getElementById('street-timeline');
+                        if (section) {
+                            // Move the background 350px per slide change approx.
+                            const offset = this.realIndex * 350;
+                            section.style.backgroundPosition = `-${offset}px 100%`;
+                        }
+                    }
                 }
             });
         }
     });
 </script>
-{% endblock %}
+{% endblock %}
+

@@ -79,11 +79,48 @@
     }
 
     /* Figures Colors */
-    .planet-decor { position: absolute; z-index: 3; animation: float-planet 15s infinite ease-in-out; transition: all 0.5s; }
-    .planet-decor:hover { transform: scale(1.2) rotate(20deg); filter: drop-shadow(0 0 20px #fff); }
+    .planet-decor { position: absolute; z-index: 3; animation: float-planet 15s infinite ease-in-out; transition: all 0.5s; cursor: pointer; }
+    .planet-decor:hover { transform: scale(1.3) rotate(15deg); filter: drop-shadow(0 0 25px rgba(255,255,255,0.8)); }
+
+    @keyframes float-planet {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-30px) rotate(10deg); }
+    }
 
     .plane-decor { position: absolute; z-index: 4; font-size: 2.5rem; animation: fly-plane 18s infinite linear; filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.2)); }
+    @keyframes fly-plane {
+        0% { transform: translateX(-100px) translateY(0) rotate(5deg); }
+        50% { transform: translateX(50vw) translateY(-20px) rotate(-5deg); }
+        100% { transform: translateX(110vw) translateY(0) rotate(5deg); }
+    }
+
     .cloud-decor { position: absolute; color: #ffffff; opacity: 0.9; z-index: 3; filter: blur(2px); animation: drift 40s infinite linear; }
+    @keyframes drift {
+        from { transform: translateX(-200px); }
+        to { transform: translateX(110vw); }
+    }
+
+    /* Locked & Interaction Styles */
+    .locked-node { cursor: not-allowed; position: relative; }
+    .grayscale-filter { filter: grayscale(0.9) blur(1px) opacity(0.8); }
+    .locked-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0,0,0,0.1);
+        z-index: 2;
+        pointer-events: none;
+    }
+    
+    .quiz-node:not(.locked-node):hover .card {
+        transform: scale(1.08) translateY(-15px);
+        box-shadow: 0 40px 80px rgba(0,0,0,0.5) !important;
+        border: 2px solid var(--accent-color) !important;
+    }
+    
+    .cursor-not-allowed { cursor: not-allowed; }
 
     /* Road (Caminito) */
     .games-path-container::before { 
@@ -92,12 +129,13 @@
         top: 0; 
         bottom: 0; 
         left: 50%; 
-        width: 20px; 
-        background: repeating-linear-gradient(0deg, #795548 0, #795548 30px, #ffb300 30px, #ffb300 35px, #8d6e63 35px, #8d6e63 65px); 
+        width: 24px; 
+        background: repeating-linear-gradient(0deg, #5d4037 0, #5d4037 40px, #ffd54f 40px, #ffd54f 50px, #4e342e 50px, #4e342e 90px); 
         transform: translateX(-50%); 
         z-index: 1; 
-        opacity: 0.25; 
+        opacity: 0.4; 
         border-radius: 20px;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
     }
 
     /* LAND DECOR (Mountains & Animals) */
@@ -209,28 +247,40 @@
         <div class="bird-decor" style="top: 90%; color: #455a64; animation-delay: -10s;"><i class="fas fa-dove"></i></div>
 
         <div class="container py-4 position-relative" style="z-index: 10;">
-            {% for quiz in quizzes %}
-            <div class="row quiz-path-row {% if forloop.counter|divisibleby:2 %}justify-content-end{% else %}justify-content-start{% endif %}" style="margin-bottom: 160px;">
+            {% for item in quizzes_data %}
+            <div class="row quiz-path-row {% if forloop.counter|divisibleby:2 %}justify-content-end{% else %}justify-content-start{% endif %}" style="margin-bottom: 200px;">
                 <div class="col-md-6 col-lg-5 quiz-step">
-                    <div class="quiz-node">
-                        <div class="card border-0 rounded-4 shadow-lg overflow-hidden position-relative">
-                            <div class="p-3" style="background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));">
-                                <div class="rounded-circle bg-white text-primary d-flex align-items-center justify-content-center mx-auto shadow-sm fw-bold fs-4" style="width: 50px; height: 50px;">
+                    <div class="quiz-node {% if not item.is_unlocked %}locked-node{% endif %}">
+                        <div class="card border-0 rounded-4 shadow-lg overflow-hidden position-relative {% if not item.is_unlocked %}grayscale-filter{% endif %}" style="transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                            {% if not item.is_unlocked %}
+                            <div class="locked-overlay d-flex align-items-center justify-content-center">
+                                <div class="bg-dark bg-opacity-75 rounded-circle p-3 shadow">
+                                    <i class="fas fa-lock text-white fa-2x"></i>
+                                </div>
+                            </div>
+                            {% endif %}
+                            
+                            <div class="p-3" style="background: linear-gradient(45deg, {% if item.is_unlocked %}var(--primary-color), var(--secondary-color){% else %}#607d8b, #455a64{% endif %});">
+                                <div class="rounded-circle bg-white {% if item.is_unlocked %}text-primary{% else %}text-muted{% endif %} d-flex align-items-center justify-content-center mx-auto shadow-sm fw-bold fs-4" style="width: 50px; height: 50px;">
                                     {{ forloop.counter }}
                                 </div>
                             </div>
                             <div class="card-body p-4 bg-white text-center">
-                                <h5 class="fw-bold mb-3" style="color: var(--primary-color);">{{ quiz.translated_titulo }}</h5>
-                                <p class="small text-muted mb-4">{{ quiz.translated_descripcion|truncatewords:20 }}</p>
+                                <h5 class="fw-bold mb-3" style="color: {% if item.is_unlocked %}var(--primary-color){% else %}#546e7a{% endif %};">{{ item.quiz.translated_titulo }}</h5>
+                                <p class="small text-muted mb-4">{{ item.quiz.translated_descripcion|truncatewords:20 }}</p>
                                 
-                                {% if quiz.id in completados_ids %}
-                                    <div class="alert alert-success py-2 mb-0 rounded-pill border-0">
+                                {% if item.is_completed %}
+                                    <div class="alert alert-success py-2 mb-0 rounded-pill border-0 shadow-sm animate__animated animate__pulse animate__infinite">
                                         <i class="fas fa-check-circle me-1"></i> {% trans "¡Superado!" %}
                                     </div>
-                                {% else %}
-                                    <a href="{% url 'jugar_quiz' quiz.id %}" class="btn btn-dark-green rounded-pill w-100 fw-bold shadow-sm transition-hover">
-                                        {% trans "Iniciar Desafío" %} <i class="fas fa-play ms-2 fs-xs"></i>
+                                {% elif item.is_unlocked %}
+                                    <a href="{% url 'jugar_quiz' item.quiz.id %}" class="btn btn-dark-green rounded-pill w-100 fw-bold shadow-sm transition-hover py-2">
+                                        {% trans "Iniciar Desafío" %} <i class="fas fa-play-circle ms-2"></i>
                                     </a>
+                                {% else %}
+                                    <button class="btn btn-secondary rounded-pill w-100 fw-bold shadow-sm opacity-50 cursor-not-allowed py-2" disabled>
+                                        <i class="fas fa-lock me-2"></i> {% trans "Bloqueado" %}
+                                    </button>
                                 {% endif %}
                             </div>
                         </div>

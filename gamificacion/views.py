@@ -5,15 +5,26 @@ from .models import Quiz, Opcion, ResultadoQuiz
 from usuarios.models import Usuario
 
 def lista_juegos(request):
-    quizzes = Quiz.objects.all()
-    # If user is authenticated, find which quizzes they've already done
+    quizzes = Quiz.objects.all().order_by('id')
     completados_ids = []
     if request.user.is_authenticated:
-        completados_ids = ResultadoQuiz.objects.filter(usuario=request.user).values_list('quiz_id', flat=True)
+        completados_ids = list(ResultadoQuiz.objects.filter(usuario=request.user).values_list('quiz_id', flat=True))
+    
+    quizzes_data = []
+    unlocked = True
+    for q in quizzes:
+        is_completed = q.id in completados_ids
+        quizzes_data.append({
+            'quiz': q,
+            'is_completed': is_completed,
+            'is_unlocked': unlocked
+        })
+        # If this one is not completed, the next one will be locked
+        if not is_completed:
+            unlocked = False
     
     return render(request, 'gamificacion/lista_juegos.html', {
-        'quizzes': quizzes,
-        'completados_ids': completados_ids
+        'quizzes_data': quizzes_data
     })
 
 def ranking(request):
@@ -29,6 +40,14 @@ def jugar_quiz(request, quiz_id):
     if ResultadoQuiz.objects.filter(usuario=request.user, quiz=quiz).exists():
         messages.info(request, f'Ya has completado el reto "{quiz.titulo}". ¡Prueba con otro!')
         return redirect('juegos_lista')
+
+    # Check if it should be unlocked
+    # For now, we assume quizzes must be completed in ID order
+    quizzes = Quiz.objects.filter(id__lt=quiz.id)
+    for pq in quizzes:
+        if not ResultadoQuiz.objects.filter(usuario=request.user, quiz=pq).exists():
+            messages.error(request, '¡Reto bloqueado! Debes completar los desafíos anteriores en orden.')
+            return redirect('juegos_lista')
 
     preguntas = quiz.preguntas.all()
     

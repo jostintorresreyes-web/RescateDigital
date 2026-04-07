@@ -3,11 +3,99 @@
 
 {% block title %}{% trans "Ranking de Usuarios - Rescate Digital" %}{% endblock %}
 
+{% block extra_css %}
+<style>
+    .negative-margin-top {
+        margin-top: -6rem !important;
+    }
+    
+    /* PODIUM STYLES */
+    .podium-container {
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        gap: 1.5rem;
+        margin-bottom: 3rem;
+        padding-top: 2rem;
+    }
+    
+    .podium-item {
+        text-align: center;
+        transition: transform 0.3s ease;
+        flex: 1;
+        max-width: 220px;
+    }
+    
+    .podium-item:hover {
+        transform: translateY(-10px);
+    }
+    
+    .podium-card {
+        background: white;
+        border-radius: 20px 20px 0 0;
+        padding: 2rem 1rem;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .podium-rank-1 { height: 280px; z-index: 3; animation: revealUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+    .podium-rank-2 { height: 220px; z-index: 2; animation: revealUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards; opacity: 0; }
+    .podium-rank-3 { height: 180px; z-index: 1; animation: revealUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.4s forwards; opacity: 0; }
+    
+    @keyframes revealUp {
+        from { transform: translateY(100px); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .trophy-glow {
+        filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.6));
+        animation: trophyPulse 2s infinite ease-in-out;
+    }
+    
+    @keyframes trophyPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.15); }
+    }
+    
+    .podium-name { font-weight: 800; color: var(--primary-color); margin-top: 1rem; font-size: 1.1rem; }
+    .podium-points { font-weight: 700; color: var(--accent-color); font-size: 1.2rem; }
+    
+    .avatar-wrapper {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 1rem;
+        border-radius: 50%;
+        border: 4px solid #fff;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: var(--primary-color);
+        color: white;
+        font-size: 2rem;
+        font-weight: 800;
+    }
+    
+    .border-bronze { border-color: #cd7f32 !important; }
+    
+    .table-card {
+        animation: fadeIn 1s ease 0.6s forwards;
+        opacity: 0;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <!-- Banner de Cabecera -->
-<div class="gamification-section py-5 text-center shadow-sm">
-    <div class="container">
-        <i class="fas fa-crown mb-3" style="color: var(--accent-color); font-size: 3.5rem;"></i>
+<div class="gamification-section py-5 text-center shadow-sm" style="padding-bottom: 120px !important;">
+    <div class="container reveal" data-animation="animate__fadeInDown">
+        <i class="fas fa-medal mb-3" style="color: var(--accent-color); font-size: 3.5rem;"></i>
         <h1 class="display-5 fw-bold text-white">{% trans "Salón de la Fama" %}</h1>
         <p class="lead text-white opacity-75 mx-auto" style="max-width: 650px;">
             {% trans "Descubre a los mejores investigadores de nuestro patrimonio musical. ¿Podrás tú alcanzar la cima?" %}
@@ -15,55 +103,98 @@
     </div>
 </div>
 
-<div class="container py-5 mt-n5 position-relative z-2">
+<div class="container py-5 negative-margin-top position-relative z-2">
+    <!-- PODIUM SECTION -->
+    <div class="podium-container">
+        {% if usuarios|length >= 2 %}
+        <!-- 2nd PLACE -->
+        <div class="podium-item">
+            <div class="avatar-wrapper shadow-sm border-secondary text-secondary bg-light" style="width: 70px; height: 70px; font-size: 1.5rem;">
+                {{ usuarios.1.first_name|default:usuarios.1.username|make_list|first|upper }}
+            </div>
+            <div class="podium-card podium-rank-2 border-top border-4 border-secondary">
+                <i class="fas fa-trophy fa-3x mb-3" style="color: #c0c0c0;"></i>
+                <h3 class="h2 fw-bold text-secondary">2</h3>
+                <p class="podium-name mb-0">{{ usuarios.1.first_name|default:usuarios.1.username }}</p>
+                <p class="podium-points">{{ usuarios.1.puntos_acumulados }} PTS</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if usuarios|length >= 1 %}
+        <!-- 1st PLACE -->
+        <div class="podium-item">
+            <div class="avatar-wrapper shadow-lg border-warning" style="width: 100px; height: 100px; font-size: 2.5rem; margin-top: -30px;">
+                {{ usuarios.0.first_name|default:usuarios.0.username|make_list|first|upper }}
+            </div>
+            <div class="podium-card podium-rank-1 border-top border-5 border-warning">
+                <i class="fas fa-trophy fa-5x mb-3 trophy-glow" style="color: #ffd700;"></i>
+                <h3 class="h1 fw-bold text-warning" style="font-size: 3rem;">1</h3>
+                <p class="podium-name mb-0" style="font-size: 1.4rem;">{{ usuarios.0.first_name|default:usuarios.0.username }}</p>
+                <p class="podium-points" style="font-size: 1.5rem;">{{ usuarios.0.puntos_acumulados }} PTS</p>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if usuarios|length >= 3 %}
+        <!-- 3rd PLACE -->
+        <div class="podium-item">
+            <div class="avatar-wrapper shadow-sm border-bronze text-white" style="width: 60px; height: 60px; font-size: 1.3rem; background: #cd7f32;">
+                {{ usuarios.2.first_name|default:usuarios.2.username|make_list|first|upper }}
+            </div>
+            <div class="podium-card podium-rank-3 border-top border-4" style="border-color: #cd7f32 !important;">
+                <i class="fas fa-trophy fa-2x mb-3" style="color: #cd7f32;"></i>
+                <h3 class="h3 fw-bold" style="color: #cd7f32;">3</h3>
+                <p class="podium-name mb-0">{{ usuarios.2.first_name|default:usuarios.2.username }}</p>
+                <p class="podium-points">{{ usuarios.2.puntos_acumulados }} PTS</p>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <!-- TABLE FOR THE REST -->
     <div class="row justify-content-center">
-        <div class="col-lg-8">
-            <div class="card shadow border-0 rounded-4 overflow-hidden">
+        <div class="col-lg-9">
+            <div class="card table-card shadow border-0 rounded-4 overflow-hidden">
+                <div class="card-header bg-white py-3 border-bottom text-center">
+                    <h5 class="mb-0 fw-bold text-dark">{% trans "Investigadores Destacados" %}</h5>
+                </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
                         <table class="table table-hover table-borderless mb-0 text-center align-middle">
-                            <thead style="background-color: #f1f5f9; color: var(--primary-color);">
+                            <thead class="bg-light">
                                 <tr>
-                                    <th scope="col" class="py-4 text-uppercase fw-bold" style="font-size: 0.85rem; letter-spacing: 1px;">{% trans "Rango" %}</th>
-                                    <th scope="col" class="py-4 text-uppercase fw-bold text-start ps-4" style="font-size: 0.85rem; letter-spacing: 1px;">{% trans "Investigador" %}</th>
-                                    <th scope="col" class="py-4 text-uppercase fw-bold" style="font-size: 0.85rem; letter-spacing: 1px;">{% trans "Puntuación" %}</th>
+                                    <th scope="col" class="py-3 text-uppercase small fw-bold">{% trans "Rango" %}</th>
+                                    <th scope="col" class="py-3 text-uppercase small fw-bold text-start ps-5">{% trans "Investigador" %}</th>
+                                    <th scope="col" class="py-3 text-uppercase small fw-bold">{% trans "Puntuación" %}</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {% for usuario in usuarios %}
-                                <tr class="border-bottom" style="{% if forloop.counter <= 3 %}background-color: #fef8eb;{% endif %}">
-                                    <td class="py-4">
-                                        {% if forloop.counter == 1 %}
-                                            <i class="fas fa-trophy fa-2x" style="color: #ffd700; filter: drop-shadow(0px 2px 2px rgba(255,215,0,0.5));"></i>
-                                        {% elif forloop.counter == 2 %}
-                                            <i class="fas fa-medal fa-2x" style="color: #c0c0c0;"></i>
-                                        {% elif forloop.counter == 3 %}
-                                            <i class="fas fa-medal fa-2x" style="color: #cd7f32;"></i>
-                                        {% else %}
-                                            <span class="fs-5 fw-bold text-muted">{{ forloop.counter }}</span>
-                                        {% endif %}
-                                    </td>
-                                    <td class="py-4 text-start ps-4">
-                                        <div class="d-flex align-items-center">
-                                            <div class="rounded-circle text-white d-flex align-items-center justify-content-center me-3" style="width: 40px; height: 40px; background-color: var(--primary-color);">
-                                                <span class="fw-bold">{{ usuario.first_name|default:usuario.username|make_list|first|upper }}</span>
+                                    {% if forloop.counter > 3 %}
+                                    <tr class="border-bottom">
+                                        <td><span class="fs-5 fw-bold text-muted">{{ forloop.counter }}</span></td>
+                                        <td class="text-start ps-5">
+                                            <div class="d-flex align-items-center">
+                                                <div class="rounded-circle text-white d-flex align-items-center justify-content-center me-3" style="width: 38px; height: 38px; background-color: var(--primary-color);">
+                                                    <span class="fw-bold">{{ usuario.first_name|default:usuario.username|make_list|first|upper }}</span>
+                                                </div>
+                                                <span class="fw-bold text-dark">{{ usuario.first_name|default:usuario.username }}</span>
                                             </div>
-                                            <span class="fs-6 fw-bold text-dark">{{ usuario.first_name|default:usuario.username }}</span>
-                                        </div>
-                                    </td>
-                                    <td class="py-4">
-                                        <div class="badge rounded-pill fw-bold text-dark px-3 py-2" style="background-color: rgba(227, 170, 89, 0.2); font-size: 1rem;">
-                                            {{ usuario.puntos_acumulados }} <span class="ms-1" style="font-size: 0.75rem; color: var(--accent-color);">PTS</span>
-                                        </div>
-                                    </td>
-                                </tr>
+                                        </td>
+                                        <td>
+                                            <span class="badge rounded-pill bg-light text-dark border px-3 py-2 fw-bold" style="font-size: 0.95rem;">
+                                                {{ usuario.puntos_acumulados }} <span class="ms-1 text-muted" style="font-size: 0.7rem;">PTS</span>
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endif %}
                                 {% empty %}
-                                <tr>
-                                    <td colspan="3" class="text-muted py-5 text-center">
-                                        <i class="far fa-sad-tear fa-3x mb-3 text-secondary opacity-50"></i>
-                                        <h5>{% trans "El ranking está completamente vacío." %}</h5>
-                                    </td>
-                                </tr>
+                                    <tr>
+                                        <td colspan="3" class="text-center py-5">
+                                            <p class="text-muted mb-0">{% trans "El ranking está completamente vacío." %}</p>
+                                        </td>
+                                    </tr>
                                 {% endfor %}
                             </tbody>
                         </table>
@@ -72,7 +203,7 @@
             </div>
             
             <div class="text-center mt-5">
-                <a href="{% url 'juegos_lista' %}" class="btn btn-outline-green rounded-pill px-5 fw-bold shadow-sm" style="color: var(--primary-color); border-color: var(--primary-color);">
+                <a href="{% url 'juegos_lista' %}" class="btn btn-gold btn-lg rounded-pill px-5 shadow-sm">
                     <i class="fas fa-arrow-left me-2"></i> {% trans "Volver a los juegos" %}
                 </a>
             </div>
