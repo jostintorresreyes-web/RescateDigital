@@ -14,7 +14,6 @@ class ArtistaAdmin(admin.ModelAdmin):
     list_display = ('nombre', 'fecha_nacimiento')
     search_fields = ('nombre', 'biografia')
     inlines = [HitoLineaTiempoInline, ObraDestacadaInline]
-
 @admin.register(ObraDestacada)
 class ObraDestacadaAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'artista')

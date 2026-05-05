@@ -92,6 +92,39 @@
     .player-right { width: 30%; display: flex; justify-content: flex-end; align-items: center; gap: 10px; }
     .vol-slider { width: 100px; height: 4px; background: #4f4f4f; border-radius: 2px; position: relative; cursor: pointer; }
     .vol-level { height: 100%; background: #fff; width: 80%; border-radius: 2px; }
+
+    /* Estilos de la barra de busqueda */
+    .music-search-container { position: relative; width: 100%; min-width: 280px; max-width: 450px; }
+    .music-search-icon { position: absolute; top: 50%; transform: translateY(-50%); left: 16px; color: rgba(255,255,255,0.7); font-size: 1rem; transition: color 0.3s; }
+    .music-search-input {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: #ffffff;
+        padding: 12px 20px 12px 45px;
+        border-radius: 30px;
+        width: 100%;
+        font-size: 0.95rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    .music-search-input::placeholder { color: rgba(255,255,255,0.6); font-weight: 400; }
+    .music-search-input:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.15);
+        border-color: var(--music-accent, #d9258a);
+        box-shadow: 0 0 15px rgba(217, 37, 138, 0.5), 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    .music-search-input:hover { 
+        background: rgba(255, 255, 255, 0.15); 
+        border-color: rgba(255, 255, 255, 0.4);
+    }
+    .music-search-input:focus + .music-search-icon, 
+    .music-search-input:focus ~ .music-search-icon {
+        color: var(--music-accent, #d9258a);
+    }
 </style>
 {% endblock %}
 
@@ -110,8 +143,12 @@
         </div>
     </div>
 
-    <div class="controls-bar">
+    <div class="controls-bar d-flex justify-content-between align-items-center flex-wrap gap-3">
         <button class="play-main-btn" onclick="togglePlayback()"><i class="fas fa-play" id="btnMainPlay"></i></button>
+        <div class="music-search-container">
+            <i class="fas fa-search music-search-icon"></i>
+            <input type="text" id="searchInput" placeholder="{% trans 'Buscar por título, artista o género...' %}" class="music-search-input">
+        </div>
     </div>
 
     <div class="px-4">
@@ -294,8 +331,34 @@
         document.getElementById('btnMainPlay').className = `fas ${icon}`;
     }
 
-    function nextTrack() { playTrack((currentIndex + 1) % playlist.length); }
-    function prevTrack() { playTrack((currentIndex - 1 + playlist.length) % playlist.length); }
+    function getNextVisibleIndex(startIndex) {
+        if (playlist.length === 0) return -1;
+        for(let i = 1; i <= playlist.length; i++) {
+            let index = (startIndex + i) % playlist.length;
+            let row = document.getElementById('track-' + index);
+            if(row && row.style.display !== 'none') return index;
+        }
+        return startIndex;
+    }
+
+    function getPrevVisibleIndex(startIndex) {
+        if (playlist.length === 0) return -1;
+        for(let i = 1; i <= playlist.length; i++) {
+            let index = (startIndex - i + playlist.length) % playlist.length;
+            let row = document.getElementById('track-' + index);
+            if(row && row.style.display !== 'none') return index;
+        }
+        return startIndex;
+    }
+
+    function nextTrack() { 
+        let nextIdx = getNextVisibleIndex(currentIndex === -1 ? -1 : currentIndex);
+        if (nextIdx !== -1) playTrack(nextIdx); 
+    }
+    function prevTrack() { 
+        let prevIdx = getPrevVisibleIndex(currentIndex === -1 ? 0 : currentIndex);
+        if (prevIdx !== -1) playTrack(prevIdx); 
+    }
 
     function extractId(url) {
         const match = url.match(/^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/);
@@ -339,6 +402,32 @@
         if (ytReady) ytPlayer.setVolume(vol * 100);
         document.getElementById('vLevel').style.width = (vol * 100) + '%';
     });
+
+    // Search Filter
+    const searchInput = document.getElementById('searchInput');
+    if (searchInput) {
+        searchInput.addEventListener('input', function(e) {
+            const term = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('.track-row');
+            let hasVisible = false;
+            
+            rows.forEach(row => {
+                const title = row.querySelector('.track-title').textContent.toLowerCase();
+                const artist = row.querySelectorAll('td')[2].textContent.toLowerCase();
+                const genre = row.querySelectorAll('td')[3].textContent.toLowerCase();
+                
+                if (title.includes(term) || artist.includes(term) || genre.includes(term)) {
+                    row.style.display = '';
+                    hasVisible = true;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+
+            // If we are playing a song and the list was filtered, we don't stop the music.
+            // nextTrack() will automatically pick the next visible song.
+        });
+    }
 
 </script>
 {% endblock %}

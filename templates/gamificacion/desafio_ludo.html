@@ -1,0 +1,696 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Ludo Musical" %}{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+<style>
+    body {
+        background-color: #2c3e50;
+        font-family: 'Fredoka One', cursive, sans-serif;
+        color: #fff;
+    }
+
+    .ludo-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem 1rem;
+        min-height: 85vh;
+    }
+
+    .title {
+        color: #f1c40f;
+        font-size: 3rem;
+        text-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+
+    /* Player Status Area */
+    .players-panel {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        width: 100%;
+        max-width: 900px;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .player-card {
+        background: rgba(0,0,0,0.5);
+        border: 4px solid #7f8c8d;
+        border-radius: 15px;
+        padding: 1rem;
+        text-align: center;
+        min-width: 180px;
+        transition: 0.3s;
+        opacity: 0.5;
+    }
+
+    .player-card.active {
+        opacity: 1;
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(255,255,255,0.5);
+    }
+
+    .p-blue { border-color: #3498db; }
+    .p-blue.active { box-shadow: 0 0 20px #3498db; }
+    .p-red { border-color: #e74c3c; }
+    .p-red.active { box-shadow: 0 0 20px #e74c3c; }
+    .p-green { border-color: #2ecc71; }
+    .p-green.active { box-shadow: 0 0 20px #2ecc71; }
+    .p-yellow { border-color: #f1c40f; }
+    .p-yellow.active { box-shadow: 0 0 20px #f1c40f; }
+
+    .player-name { font-size: 1.2rem; margin-bottom: 0.5rem; }
+
+    /* The Board */
+    .board-wrapper {
+        background: #fff;
+        padding: 10px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        margin-bottom: 2rem;
+    }
+
+    .board {
+        display: grid;
+        grid-template-columns: repeat(15, 1fr);
+        grid-template-rows: repeat(15, 1fr);
+        width: 100%;
+        max-width: 600px;
+        aspect-ratio: 1;
+        border: 2px solid #333;
+        background: #fff;
+        position: relative;
+    }
+
+    .cell {
+        border: 1px solid #ccc;
+        box-sizing: border-box;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    /* Home Bases */
+    .home-base {
+        grid-column: span 6;
+        grid-row: span 6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 2px solid #333;
+    }
+    .home-red { background: #e74c3c; grid-area: 1 / 1 / 7 / 7; }
+    .home-green { background: #2ecc71; grid-area: 1 / 10 / 7 / 16; }
+    .home-blue { background: #3498db; grid-area: 10 / 1 / 16 / 7; }
+    .home-yellow { background: #f1c40f; grid-area: 10 / 10 / 16 / 16; }
+
+    .home-inner {
+        width: 60%;
+        height: 60%;
+        background: #fff;
+        border-radius: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    /* Center Triangle Area */
+    .center-home {
+        grid-area: 7 / 7 / 10 / 10;
+        background: #333;
+        position: relative;
+        border: 1px solid #333;
+    }
+    .center-home::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: conic-gradient(
+            #e74c3c 45deg,
+            #2ecc71 45deg 135deg,
+            #f1c40f 135deg 225deg,
+            #3498db 225deg 315deg,
+            #e74c3c 315deg
+        );
+    }
+
+    /* Colored Tracks */
+    .track-red { background: #fadbd8; }
+    .track-green { background: #d5f5e3; }
+    .track-blue { background: #d6eaf8; }
+    .track-yellow { background: #fcf3cf; }
+    
+    .start-red { background: #e74c3c !important; }
+    .start-green { background: #2ecc71 !important; }
+    .start-blue { background: #3498db !important; }
+    .start-yellow { background: #f1c40f !important; }
+
+    .star {
+        color: #fff;
+        font-size: 1.2rem;
+        text-shadow: 0 0 2px #000;
+    }
+
+    /* Tokens */
+    .token {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        border: 2px solid #fff;
+        box-shadow: 0 3px 5px rgba(0,0,0,0.5);
+        z-index: 10;
+        transition: all 0.3s ease-in-out;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        margin: 2px;
+    }
+    .token::after {
+        content: '';
+        width: 40%; height: 40%;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.3);
+    }
+
+    .t-blue { background: radial-gradient(circle at 30% 30%, #5dade2, #2874a6); }
+    .t-red { background: radial-gradient(circle at 30% 30%, #ec7063, #b03a2e); }
+    .t-green { background: radial-gradient(circle at 30% 30%, #58d68d, #1d8348); }
+    .t-yellow { background: radial-gradient(circle at 30% 30%, #f4d03f, #b7950b); }
+
+    /* Controls */
+    .controls {
+        text-align: center;
+        background: rgba(0,0,0,0.5);
+        padding: 2rem;
+        border-radius: 15px;
+        width: 100%;
+        max-width: 600px;
+    }
+
+    .dice-btn {
+        background: #fff;
+        color: #000;
+        border: 4px solid #333;
+        padding: 1rem 3rem;
+        font-size: 1.5rem;
+        font-family: 'Fredoka One', cursive;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: 0.3s;
+        box-shadow: 0 5px 0 #999;
+    }
+
+    .dice-btn:hover { transform: translateY(2px); box-shadow: 0 3px 0 #999; }
+    .dice-btn:disabled { background: #7f8c8d; box-shadow: 0 5px 0 #34495e; cursor: not-allowed; }
+
+    .msg-box {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+        min-height: 40px;
+    }
+
+    .dice-result {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        display: inline-block;
+    }
+
+    .dice-anim { animation: roll 0.5s linear; }
+
+    @keyframes roll {
+        0% { transform: rotate(0deg) scale(1); }
+        50% { transform: rotate(180deg) scale(1.2); }
+        100% { transform: rotate(360deg) scale(1); }
+    }
+
+    /* Overlays */
+    .overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 2rem;
+    }
+
+    footer.site-footer { display: none !important; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="ludo-container">
+    <h1 class="title">LUDO MUSICAL</h1>
+    <p class="subtitle">{% trans "Lanza el dado, cae en las estrellas musicales y llega al centro." %}</p>
+
+    <!-- Players Info -->
+    <div class="players-panel">
+        <div class="player-card p-blue" id="card-0">
+            <div class="player-name">{{ request.user.first_name|default:request.user.username|upper }}</div>
+            <small>TÚ</small>
+        </div>
+        <div class="player-card p-red" id="card-1">
+            <div class="player-name">{{ top_user.first_name|default:top_user.username|upper }}</div>
+            <small>LÍDER</small>
+        </div>
+        <div class="player-card p-green" id="card-2">
+            <div class="player-name">MEDARDO L.</div>
+            <small>CPU</small>
+        </div>
+        <div class="player-card p-yellow" id="card-3">
+            <div class="player-name">SEGUNDO C.</div>
+            <small>CPU</small>
+        </div>
+    </div>
+
+    <!-- The Board -->
+    <div class="board-wrapper">
+        <div class="board" id="board">
+            <!-- Grid generated by JS -->
+        </div>
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <div class="dice-result" id="dice-display"><i class="fas fa-dice"></i></div>
+        <div class="msg-box" id="msg-display">¡Haz clic para iniciar tu turno!</div>
+        <button class="dice-btn" id="roll-btn">TIRAR DADO</button>
+    </div>
+
+    <!-- Trivia Overlay -->
+    <div id="trivia-overlay" class="overlay d-none">
+        <h1 style="color: #f1c40f; margin-bottom: 1rem;"><i class="fas fa-star"></i> TRIVIA MUSICAL</h1>
+        <h3 id="trivia-q" style="max-width: 600px; line-height: 1.5; margin-bottom: 2rem;"></h3>
+        <div id="trivia-options" style="display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 400px;"></div>
+    </div>
+
+    <!-- Result Overlay -->
+    <div id="end-overlay" class="overlay d-none">
+        <h1 id="end-title" style="font-size: 4rem;"></h1>
+        <p id="end-msg" class="mt-3 mb-5 text-white" style="font-size: 1.5rem;"></p>
+        <form id="result-form" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="puntos" id="points-input" value="0">
+        </form>
+    </div>
+
+    <!-- HIDDEN YOUTUBE PLAYER -->
+    <div id="yt-player" style="position:absolute; top:-9999px; left:-9999px;"></div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const board = document.getElementById('board');
+
+    // YOUTUBE AUDIO BACKGROUND
+    let ytPlayer;
+    let ytReady = false;
+    let playQueued = false;
+    let musicStarted = false;
+
+    function onYouTubeIframeAPIReady() {
+        ytPlayer = new YT.Player('yt-player', {
+            height: '1',
+            width: '1',
+            videoId: 'IH-PQ6lZ5X4',
+            playerVars: { 'autoplay': 0, 'controls': 0, 'disablekb': 1, 'fs': 0, 'rel': 0, 'loop': 1, 'playlist': 'IH-PQ6lZ5X4', 'start': 1980 },
+            events: {
+                'onReady': () => { 
+                    ytReady = true; 
+                    if (playQueued) {
+                        ytPlayer.setVolume(35);
+                        ytPlayer.playVideo();
+                    }
+                }
+            }
+        });
+    }
+
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Perimeter path mapping (52 steps)
+    const pPath = [
+        [6,1], [6,2], [6,3], [6,4], [6,5],
+        [5,6], [4,6], [3,6], [2,6], [1,6], [0,6],
+        [0,7], [0,8], [1,8], [2,8], [3,8], [4,8], [5,8],
+        [6,9], [6,10], [6,11], [6,12], [6,13], [6,14],
+        [7,14], [8,14], [8,13], [8,12], [8,11], [8,10], [8,9],
+        [9,8], [10,8], [11,8], [12,8], [13,8], [14,8],
+        [14,7], [14,6], [13,6], [12,6], [11,6], [10,6], [9,6],
+        [8,5], [8,4], [8,3], [8,2], [8,1], [8,0],
+        [7,0], [6,0]
+    ];
+
+    // Home stretches
+    const hRed = [[7,1], [7,2], [7,3], [7,4], [7,5], [7,6]];
+    const hGreen = [[1,7], [2,7], [3,7], [4,7], [5,7], [6,7]];
+    const hYellow = [[7,13], [7,12], [7,11], [7,10], [7,9], [7,8]];
+    const hBlue = [[13,7], [12,7], [11,7], [10,7], [9,7], [8,7]];
+
+    // Cell DOM references
+    const cells = {};
+
+    function getCellId(r, c) { return `c_${r}_${c}`; }
+
+    // Render Board Cells
+    for(let r=0; r<15; r++) {
+        for(let c=0; c<15; c++) {
+            // Check if it's home bases or center
+            if(r<6 && c<6) continue; // Red base handled manually
+            if(r<6 && c>8) continue; // Green base
+            if(r>8 && c<6) continue; // Blue base
+            if(r>8 && c>8) continue; // Yellow base
+            if(r>=6 && r<=8 && c>=6 && c<=8) continue; // Center
+
+            const cell = document.createElement('div');
+            cell.className = 'cell';
+            cell.id = getCellId(r, c);
+            cell.style.gridArea = `${r+1} / ${c+1} / ${r+2} / ${c+2}`;
+            
+            // Mark home stretches
+            if(r===7 && c>=1 && c<=5) cell.classList.add('track-red');
+            if(c===7 && r>=1 && r<=5) cell.classList.add('track-green');
+            if(r===7 && c>=9 && c<=13) cell.classList.add('track-yellow');
+            if(c===7 && r>=9 && r<=13) cell.classList.add('track-blue');
+
+            // Mark starts
+            if(r===6 && c===1) cell.classList.add('start-red');
+            if(r===1 && c===8) cell.classList.add('start-green');
+            if(r===8 && c===13) cell.classList.add('start-yellow');
+            if(r===13 && c===6) cell.classList.add('start-blue');
+
+            // Mark stars
+            const stars = ["6_2", "2_8", "8_12", "12_6", "2_6", "6_12", "12_8", "8_2"];
+            if(stars.includes(`${r}_${c}`)) {
+                cell.innerHTML = '<i class="fas fa-star star" style="color: #f1c40f;"></i>';
+                cell.dataset.star = "true";
+            }
+
+            board.appendChild(cell);
+            cells[getCellId(r, c)] = cell;
+        }
+    }
+
+    // Add Base blocks
+    const bRed = document.createElement('div'); bRed.className = 'home-base home-red'; bRed.id = 'base-red';
+    bRed.innerHTML = `<div class="home-inner" id="inner-red"></div>`; board.appendChild(bRed);
+    
+    const bGreen = document.createElement('div'); bGreen.className = 'home-base home-green'; bGreen.id = 'base-green';
+    bGreen.innerHTML = `<div class="home-inner" id="inner-green"></div>`; board.appendChild(bGreen);
+    
+    const bBlue = document.createElement('div'); bBlue.className = 'home-base home-blue'; bBlue.id = 'base-blue';
+    bBlue.innerHTML = `<div class="home-inner" id="inner-blue"></div>`; board.appendChild(bBlue);
+    
+    const bYellow = document.createElement('div'); bYellow.className = 'home-base home-yellow'; bYellow.id = 'base-yellow';
+    bYellow.innerHTML = `<div class="home-inner" id="inner-yellow"></div>`; board.appendChild(bYellow);
+
+    // Center
+    const center = document.createElement('div'); center.className = 'center-home';
+    board.appendChild(center);
+
+    // Game Logic
+    const trivias = [
+        { q: "¿En qué siglo se instauró el Conservatorio de Música?", o: ["Siglo XIX", "Siglo XX", "Siglo XXI"], a: "Siglo XX" },
+        { q: "¿Qué pasillo es considerado el himno lojano?", o: ["Guayaquil de mis amores", "Alma Lojana", "Chola Cuencana"], a: "Alma Lojana" },
+        { q: "¿Qué instrumento domina la música folclórica andina?", o: ["Rondador", "Marimba", "Arpa"], a: "Rondador" },
+        { q: "¿Quién compuso 'Pequeña Ciudadana'?", o: ["Segundo Cueva Celi", "Medardo Luzuriaga", "Julio Jaramillo"], a: "Segundo Cueva Celi" }
+    ];
+
+    const players = [
+        { name: "Tú", class: 'p-blue', color: 'blue', tkClass: 't-blue', startPos: 39, homeStretch: hBlue, isHuman: true, pos: -1, state: 'base' },
+        { name: "Líder", class: 'p-red', color: 'red', tkClass: 't-red', startPos: 0, homeStretch: hRed, isHuman: false, pos: -1, state: 'base' },
+        { name: "Medardo", class: 'p-green', color: 'green', tkClass: 't-green', startPos: 13, homeStretch: hGreen, isHuman: false, pos: -1, state: 'base' },
+        { name: "Segundo C.", class: 'p-yellow', color: 'yellow', tkClass: 't-yellow', startPos: 26, homeStretch: hYellow, isHuman: false, pos: -1, state: 'base' }
+    ];
+
+    let currentTurn = 0;
+    let gameActive = true;
+
+    // Initialize tokens in base
+    players.forEach(p => {
+        const token = document.createElement('div');
+        token.className = `token ${p.tkClass}`;
+        p.tokenEl = token;
+        document.getElementById(`inner-${p.color}`).appendChild(token);
+    });
+
+    const rollBtn = document.getElementById('roll-btn');
+    const msgBox = document.getElementById('msg-display');
+    const diceDisp = document.getElementById('dice-display');
+
+    function updateTurnUI() {
+        document.querySelectorAll('.player-card').forEach(c => c.classList.remove('active'));
+        document.getElementById(`card-${currentTurn}`).classList.add('active');
+
+        if(players[currentTurn].isHuman) {
+            msgBox.innerText = "¡Es tu turno! Tira el dado.";
+            rollBtn.disabled = false;
+        } else {
+            msgBox.innerText = `Turno de ${players[currentTurn].name}...`;
+            rollBtn.disabled = true;
+            setTimeout(autoRoll, 1000);
+        }
+    }
+
+    rollBtn.onclick = () => {
+        if(!players[currentTurn].isHuman) return;
+        
+        if (!musicStarted) {
+            musicStarted = true;
+            if (ytReady) {
+                ytPlayer.setVolume(35);
+                ytPlayer.playVideo();
+            } else {
+                playQueued = true;
+            }
+        }
+
+        rollBtn.disabled = true;
+        processRoll();
+    };
+
+    function autoRoll() {
+        if(!gameActive) return;
+        processRoll();
+    }
+
+    function processRoll() {
+        const diceClasses = ['fa-dice-one', 'fa-dice-two', 'fa-dice-three', 'fa-dice-four', 'fa-dice-five', 'fa-dice-six'];
+        diceDisp.classList.add('dice-anim');
+        
+        setTimeout(() => {
+            diceDisp.classList.remove('dice-anim');
+            // Bias dice slightly to make game faster: higher chance of 5 and 6
+            const r = Math.random();
+            let roll = Math.floor(Math.random() * 6) + 1;
+            if(r > 0.7) roll = 6;
+            
+            diceDisp.innerHTML = `<i class="fas ${diceClasses[roll - 1]}"></i>`;
+            msgBox.innerText = `${players[currentTurn].name} sacó un ${roll}!`;
+            
+            setTimeout(() => movePlayer(roll), 1000);
+        }, 500);
+    }
+
+    function getCoordsForPlayer(p) {
+        if (p.state === 'base') return null; // in base
+        if (p.state === 'home') {
+            return p.homeStretch[p.pos];
+        }
+        // In track
+        let actualIndex = (p.startPos + p.pos) % 52;
+        return pPath[actualIndex];
+    }
+
+    function renderPositions() {
+        players.forEach(p => {
+            if (p.state === 'base') {
+                document.getElementById(`inner-${p.color}`).appendChild(p.tokenEl);
+            } else if (p.state === 'win') {
+                center.appendChild(p.tokenEl);
+            } else {
+                let coords = getCoordsForPlayer(p);
+                if(coords) {
+                    let cell = cells[getCellId(coords[0], coords[1])];
+                    cell.appendChild(p.tokenEl);
+                }
+            }
+        });
+    }
+
+    function movePlayer(steps) {
+        let p = players[currentTurn];
+        
+        // Out of base condition (Normally you need a 6, but we simplify to any roll to make it fast)
+        if(p.state === 'base') {
+            p.state = 'track';
+            p.pos = 0; // Starts at start position
+            renderPositions();
+            msgBox.innerText = `${p.name} ha salido de la base!`;
+            setTimeout(checkSpecial, 1000, p);
+            return;
+        }
+
+        if(p.state === 'track') {
+            p.pos += steps;
+            if(p.pos > 50) {
+                // Enter home stretch
+                let excess = p.pos - 51;
+                p.state = 'home';
+                p.pos = excess;
+            }
+        } else if (p.state === 'home') {
+            p.pos += steps;
+            if(p.pos > 5) {
+                // Bounce back if overshoot
+                p.pos = 5 - (p.pos - 5);
+            }
+        }
+
+        renderPositions();
+
+        if(p.state === 'home' && p.pos === 5) {
+            p.state = 'win';
+            renderPositions();
+            triggerWin(p);
+            return;
+        }
+
+        setTimeout(checkSpecial, 500, p);
+    }
+
+    function checkSpecial(p) {
+        if(p.state === 'track') {
+            let coords = getCoordsForPlayer(p);
+            let cell = cells[getCellId(coords[0], coords[1])];
+            
+            // Check collision with others (eat them)
+            players.forEach(other => {
+                if(other !== p && other.state === 'track') {
+                    let otherC = getCoordsForPlayer(other);
+                    if(otherC[0] === coords[0] && otherC[1] === coords[1]) {
+                        // Collision!
+                        if(!cell.dataset.star) {
+                            // Eat unless safe zone (star)
+                            other.state = 'base';
+                            other.pos = -1;
+                            msgBox.innerText = `¡${p.name} se ha comido la ficha de ${other.name}!`;
+                            renderPositions();
+                        }
+                    }
+                }
+            });
+
+            if(cell.dataset.star) {
+                if(p.isHuman) showTrivia(p);
+                else {
+                    const cpuWin = Math.random() > 0.3;
+                    if(cpuWin) {
+                        msgBox.innerText = `${p.name} adivinó la trivia musical y avanza 3 casillas.`;
+                        setTimeout(() => movePlayer(3), 2000);
+                        return;
+                    } else {
+                        msgBox.innerText = `${p.name} falló la trivia.`;
+                        setTimeout(nextTurn, 2000);
+                        return;
+                    }
+                }
+                return;
+            }
+        }
+        setTimeout(nextTurn, 1000);
+    }
+
+    function showTrivia(p) {
+        const tOverlay = document.getElementById('trivia-overlay');
+        const qBox = document.getElementById('trivia-q');
+        const oBox = document.getElementById('trivia-options');
+        
+        const qData = trivias[Math.floor(Math.random() * trivias.length)];
+        let opts = [...qData.o].sort(() => Math.random() - 0.5);
+
+        qBox.innerText = qData.q;
+        oBox.innerHTML = '';
+        
+        opts.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'dice-btn';
+            btn.style.fontSize = '1.2rem';
+            btn.style.padding = '0.5rem 1rem';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                tOverlay.classList.add('d-none');
+                if(opt === qData.a) {
+                    msgBox.innerText = `¡Correcto! Avanzas 3 casillas.`;
+                    setTimeout(() => movePlayer(3), 1000);
+                } else {
+                    msgBox.innerText = `Incorrecto. Te quedas donde estás.`;
+                    setTimeout(nextTurn, 1500);
+                }
+            };
+            oBox.appendChild(btn);
+        });
+
+        tOverlay.classList.remove('d-none');
+    }
+
+    function nextTurn() {
+        if(!gameActive) return;
+        currentTurn = (currentTurn + 1) % players.length;
+        updateTurnUI();
+    }
+
+    function triggerWin(p) {
+        if (ytReady) ytPlayer.fadeVolume ? ytPlayer.stopVideo() : ytPlayer.pauseVideo();
+        gameActive = false;
+        const eOver = document.getElementById('end-overlay');
+        const tit = document.getElementById('end-title');
+        const msg = document.getElementById('end-msg');
+        const inp = document.getElementById('points-input');
+
+        eOver.classList.remove('d-none');
+        
+        if(p.isHuman) {
+            tit.innerText = "¡HAS GANADO!";
+            tit.style.color = "#2ecc71";
+            msg.innerText = "¡Llegaste al centro del tablero primero!";
+            inp.value = 50;
+        } else if (p.class === 'p-red') {
+            tit.innerText = "GANÓ EL LÍDER";
+            tit.style.color = "#e74c3c";
+            msg.innerText = "El Líder demuestra una vez más su velocidad.";
+            inp.value = 10;
+        } else {
+            tit.innerText = `GANÓ ${p.name.toUpperCase()}`;
+            tit.style.color = "#f1c40f";
+            msg.innerText = `Un artista legendario se llevó la victoria.`;
+            inp.value = 15;
+        }
+
+        setTimeout(() => {
+            document.getElementById('result-form').submit();
+        }, 4000);
+    }
+
+    // Start
+    updateTurnUI();
+</script>
+{% endblock %}

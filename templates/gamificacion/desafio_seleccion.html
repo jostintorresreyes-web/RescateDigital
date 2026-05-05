@@ -75,6 +75,34 @@
     .card-undertale i { color: #ff0000; filter: drop-shadow(0 0 8px #ff0000); }
     .card-undertale h2 { font-weight: bold; font-family: 'Courier New', Courier, monospace; letter-spacing: 2px; }
 
+    /* Cartas Style */
+    .card-cartas {
+        border-color: rgba(241, 196, 15, 0.3);
+        font-family: 'Cinzel', serif;
+    }
+    .card-cartas:hover {
+        transform: translateY(-10px);
+        background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(0,0,0,0.9));
+        border-color: #f1c40f;
+        box-shadow: 0 15px 40px rgba(241, 196, 15, 0.3);
+    }
+    .card-cartas i { color: #f1c40f; filter: drop-shadow(0 0 10px #f1c40f); }
+    .card-cartas h2 { color: #f1c40f; font-weight: bold; letter-spacing: 2px; text-shadow: 0 0 5px #f1c40f; }
+
+    /* Ludo Style */
+    .card-ludo {
+        border-color: rgba(46, 204, 113, 0.3);
+        font-family: 'Fredoka One', cursive, sans-serif;
+    }
+    .card-ludo:hover {
+        transform: translateY(-10px);
+        background: linear-gradient(135deg, rgba(39, 174, 96, 0.9), rgba(0,0,0,0.9));
+        border-color: #2ecc71;
+        box-shadow: 0 15px 40px rgba(46, 204, 113, 0.3);
+    }
+    .card-ludo i { color: #2ecc71; filter: drop-shadow(0 0 10px #2ecc71); }
+    .card-ludo h2 { color: #2ecc71; font-weight: bold; letter-spacing: 2px; text-shadow: 0 0 5px #2ecc71; }
+
     .leader-badge {
         font-size: 1.5rem;
         margin-bottom: 3rem;
@@ -104,20 +132,38 @@
 
     <div class="row w-100 justify-content-center g-4">
         <!-- SYNTHWAVE -->
-        <div class="col-md-5 col-lg-4">
+        <div class="col-md-6">
             <a href="?mode=synthwave" class="select-card card-synthwave text-decoration-none">
                 <i class="fas fa-bolt fa-5x mb-4"></i>
                 <h2 class="mb-3">NEÓN CYBERPUNK</h2>
-                <p class="opacity-75 mb-0">{% trans "Modo frenético. El tiempo es tu peor enemigo. Responde rápido antes de que tu energía se agote completamente." %}</p>
+                <p class="opacity-75 mb-0">{% trans "Modo frenético. El tiempo es tu peor enemigo. Responde rápido antes de que tu energía se agote." %}</p>
             </a>
         </div>
         
         <!-- UNDERTALE -->
-        <div class="col-md-5 col-lg-4">
+        <div class="col-md-6">
             <a href="?mode=undertale" class="select-card card-undertale text-decoration-none">
                 <i class="fas fa-heart fa-5x mb-4"></i>
                 <h2 class="mb-3">* DETERMINACIÓN</h2>
-                <p class="opacity-75 mb-0" style="font-size: 1.1rem; line-height: 1.5;">{% trans "* Un combate táctico donde cada decisión pesa. Evita que el líder destroce tu alma." %}</p>
+                <p class="opacity-75 mb-0" style="font-size: 1.1rem; line-height: 1.5;">{% trans "* Combate táctico donde cada decisión pesa. Evita que el líder destroce tu alma." %}</p>
+            </a>
+        </div>
+
+        <!-- CARTAS -->
+        <div class="col-md-6">
+            <a href="?mode=cartas" class="select-card card-cartas text-decoration-none">
+                <i class="fas fa-layer-group fa-5x mb-4"></i>
+                <h2 class="mb-3">DUELO DE CARTAS</h2>
+                <p class="opacity-75 mb-0" style="font-size: 1.1rem; line-height: 1.5;">{% trans "Usa tu mazo estratégicamente. Responde preguntas y juega comodines para vencer al líder." %}</p>
+            </a>
+        </div>
+
+        <!-- LUDO -->
+        <div class="col-md-6">
+            <a href="?mode=ludo" class="select-card card-ludo text-decoration-none">
+                <i class="fas fa-dice fa-5x mb-4"></i>
+                <h2 class="mb-3">LUDO MUSICAL</h2>
+                <p class="opacity-75 mb-0" style="font-size: 1.1rem; line-height: 1.5;">{% trans "Una carrera táctica con los artistas lojanos. Lanza los dados y llega a la meta antes que el líder." %}</p>
             </a>
         </div>
     </div>

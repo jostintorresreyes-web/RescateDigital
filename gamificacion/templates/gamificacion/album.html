@@ -143,8 +143,8 @@
         <div class="row align-items-center">
             <div class="col-md-7 position-relative z-2">
                 <span class="badge bg-warning text-dark px-3 py-2 text-uppercase mb-3 fw-bold letter-spacing-1">{% trans "Gamificación" %}</span>
-                <h1 class="display-3 fw-bold text-white mb-3" style="text-shadow: 0 5px 15px rgba(0,0,0,0.5);">{% trans "Álbum de Colección" %}</h1>
-                <p class="lead text-white opacity-75 mb-0">{% trans "Descubre las figuras y elementos legendarios que cimentaron la vida musical del sur. A medida que juegues y ganes puntos, despertarás estos cromos para siempre." %}</p>
+                <h1 class="display-3 fw-bold text-white mb-3" style="text-shadow: 0 5px 15px rgba(0,0,0,0.5);">{% trans "Insignias" %}</h1>
+                <p class="lead text-white opacity-75 mb-0">{% trans "Descubre las figuras y elementos legendarios que cimentaron la vida musical del sur. A medida que juegues y ganes puntos, desbloquearás estas insignias para siempre." %}</p>
             </div>
             <div class="col-md-5 text-center position-relative z-2 mt-4 mt-md-0 border-start border-warning border-opacity-25">
                 <i class="fas fa-gem fa-4x text-warning mb-3" style="filter: drop-shadow(0 0 20px rgba(227, 170, 89, 0.5));"></i>
@@ -169,7 +169,7 @@
                             <span class="rareza-badge mt-2" style="color: {{ cromo.color_borde }}; border-color: {{ cromo.color_borde }};">{{ cromo.rareza }}</span>
                         {% else %}
                             <i class="fas fa-lock cromo-icon"></i>
-                            <h3 class="cromo-title text-muted opacity-50">{% trans "Cromo Oculto" %}</h3>
+                            <h3 class="cromo-title text-muted opacity-50">{% trans "Insignia Oculta" %}</h3>
                             <p class="small text-muted mt-3 mb-0 fw-bold letter-spacing-1">{% trans "REQUIERE" %} {{ cromo.puntos_requeridos }} PTS</p>
                             <div class="progress mt-3 w-100 bg-dark border border-secondary" style="height: 6px; border-radius: 10px;">
                                 <div class="progress-bar bg-warning" role="progressbar" style="width: {% widthratio user_points cromo.puntos_requeridos 100 %}%;"></div>
@@ -193,8 +193,8 @@
         </div>
         {% empty %}
         <div class="col-12 text-center py-5">
-            <i class="fas fa-box-open fa-4x text-muted mb-3"></i>
-            <h4 class="text-white">{% trans "Aún no hay cromos disponibles en el álbum." %}</h4>
+            <i class="fas fa-medal fa-4x text-muted mb-3"></i>
+            <h4 class="text-white">{% trans "Aún no hay insignias disponibles." %}</h4>
         </div>
         {% endfor %}
     </div>

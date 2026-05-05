@@ -94,12 +94,12 @@ def jugar_quiz(request, quiz_id):
 
         if nuevos_cromos.exists():
             nombres = ", ".join([c.nombre for c in nuevos_cromos])
-            base_msg += f' 🌟 ¡Felicidades! Has desbloqueado nuevos cromos para tu colección: {nombres}. ¡Revisa tu Álbum!'
-            # Create specific notification for unlocked cromos
+            base_msg += f' 🌟 ¡Felicidades! Has desbloqueado nuevas insignias para tu colección: {nombres}. ¡Revisa tus Insignias!'
+            # Create specific notification for unlocked insignias
             Notificacion.objects.create(
                 usuario=request.user,
-                mensaje=f'¡Desbloqueaste nuevos cromos! Revisa tu Álbum para ver tus recompensas.',
-                icono='fas fa-book-open text-warning'
+                mensaje=f'¡Desbloqueaste nuevas insignias! Revisa tus Insignias para ver tus recompensas.',
+                icono='fas fa-award text-warning'
             )
             
         messages.success(request, base_msg)
@@ -132,12 +132,17 @@ def desafio_velocidad(request):
         return render(request, 'gamificacion/desafio_synthwave.html', {'top_user': top_user})
     elif mode == 'undertale':
         return render(request, 'gamificacion/desafio_undertale.html', {'top_user': top_user})
+    elif mode == 'cartas':
+        return render(request, 'gamificacion/desafio_cartas.html', {'top_user': top_user})
+    elif mode == 'ludo':
+        return render(request, 'gamificacion/desafio_ludo.html', {'top_user': top_user})
     else:
         return render(request, 'gamificacion/desafio_seleccion.html', {'top_user': top_user})
 
 @login_required(login_url='login')
 def album_cromos(request):
-    cromos = Cromo.objects.all().order_by('puntos_requeridos')
+    # Convertimos a lista para asegurar que el atributo dinámico "desbloqueado" se conserve en el template
+    cromos = list(Cromo.objects.all().order_by('puntos_requeridos'))
     user_points = request.user.puntos_acumulados
     
     for c in cromos:

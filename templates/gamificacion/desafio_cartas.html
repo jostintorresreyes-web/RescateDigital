@@ -1,0 +1,467 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block title %}{% trans "Duelo de Cartas vs Líder" %}{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        background: url('https://www.transparenttextures.com/patterns/dark-leather.png'), radial-gradient(circle at center, #2c3e50, #000000);
+        color: #f1c40f;
+        font-family: 'Cinzel', serif;
+        overflow: hidden;
+    }
+
+    .duel-area {
+        height: 90vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 2rem;
+        position: relative;
+    }
+
+    /* Opponent & Player UI */
+    .character-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 400px;
+    }
+
+    .avatar {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        border: 3px solid #f1c40f;
+        background: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2rem;
+        color: #fff;
+        margin-bottom: 10px;
+        box-shadow: 0 0 15px rgba(241, 196, 15, 0.5);
+    }
+
+    .char-name { font-size: 1.2rem; font-weight: bold; letter-spacing: 2px; text-shadow: 0 0 5px #000; }
+
+    .hp-container {
+        width: 100%;
+        height: 15px;
+        background: rgba(0,0,0,0.8);
+        border: 1px solid #f1c40f;
+        border-radius: 10px;
+        position: relative;
+        overflow: hidden;
+        margin-top: 5px;
+    }
+
+    .hp-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #e74c3c, #c0392b);
+        width: 100%;
+        transition: width 0.4s ease;
+    }
+    
+    .hp-fill.player { background: linear-gradient(90deg, #2ecc71, #27ae60); }
+
+    /* Battlefield */
+    .battlefield {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        width: 100%;
+        max-width: 800px;
+        padding: 2rem;
+        font-size: 1.5rem;
+        text-shadow: 0 2px 4px #000;
+        background: rgba(0,0,0,0.4);
+        border-radius: 15px;
+        border: 1px solid rgba(241, 196, 15, 0.2);
+        box-shadow: inset 0 0 20px rgba(0,0,0,0.8);
+        margin: 20px 0;
+        min-height: 150px;
+    }
+
+    /* Cards Hand */
+    .hand {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        width: 100%;
+        perspective: 1000px;
+        margin-top: 20px;
+    }
+
+    .card-item {
+        width: 160px;
+        height: 220px;
+        background: linear-gradient(135deg, #34495e, #2c3e50);
+        border: 2px solid #f1c40f;
+        border-radius: 10px;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        cursor: pointer;
+        transition: transform 0.3s, box-shadow 0.3s, margin-top 0.3s;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 15px;
+        text-align: center;
+        position: relative;
+    }
+
+    .card-item:hover {
+        transform: translateY(-20px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(241, 196, 15, 0.4);
+        z-index: 10;
+    }
+
+    .card-item.wildcard {
+        background: linear-gradient(135deg, #8e44ad, #2980b9);
+        border-color: #00ffff;
+    }
+    .card-item.wildcard i { color: #00ffff; text-shadow: 0 0 10px #00ffff; }
+
+    .card-icon { font-size: 2.5rem; margin-bottom: 15px; color: #f1c40f; }
+    .card-text { font-size: 0.9rem; font-weight: bold; line-height: 1.4; color: #fff; }
+
+    .card-used {
+        animation: vanish 0.5s forwards;
+        pointer-events: none;
+    }
+
+    @keyframes vanish {
+        0% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.2) translateY(-50px); opacity: 0.8; filter: brightness(2); }
+        100% { transform: scale(0) translateY(-100px); opacity: 0; }
+    }
+
+    /* Overlays */
+    .overlay-card {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.9);
+        z-index: 1000;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .btn-play {
+        background: transparent;
+        color: #f1c40f;
+        border: 2px solid #f1c40f;
+        padding: 15px 40px;
+        font-family: 'Cinzel', serif;
+        font-size: 1.5rem;
+        cursor: pointer;
+        margin-top: 30px;
+        transition: 0.3s;
+    }
+    .btn-play:hover { background: #f1c40f; color: #000; box-shadow: 0 0 20px #f1c40f; }
+
+    .shake-anim { animation: shake 0.4s; }
+    @keyframes shake {
+        0% { transform: translateX(0); border-color: red; }
+        25% { transform: translateX(-10px); }
+        50% { transform: translateX(10px); }
+        75% { transform: translateX(-10px); }
+        100% { transform: translateX(0); border-color: #f1c40f; }
+    }
+    
+    footer.site-footer { display: none !important; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="duel-area">
+    <!-- HIDDEN YOUTUBE PLAYER -->
+    <div id="yt-player" style="position:absolute; top:-9999px; left:-9999px;"></div>
+
+    <!-- START SCREEN -->
+    <div id="start-overlay" class="overlay-card">
+        <i class="fas fa-layer-group fa-5x mb-4" style="color: #f1c40f;"></i>
+        <h1 style="font-size: 3rem; text-shadow: 0 0 20px #f1c40f;">DUELO DE CARTAS</h1>
+        <p style="max-width: 600px; line-height: 1.8; color: #ccc;">
+            Enfrenta al Líder usando tu mazo de conocimiento. Cada pregunta correcta ataca al Líder. Responde mal y sufrirás las consecuencias. Usa los <b>comodines</b> sabiamente.
+        </p>
+        <button id="start-btn" class="btn-play">ROBAR CARTAS</button>
+    </div>
+
+    <!-- RESULT SCREEN -->
+    <div id="end-overlay" class="overlay-card d-none">
+        <h1 id="end-title" style="font-size: 4rem;"></h1>
+        <p id="end-msg" class="mt-3 mb-5 text-white" style="font-size: 1.2rem;"></p>
+        <form id="result-form" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="puntos" id="points-input" value="0">
+        </form>
+    </div>
+
+    <!-- OPPONENT UI -->
+    <div class="character-area" id="boss-area">
+        <div class="avatar"><i class="fas fa-crown"></i></div>
+        <div class="char-name">{{ top_user.first_name|default:top_user.username|upper }} (LÍDER)</div>
+        <div class="hp-container"><div class="hp-fill" id="boss-hp"></div></div>
+    </div>
+
+    <!-- BATTLEFIELD -->
+    <div class="battlefield" id="battlefield-text">
+        Preparando el combate...
+    </div>
+
+    <!-- PLAYER UI -->
+    <div class="character-area" id="player-area" style="max-width: 100%;">
+        <div class="hp-container" style="max-width: 400px; margin: 0 auto 10px auto;"><div class="hp-fill player" id="player-hp"></div></div>
+        <div class="char-name">{{ request.user.first_name|default:request.user.username|upper }}</div>
+        
+        <!-- CARDS HAND -->
+        <div class="hand" id="player-hand"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    const questions = [
+        { 
+            q: "El Líder invoca el pasillo lojano. ¿Qué autor es fundamental en este género?", 
+            correct: "Segundo Cueva Celi", 
+            wrong: ["Julio Jaramillo", "Gerardo Guevara"]
+        },
+        { 
+            q: "El Líder te lanza un acorde de rondador. ¿A qué región pertenece principalmente este instrumento?", 
+            correct: "Sierra Ecuatoriana", 
+            wrong: ["Costa Norte", "Amazonía Profunda"]
+        },
+        { 
+            q: "El Líder entona 'Venga Conozca El Oro', pero espera que tú sepas de dónde viene el autor musical (Medardo Luzuriaga).", 
+            correct: "Loja", 
+            wrong: ["Machala", "Quito"]
+        },
+        { 
+            q: "¿Qué institución lojana fue cuna de innumerables talentos académicos?", 
+            correct: "Conservatorio Salvador Bustamante Celi", 
+            wrong: ["Orquesta Sinfónica Nacional", "Teatro Sucre"]
+        },
+        { 
+            q: "El Líder realiza un ataque rítmico. ¿Cuál es el ritmo típico festivo de los pueblos del sur?", 
+            correct: "Sanjuanito / Pasacalle", 
+            wrong: ["Marimba", "Danzante"]
+        }
+    ];
+
+    const wildcards = [
+        { type: "heal", text: "Poción Curativa (+30 HP)", icon: "fas fa-heart" },
+        { type: "shield", text: "Escudo Mágico (Bloquea 1 fallo)", icon: "fas fa-shield-alt" },
+        { type: "double", text: "Doble Daño (Próximo acierto x2)", icon: "fas fa-bolt" }
+    ];
+
+    let pMaxHp = 100, pHP = 100;
+    let bMaxHp = 150, bHP = 150;
+    
+    let currentQ = 0;
+    let shieldActive = false;
+    let doubleActive = false;
+    let pts = 0;
+
+    // YOUTUBE AUDIO BACKGROUND
+    let ytPlayer;
+    let ytReady = false;
+    let playQueued = false;
+
+    function onYouTubeIframeAPIReady() {
+        ytPlayer = new YT.Player('yt-player', {
+            height: '1',
+            width: '1',
+            videoId: 'XvLcZKLGS0A',
+            playerVars: { 'autoplay': 0, 'controls': 0, 'disablekb': 1, 'fs': 0, 'rel': 0, 'loop': 1, 'playlist': 'XvLcZKLGS0A' },
+            events: {
+                'onReady': () => { 
+                    ytReady = true; 
+                    if (playQueued) {
+                        ytPlayer.setVolume(35);
+                        ytPlayer.playVideo();
+                    }
+                }
+            }
+        });
+    }
+
+    // Load YT API Script
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    const btnStart = document.getElementById('start-btn');
+    const startOver = document.getElementById('start-overlay');
+    const endOver = document.getElementById('end-overlay');
+    const bfText = document.getElementById('battlefield-text');
+    const hand = document.getElementById('player-hand');
+    const php = document.getElementById('player-hp');
+    const bhp = document.getElementById('boss-hp');
+    const pArea = document.getElementById('player-area');
+    const bArea = document.getElementById('boss-area');
+
+    function updateBars() {
+        php.style.width = (pHP / pMaxHp * 100) + "%";
+        bhp.style.width = (bHP / bMaxHp * 100) + "%";
+    }
+
+    btnStart.onclick = () => {
+        startOver.classList.add('d-none');
+        if (ytReady) {
+            ytPlayer.setVolume(35);
+            ytPlayer.playVideo();
+        } else {
+            playQueued = true;
+        }
+        loadTurn();
+    };
+
+    function typeBattleText(text, callback) {
+        bfText.innerHTML = '';
+        let i = 0;
+        let int = setInterval(() => {
+            bfText.innerHTML += text.charAt(i);
+            i++;
+            if(i >= text.length) {
+                clearInterval(int);
+                if(callback) callback();
+            }
+        }, 30);
+    }
+
+    function loadTurn() {
+        if(pHP <= 0 || bHP <= 0 || currentQ >= questions.length) {
+            endGame();
+            return;
+        }
+
+        hand.innerHTML = '';
+        const qData = questions[currentQ];
+        typeBattleText(qData.q, () => {
+            // Generar mano
+            let cards = [];
+            // Respuestas
+            cards.push({ text: qData.correct, isCorrect: true, isWildcard: false });
+            qData.wrong.forEach(w => cards.push({ text: w, isCorrect: false, isWildcard: false }));
+            
+            // Un comodín aleatorio (50% de probabilidad o siempre 1)
+            let wc = wildcards[Math.floor(Math.random() * wildcards.length)];
+            cards.push({ text: wc.text, type: wc.type, isWildcard: true, icon: wc.icon });
+
+            // Barajar
+            cards = cards.sort(() => Math.random() - 0.5);
+
+            cards.forEach(c => {
+                const div = document.createElement('div');
+                div.className = `card-item ${c.isWildcard ? 'wildcard' : ''}`;
+                
+                let ic = c.isWildcard ? c.icon : 'fas fa-scroll';
+                div.innerHTML = `<i class="${ic} card-icon"></i><div class="card-text">${c.text}</div>`;
+                
+                div.onclick = () => playCard(c, div);
+                hand.appendChild(div);
+            });
+        });
+    }
+
+    function playCard(card, elem) {
+        elem.classList.add('card-used');
+
+        if(card.isWildcard) {
+            // Apply wildcard effect
+            if(card.type === 'heal') {
+                pHP = Math.min(pMaxHp, pHP + 30);
+                typeBattleText("¡Has recuperado HP!", () => updateBars());
+            } else if(card.type === 'shield') {
+                shieldActive = true;
+                typeBattleText("¡Escudo Activado! El próximo fallo no te hará daño.");
+            } else if(card.type === 'double') {
+                doubleActive = true;
+                typeBattleText("¡Doble Daño Activado! Tu próximo acierto será crítico.");
+            }
+            // Remove wildcard visually after animation
+            setTimeout(() => elem.remove(), 500);
+        } else {
+            // It's an answer card
+            hand.innerHTML = ''; // Clear hand
+            if(card.isCorrect) {
+                // Atacar al líder
+                let dmg = 35;
+                if(doubleActive) { dmg *= 2; doubleActive = false; }
+                
+                bHP -= dmg;
+                pts += 10;
+                bArea.classList.add('shake-anim');
+                setTimeout(() => bArea.classList.remove('shake-anim'), 400);
+
+                typeBattleText(`¡Respuesta Correcta! Le infliges ${dmg} pts de daño al Líder.`, () => {
+                    updateBars();
+                    currentQ++;
+                    setTimeout(loadTurn, 1500);
+                });
+            } else {
+                // Fallo
+                doubleActive = false; // pierde doble daño si falla
+                if(shieldActive) {
+                    shieldActive = false;
+                    typeBattleText("¡Fallo! Pero tu escudo bloqueó el contraataque del Líder.", () => {
+                        currentQ++;
+                        setTimeout(loadTurn, 1500);
+                    });
+                } else {
+                    let dmg = 25;
+                    pHP -= dmg;
+                    pArea.classList.add('shake-anim');
+                    setTimeout(() => pArea.classList.remove('shake-anim'), 400);
+
+                    typeBattleText(`¡Respuesta Incorrecta! El Líder contraataca y pierdes ${dmg} HP.`, () => {
+                        updateBars();
+                        currentQ++;
+                        setTimeout(loadTurn, 1500);
+                    });
+                }
+            }
+        }
+    }
+
+    function endGame() {
+        if (ytReady) ytPlayer.fadeVolume ? ytPlayer.stopVideo() : ytPlayer.pauseVideo();
+        
+        endOver.classList.remove('d-none');
+        const tit = document.getElementById('end-title');
+        const msg = document.getElementById('end-msg');
+        const inp = document.getElementById('points-input');
+
+        if(bHP <= 0) {
+            tit.innerText = "¡VICTORIA!";
+            tit.style.color = "#2ecc71";
+            tit.style.textShadow = "0 0 20px #2ecc71";
+            msg.innerText = "Has derrotado al Líder en el duelo de cartas.";
+            inp.value = pts + 20; // bonus points
+        } else {
+            tit.innerText = "DERROTA";
+            tit.style.color = "#e74c3c";
+            tit.style.textShadow = "0 0 20px #e74c3c";
+            msg.innerText = "El Líder ha demostrado superioridad estratégica.";
+            inp.value = Math.max(0, pts - 5);
+        }
+
+        setTimeout(() => {
+            document.getElementById('result-form').submit();
+        }, 4000);
+    }
+</script>
+{% endblock %}

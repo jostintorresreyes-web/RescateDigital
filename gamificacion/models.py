@@ -160,6 +160,10 @@ class Cromo(models.Model):
     def translated_descripcion(self):
         return self.get_translated('descripcion')
 
+    class Meta:
+        verbose_name = "Insignia"
+        verbose_name_plural = "Insignias"
+
     def __str__(self):
-        return f'Cromo: {self.nombre} ({self.puntos_requeridos} pts)'
+        return f'Insignia: {self.nombre} ({self.puntos_requeridos} pts)'
 
