@@ -765,3 +765,60 @@ body.bg-dark .navbar-toggler { background-color: rgba(255,255,255,0.05); }
         padding: 100px 15px 60px 15px;
     }
 }
+
+/* ==========================================================================
+   SRS ADAPTACIÓN RESPONSIVE PARA DISPOSITIVOS MÓVILES
+   ========================================================================== */
+
+/* Pantallas medianas (1024px) */
+@media (max-width: 1024px) {
+    .hero-title { font-size: 3rem; }
+    .hero-subtitle { font-size: 1.1rem; }
+    .gamification-title { font-size: 2.2rem; }
+}
+
+/* Tablets y móviles grandes (768px) */
+@media (max-width: 768px) {
+    /* RF1, 8.1 Header móvil */
+    .navbar-brand { font-size: 1.15rem; } /* Logo reducido */
+    
+    /* RF4, 8.2 Página principal móvil */
+    .hero-title { font-size: 2.2rem; } /* Reducir tamaño automáticamente */
+    .hero-subtitle { font-size: 1rem; }
+    .hero-section { padding: 80px 15px 40px 15px; } /* Espaciado vertical optimizado */
+    
+    /* RF5 Botones táctiles */
+    .btn-gold, .btn-outline-green, .btn-dark-green {
+        padding: 14px 25px; 
+        font-size: 1rem;
+        margin-bottom: 12px;
+        width: 100%; /* Botones ajustables, diseño vertical */
+        text-align: center;
+        display: block;
+    }
+    
+    .section-title { font-size: 2rem; }
+    
+    /* RF3 Adaptación de imágenes */
+    .artist-img-wrapper { height: 260px; }
+}
+
+/* Dispositivos móviles pequeños (480px) */
+@media (max-width: 480px) {
+    /* 8.1 Logo reducido */
+    .navbar-brand { font-size: 1rem; } 
+    .navbar-brand .nav-text { white-space: normal; line-height: 1.1; font-size: 0.9rem !important; }
+    
+    /* 8.4 Texto reducido */
+    .hero-title { font-size: 1.8rem; }
+    .hero-subtitle { font-size: 0.9rem; }
+    
+    /* RF5 Área táctil segura */
+    .btn-gold, .btn-outline-green, .btn-dark-green {
+        padding: 16px 20px;
+        font-size: 0.95rem;
+    }
+    
+    /* RF3 Evitar desbordamientos en imágenes */
+    .artist-img-wrapper { height: 220px; }
+}

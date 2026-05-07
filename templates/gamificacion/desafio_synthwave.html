@@ -274,62 +274,30 @@
 
     /* MEDIA QUERIES PARA DISPOSITIVOS MÓVILES */
     @media (max-width: 768px) {
-        .game-container {
-            padding-top: 1rem;
-        }
-        /* Reorganizar verticalmente los perfiles */
-        .hp-hud {
-            flex-direction: column;
-            gap: 1.5rem;
-            padding: 0 10px;
-        }
-        .player-profile, .boss-profile {
-            width: 100%;
-            align-items: center !important;
-        }
-        #boss-hp-fill {
-            float: none;
-            transform-origin: center;
-        }
-        .vs-badge {
-            font-size: 2rem;
-            margin: 10px 0;
-        }
+        .game-container { padding-top: 1rem; }
+        .hp-hud { flex-direction: column; gap: 0.5rem; }
+        .player-profile, .boss-profile { width: 100%; align-items: center !important; }
+        .name-tag { font-size: 1rem; margin-bottom: 0.2rem; text-align: center; }
+        .hp-bar-container { height: 15px; width: 90%; margin: 0 auto; }
+        .vs-badge { font-size: 1.5rem; margin: 5px 0; }
+        #boss-hp-fill { float: none; transform-origin: center; }
         
-        /* Reorganizar verticalmente las tarjetas de respuestas */
-        .card-grid {
-            grid-template-columns: 1fr; /* Una sola columna en móvil */
-            gap: 1rem;
-        }
+        #start-overlay h1 { font-size: 2rem; margin-top: 1rem; letter-spacing: 2px; }
+        .lead.fs-3 { font-size: 1.2rem !important; }
+        .card.bg-dark { padding: 1rem !important; margin-bottom: 1rem !important; max-width: 90%; margin: 0 auto; }
+        .card.bg-dark h4 { font-size: 1.2rem; }
+        .card.bg-dark ul { font-size: 0.85rem; }
+        .btn-cyber { padding: 0.8rem 1.5rem; font-size: 1rem; letter-spacing: 1px; }
+        #countdown { font-size: 6rem; }
         
-        /* Ajustar textos para pantallas pequeñas */
-        #start-overlay h1 {
-            font-size: 2.5rem;
-        }
-        #countdown {
-            font-size: 8rem;
-        }
-        .question-box {
-            padding: 1.5rem;
-            margin-top: 0;
-        }
-        #question-text {
-            font-size: 1.4rem;
-            margin-bottom: 1.5rem;
-        }
-        .quiz-card {
-            font-size: 1.1rem;
-            padding: 1rem;
-        }
-        .victory-text, .defeat-text {
-            font-size: 3rem;
-        }
+        .question-box { padding: 1rem; width: 95%; }
+        #question-text { font-size: 1.2rem; margin-bottom: 1rem; }
+        .card-grid { grid-template-columns: 1fr; gap: 0.8rem; }
+        .quiz-card { font-size: 1rem; padding: 0.8rem; }
         
-        /* Imágenes y elementos ajustados al ancho de la pantalla */
-        img {
-            max-width: 100% !important;
-            height: auto !important;
-        }
+        .victory-text, .defeat-text { font-size: 2.5rem; }
+        .fa-7xl { font-size: 5rem !important; }
+        #result-overlay h3 { font-size: 1.1rem; }
     }
 </style>
 {% endblock %}

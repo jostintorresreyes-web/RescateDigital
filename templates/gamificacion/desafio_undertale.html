@@ -42,7 +42,7 @@
     .boss-sprite {
         width: 180px;
         height: 180px;
-        background: url('{% static "img/sans_true_color.png" %}') center/contain no-repeat;
+        background: url('{% static "img/sans.png" %}') center/contain no-repeat;
         margin: 0 auto 1rem auto;
         animation: sans-breathe 1.5s ease-in-out infinite;
         transform-origin: bottom center;
@@ -239,6 +239,23 @@
     }
 
     footer.site-footer { display: none !important; }
+
+    /* RESPONSIVE DESIGN */
+    @media (max-width: 768px) {
+        .battle-area { padding-top: 1rem; padding-bottom: 1rem; }
+        .boss-sprite { width: 120px; height: 120px; }
+        .boss-name { font-size: 1.2rem; }
+        .boss-hp-bar { width: 150px; height: 10px; }
+        .dialog-box { font-size: 0.9rem; padding: 1rem; min-height: 120px; }
+        .options-grid { gap: 0.5rem; margin-top: 1rem; }
+        .ut-btn { min-width: 100%; font-size: 0.8rem; padding: 1rem; }
+        .player-status { gap: 0.5rem; font-size: 0.9rem; flex-wrap: wrap; justify-content: center; }
+        .player-hp-bar { width: 100px; height: 20px; }
+        .game-over-text, .victory-text-ut { font-size: 2rem !important; }
+        .btn-start-ut { font-size: 1rem; padding: 1rem 2rem; }
+        #start-overlay h1 { font-size: 1.5rem !important; }
+        #start-overlay p { font-size: 0.9rem !important; }
+    }
 </style>
 {% endblock %}
 
