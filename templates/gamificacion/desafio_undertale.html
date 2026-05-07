@@ -42,7 +42,7 @@
     .boss-sprite {
         width: 180px;
         height: 180px;
-        background: url('{% static "img/sans.png" %}') center/contain no-repeat;
+        background: url('{% static "img/sans.png" %}?v=3') center/contain no-repeat;
         margin: 0 auto 1rem auto;
         animation: sans-breathe 1.5s ease-in-out infinite;
         transform-origin: bottom center;
@@ -242,19 +242,26 @@
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 768px) {
-        .battle-area { padding-top: 1rem; padding-bottom: 1rem; }
-        .boss-sprite { width: 120px; height: 120px; }
-        .boss-name { font-size: 1.2rem; }
-        .boss-hp-bar { width: 150px; height: 10px; }
-        .dialog-box { font-size: 0.9rem; padding: 1rem; min-height: 120px; }
-        .options-grid { gap: 0.5rem; margin-top: 1rem; }
-        .ut-btn { min-width: 100%; font-size: 0.8rem; padding: 1rem; }
-        .player-status { gap: 0.5rem; font-size: 0.9rem; flex-wrap: wrap; justify-content: center; }
-        .player-hp-bar { width: 100px; height: 20px; }
-        .game-over-text, .victory-text-ut { font-size: 2rem !important; }
-        .btn-start-ut { font-size: 1rem; padding: 1rem 2rem; }
+        .battle-area { padding-top: 0.5rem; padding-bottom: 0.5rem; justify-content: flex-start; }
+        .boss-sprite-container { margin-bottom: 0.5rem; }
+        .boss-sprite { width: 110px; height: 110px; margin-bottom: 0.5rem; }
+        .boss-name { font-size: 1rem; }
+        .boss-hp-bar { width: 120px; height: 8px; margin: 0 auto; }
+        
+        .dialog-box { font-size: 0.75rem; padding: 0.8rem; min-height: 80px; margin-bottom: 0.5rem; }
+        
+        .options-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-top: 0.5rem; }
+        .ut-btn { min-width: 0; width: 100%; font-size: 0.6rem; padding: 0.8rem 0.5rem 0.8rem 1.5rem; }
+        .soul-icon { font-size: 0.8rem; left: 5px; }
+        
+        .player-status { gap: 0.3rem; font-size: 0.75rem; justify-content: space-around; margin-top: 0.5rem; width: 100%; }
+        .player-hp-bar { width: 60px; height: 15px; }
+        .player-name, .hp-text { font-size: 0.75rem; }
+        
+        .game-over-text, .victory-text-ut { font-size: 1.8rem !important; }
+        .btn-start-ut { font-size: 1rem; padding: 0.8rem 1.5rem; }
         #start-overlay h1 { font-size: 1.5rem !important; }
-        #start-overlay p { font-size: 0.9rem !important; }
+        #start-overlay p { font-size: 0.8rem !important; padding: 0 10px; }
     }
 </style>
 {% endblock %}
