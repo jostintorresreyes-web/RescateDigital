@@ -271,6 +271,66 @@
     .defeat-text { font-size: 6rem; color: #ff003c; text-shadow: 0 0 40px #ff003c; }
 
     footer.site-footer { display: none !important; }
+
+    /* MEDIA QUERIES PARA DISPOSITIVOS MÓVILES */
+    @media (max-width: 768px) {
+        .game-container {
+            padding-top: 1rem;
+        }
+        /* Reorganizar verticalmente los perfiles */
+        .hp-hud {
+            flex-direction: column;
+            gap: 1.5rem;
+            padding: 0 10px;
+        }
+        .player-profile, .boss-profile {
+            width: 100%;
+            align-items: center !important;
+        }
+        #boss-hp-fill {
+            float: none;
+            transform-origin: center;
+        }
+        .vs-badge {
+            font-size: 2rem;
+            margin: 10px 0;
+        }
+        
+        /* Reorganizar verticalmente las tarjetas de respuestas */
+        .card-grid {
+            grid-template-columns: 1fr; /* Una sola columna en móvil */
+            gap: 1rem;
+        }
+        
+        /* Ajustar textos para pantallas pequeñas */
+        #start-overlay h1 {
+            font-size: 2.5rem;
+        }
+        #countdown {
+            font-size: 8rem;
+        }
+        .question-box {
+            padding: 1.5rem;
+            margin-top: 0;
+        }
+        #question-text {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+        }
+        .quiz-card {
+            font-size: 1.1rem;
+            padding: 1rem;
+        }
+        .victory-text, .defeat-text {
+            font-size: 3rem;
+        }
+        
+        /* Imágenes y elementos ajustados al ancho de la pantalla */
+        img {
+            max-width: 100% !important;
+            height: auto !important;
+        }
+    }
 </style>
 {% endblock %}
 

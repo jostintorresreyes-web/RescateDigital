@@ -693,3 +693,62 @@ body.bg-dark .top-user-btn:hover {
     background-color: rgba(227, 170, 89, 0.15);
 }
 body.bg-dark .navbar-toggler { background-color: rgba(255,255,255,0.05); }
+
+/* REGLAS RESPONSIVAS PARA MÓVILES (Max 991px) */
+@media (max-width: 991px) {
+    /* Asegurar que las imágenes se ajusten al ancho de la pantalla */
+    img {
+        max-width: 100% !important;
+        height: auto !important;
+    }
+    
+    /* Reorganizar elementos verticalmente para mejor visualización en celular */
+    .row.reorder-mobile, .d-flex.reorder-mobile {
+        flex-direction: column !important;
+        align-items: center !important;
+        text-align: center;
+    }
+
+    /* Hacer que el menú sea accesible en versión móvil */
+    .navbar-collapse {
+        background-color: var(--bg-light);
+        padding: 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        margin-top: 15px;
+        max-height: 80vh;
+        overflow-y: auto;
+    }
+    
+    body.bg-dark .navbar-collapse {
+        background-color: #1a1a1a;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+        border: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-link.side-link {
+        padding: 12px 20px !important;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        background-color: rgba(0,0,0,0.02);
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    
+    body.bg-dark .nav-link.side-link {
+        background-color: rgba(255,255,255,0.02);
+    }
+    
+    .nav-icon {
+        margin-right: 15px;
+    }
+
+    /* Ajustes generales de sección para celular */
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    .hero-section {
+        padding: 100px 15px 60px 15px;
+    }
+}
