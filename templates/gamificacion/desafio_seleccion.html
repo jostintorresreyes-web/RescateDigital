@@ -116,6 +116,33 @@
     }
     
     footer.site-footer { display: none !important; }
+    
+    /* Default desktop sizes */
+    .mode-icon { font-size: 5rem; }
+    .mode-title { font-size: 2rem; }
+    
+    @media (max-width: 768px) {
+        .select-card {
+            padding: 1.5rem 1rem;
+        }
+        .mode-icon {
+            font-size: 2.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+        .mode-title {
+            font-size: 1rem !important;
+            line-height: 1.2;
+        }
+        .select-card p {
+            display: none !important; /* Hide long desc to fit side-by-side */
+        }
+        .gamer-title {
+            font-size: 2rem !important;
+        }
+        .leader-badge {
+            font-size: 1rem !important;
+        }
+    }
 </style>
 {% endblock %}
 
@@ -130,40 +157,40 @@
         <i class="fas fa-crown me-2"></i> {% trans "LÍDER ACTUAL:" %} {{ top_user.first_name|default:top_user.username }} ({{ top_user.puntos_acumulados }} pts)
     </div>
 
-    <div class="row w-100 justify-content-center g-4">
+    <div class="row w-100 justify-content-center g-3 px-2">
         <!-- SYNTHWAVE -->
-        <div class="col-md-6">
-            <a href="?mode=synthwave" class="select-card card-synthwave text-decoration-none">
-                <i class="fas fa-bolt fa-5x mb-4"></i>
-                <h2 class="mb-3">NEÓN CYBERPUNK</h2>
+        <div class="col-6 col-md-6">
+            <a href="?mode=synthwave" class="select-card card-synthwave text-decoration-none h-100">
+                <i class="fas fa-bolt mode-icon mb-4"></i>
+                <h2 class="mb-2 mode-title">NEÓN CYBERPUNK</h2>
                 <p class="opacity-75 mb-0">{% trans "Modo frenético. El tiempo es tu peor enemigo. Responde rápido antes de que tu energía se agote." %}</p>
             </a>
         </div>
         
         <!-- UNDERTALE -->
-        <div class="col-md-6">
-            <a href="?mode=undertale" class="select-card card-undertale text-decoration-none">
-                <i class="fas fa-heart fa-5x mb-4"></i>
-                <h2 class="mb-3">* DETERMINACIÓN</h2>
+        <div class="col-6 col-md-6">
+            <a href="?mode=undertale" class="select-card card-undertale text-decoration-none h-100">
+                <i class="fas fa-heart mode-icon mb-4"></i>
+                <h2 class="mb-2 mode-title">* DETERMINACIÓN</h2>
                 <p class="opacity-75 mb-0" style="font-size: 1.1rem; line-height: 1.5;">{% trans "* Combate táctico donde cada decisión pesa. Evita que el líder destroce tu alma." %}</p>
             </a>
         </div>
 
         <!-- CARTAS -->
-        <div class="col-md-6">
-            <a href="?mode=cartas" class="select-card card-cartas text-decoration-none">
-                <i class="fas fa-layer-group fa-5x mb-4"></i>
-                <h2 class="mb-3">DUELO DE CARTAS</h2>
+        <div class="col-6 col-md-6">
+            <a href="?mode=cartas" class="select-card card-cartas text-decoration-none h-100">
+                <i class="fas fa-layer-group mode-icon mb-4"></i>
+                <h2 class="mb-2 mode-title">DUELO DE CARTAS</h2>
                 <p class="opacity-75 mb-0" style="font-size: 1.1rem; line-height: 1.5;">{% trans "Usa tu mazo estratégicamente. Responde preguntas y juega comodines para vencer al líder." %}</p>
             </a>
         </div>
 
         <!-- LUDO -->
-        <div class="col-md-6">
-            <a href="?mode=ludo" class="select-card card-ludo text-decoration-none">
-                <i class="fas fa-dice fa-5x mb-4"></i>
-                <h2 class="mb-3">LUDO MUSICAL</h2>
-                <p class="opacity-75 mb-0" style="font-size: 1.1rem; line-height: 1.5;">{% trans "Una carrera táctica con los artistas lojanos. Lanza los dados y llega a la meta antes que el líder." %}</p>
+        <div class="col-6 col-md-6">
+            <a href="?mode=ludo" class="select-card card-ludo text-decoration-none h-100">
+                <i class="fas fa-dice mode-icon mb-4"></i>
+                <h2 class="mb-2 mode-title">LUDO MUSICAL</h2>
+                <p class="opacity-75 mb-0" style="font-size: 1.1rem; line-height: 1.5;">{% trans "Una carrera táctica. Lanza los dados y llega a la meta antes que el líder." %}</p>
             </a>
         </div>
     </div>

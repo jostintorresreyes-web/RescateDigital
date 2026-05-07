@@ -109,6 +109,29 @@
         footer.site-footer {
             display: none !important;
         }
+        
+        /* Mobile scaling for Artists */
+        @media (max-width: 768px) {
+            .artist-img-wrapper {
+                height: 200px !important;
+            }
+            .artist-info {
+                padding: 1rem !important;
+            }
+            .artist-name {
+                font-size: 1.1rem !important;
+            }
+            .artist-role {
+                font-size: 0.7rem !important;
+            }
+            .artist-quote {
+                font-size: 0.8rem !important;
+                display: none; /* Hide description to keep card compact */
+            }
+            .fa-user-tie {
+                font-size: 4rem !important;
+            }
+        }
     </style>
 {% endblock %}
 
@@ -164,8 +187,8 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         var swiper = new Swiper(".artistSwiper", {
-            slidesPerView: 1,
-            spaceBetween: 20,
+            slidesPerView: 2, /* Default to 2 on mobile to avoid giant cards */
+            spaceBetween: 10,
             grabCursor: true,
             pagination: {
                 el: ".swiper-pagination",
@@ -181,6 +204,10 @@
                     slidesPerView: 3,
                     spaceBetween: 30,
                 },
+                1200: {
+                    slidesPerView: 4,
+                    spaceBetween: 30,
+                }
             },
             autoplay: {
                 delay: 3500,

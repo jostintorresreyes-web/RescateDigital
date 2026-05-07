@@ -87,6 +87,16 @@
         border-radius: 50%;
         border: 2px solid #fff;
     }
+    
+    @media (max-width: 991px) {
+        /* Mover los controles del usuario en celular para que no tapen el botón del menú */
+        .user-controls-top {
+            top: 75px; /* Debajo de la barra de navegación */
+            right: 15px;
+            transform: scale(0.9);
+            transform-origin: top right;
+        }
+    }
 </style>
 {% endblock %}
 

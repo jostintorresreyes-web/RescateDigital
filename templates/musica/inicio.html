@@ -121,9 +121,72 @@
         background: rgba(255, 255, 255, 0.15); 
         border-color: rgba(255, 255, 255, 0.4);
     }
-    .music-search-input:focus + .music-search-icon, 
     .music-search-input:focus ~ .music-search-icon {
         color: var(--music-accent, #d9258a);
+    }
+    
+    /* REGLAS RESPONSIVAS PARA EL REPRODUCTOR */
+    @media (max-width: 768px) {
+        .spotify-hero {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 80px 20px 20px;
+            gap: 15px;
+        }
+        .playlist-cover {
+            width: 180px; height: 180px;
+        }
+        .playlist-info h1 {
+            font-size: 2.5rem;
+            letter-spacing: -1px;
+        }
+        .controls-bar {
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        .music-search-container {
+            max-width: 100%;
+            width: 100%;
+        }
+        
+        /* Ajustar tabla de canciones */
+        .track-table {
+            display: block;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .track-table th, .track-table td {
+            padding: 8px 10px;
+            font-size: 0.85rem;
+        }
+        .track-table th:nth-child(4), .track-table td:nth-child(4) {
+            display: none; /* Ocultar género en móvil */
+        }
+        
+        /* Ajustar reproductor inferior */
+        .music-player {
+            flex-direction: column;
+            height: auto;
+            padding: 10px;
+            gap: 10px;
+            padding-bottom: 15px;
+        }
+        .player-left, .player-center, .player-right {
+            width: 100%;
+            justify-content: center;
+        }
+        .player-left {
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+        .player-right {
+            display: none; /* Ocultar control de volumen en móvil */
+        }
+        .spotify-wrapper {
+            padding-bottom: 160px; /* Dar más espacio al reproductor grande en móvil */
+        }
     }
 </style>
 {% endblock %}

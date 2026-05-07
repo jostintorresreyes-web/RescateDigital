@@ -72,9 +72,9 @@
     <nav class="navbar navbar-expand-lg sticky-top px-3 position-relative">
         
         <div class="container-fluid mx-md-4 position-relative z-2">
-            <a class="navbar-brand d-flex flex-column align-items-center justify-content-center text-center w-100" href="{% url 'inicio' %}">
-                <div class="brand-icon-wrapper mb-2" style="width: 40px; text-align: center;"><i class="fas fa-music text-success"></i></div> 
-                <span class="nav-text" style="font-size: 0.85rem; white-space: normal; line-height: 1.2; text-shadow: none;">{% trans "RESCATE DIGITAL" %}</span>
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'inicio' %}">
+                <div class="brand-icon-wrapper me-2" style="width: 40px; text-align: center;"><i class="fas fa-music text-success"></i></div> 
+                <span class="nav-text" style="font-size: 1rem; white-space: normal; line-height: 1.2; text-shadow: none;">{% trans "RESCATE DIGITAL" %}</span>
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -98,41 +98,40 @@
                     <li class="nav-item"><a class="nav-link side-link" href="{% url 'juegos_lista' %}"><div class="nav-icon"><i class="fas fa-gamepad"></i></div><span class="nav-text">{% trans "Juegos" %}</span></a></li>
                     <li class="nav-item"><a class="nav-link side-link" href="{% url 'album_cromos' %}"><div class="nav-icon"><i class="fas fa-award text-warning"></i></div><span class="nav-text">{% trans "Insignias" %}</span></a></li>
                 </ul>
-            </div>
-            
-            <ul class="navbar-nav w-100 mt-auto pb-3">
-                <!-- Theme Toggle Button -->
-                <li class="nav-item w-100 mb-2">
-                    <a href="#" id="theme-toggle" class="nav-link side-link w-100">
-                        <div class="nav-icon"><i class="fas fa-moon" id="theme-icon"></i></div>
-                        <span class="nav-text theme-text fw-bold">{% trans "Modo Oscuro" %}</span>
-                    </a>
-                </li>
-
-                <!-- Lang Toggle Button (Single click ES-EN) -->
-                <li class="nav-item w-100 mb-2">
-                    <form action="{% url 'set_language' %}" method="post" id="lang-toggle-form" class="m-0">
-                        {% csrf_token %}
-                        {% get_current_language as LANGUAGE_CODE %}
-                        <input name="next" type="hidden" value="{{ request.get_full_path }}">
-                        <input name="language" type="hidden" value="{% if LANGUAGE_CODE == 'es' %}en{% else %}es{% endif %}">
-                        <a href="#" onclick="document.getElementById('lang-toggle-form').submit(); return false;" class="nav-link side-link">
-                            <div class="nav-icon"><i class="fas fa-language"></i></div>
-                            <span class="nav-text fw-bold">{% if LANGUAGE_CODE == 'es' %}<span class="text-success text-decoration-underline">ES</span> - EN{% else %}ES - <span class="text-success text-decoration-underline">EN</span>{% endif %}</span>
-                        </a>
-                    </form>
-                </li>
                 
-                {% if not user.is_authenticated %}
-                <li class="nav-item w-100">
-                        <a href="{% url 'login' %}" class="nav-link side-link w-100 text-dark">
-                            <div class="nav-icon"><i class="fas fa-sign-in-alt"></i></div>
-                            <span class="nav-text fw-bold">{% trans "Ingresar" %}</span>
+                <ul class="navbar-nav w-100 mt-auto pb-3">
+                    <!-- Theme Toggle Button -->
+                    <li class="nav-item w-100 mb-2 mt-4">
+                        <a href="#" id="theme-toggle" class="nav-link side-link w-100">
+                            <div class="nav-icon"><i class="fas fa-moon" id="theme-icon"></i></div>
+                            <span class="nav-text theme-text fw-bold">{% trans "Modo Oscuro" %}</span>
                         </a>
                     </li>
-                {% endif %}
 
-            </ul>
+                    <!-- Lang Toggle Button (Single click ES-EN) -->
+                    <li class="nav-item w-100 mb-2">
+                        <form action="{% url 'set_language' %}" method="post" id="lang-toggle-form" class="m-0">
+                            {% csrf_token %}
+                            {% get_current_language as LANGUAGE_CODE %}
+                            <input name="next" type="hidden" value="{{ request.get_full_path }}">
+                            <input name="language" type="hidden" value="{% if LANGUAGE_CODE == 'es' %}en{% else %}es{% endif %}">
+                            <a href="#" onclick="document.getElementById('lang-toggle-form').submit(); return false;" class="nav-link side-link">
+                                <div class="nav-icon"><i class="fas fa-language"></i></div>
+                                <span class="nav-text fw-bold">{% if LANGUAGE_CODE == 'es' %}<span class="text-success text-decoration-underline">ES</span> - EN{% else %}ES - <span class="text-success text-decoration-underline">EN</span>{% endif %}</span>
+                            </a>
+                        </form>
+                    </li>
+                    
+                    {% if not user.is_authenticated %}
+                    <li class="nav-item w-100">
+                            <a href="{% url 'login' %}" class="nav-link side-link w-100 text-dark">
+                                <div class="nav-icon"><i class="fas fa-sign-in-alt"></i></div>
+                                <span class="nav-text fw-bold">{% trans "Ingresar" %}</span>
+                            </a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
         </div>
     </nav>
 
