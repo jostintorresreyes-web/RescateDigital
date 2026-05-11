@@ -42,7 +42,8 @@
     .boss-sprite {
         width: 180px;
         height: 180px;
-        background: url('{% static "img/sans.png" %}?v=3') center/contain no-repeat;
+        object-fit: contain;
+        display: block;
         margin: 0 auto 1rem auto;
         animation: sans-breathe 1.5s ease-in-out infinite;
         transform-origin: bottom center;
@@ -307,7 +308,7 @@
     <!-- BOSS BOX -->
     <div class="boss-sprite-container" id="boss-sprite-container">
         <div class="boss-name mb-3">{{ top_user.first_name|default:top_user.username|upper }}</div>
-        <div class="boss-sprite"></div>
+        <img src="{% static 'img/sans_color.png' %}" class="boss-sprite" id="boss-sprite-img" alt="Boss Sprite" onerror="this.onerror=null; this.src='{% static "img/sans_true_color.png" %}';">
         <div class="boss-hp-bar">
             <div id="boss-hp-fill"></div>
         </div>
